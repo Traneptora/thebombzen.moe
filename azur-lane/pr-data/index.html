@@ -121,8 +121,6 @@
           <option value="unknown">I don’t know</option>
         </optgroup>
       </select>
-    </section>
-    <section>
       <div class="heading">Select the project type:</div>
       <select name="project-type" id="project-type" onchange="type_filter();">
         <option value="">Select Type</option>
@@ -141,8 +139,6 @@
             <option value="unknown">I don’t know</option>
           </optgroup>
       </select>
-    </section>
-    <section>
       <div class="heading">Select the project name:</div>
       <select name="project-name" id="project-name" required onchange="name_filter();">
         <option value="" class="item-all series-all" data-project-type="all" data-project-series="all" data-project-type="all" data-project-series="all">Select Project</option>
@@ -337,16 +333,12 @@
           <option value="unlisted" class="item-all series-all" data-project-type="all" data-project-series="all">I know the name but it is missing</option>
         </optgroup>
       </select>
-    </section>
-    <section>
       <div class="heading">Selected project properties:</div>
       <ul>
         <li>Color:&nbsp;<span id="report-color"></span></li>
         <li>Length:&nbsp;<span id="report-length"></span></li>
         <li>Cost:&nbsp;<span id="report-cost"></span></li>
       </ul>
-    </section>
-    <section>
       <div class="heading">Select a screenshot of your results:</div>
       <div>You can also paste it from your clipboard with Ctrl+V, or drag-and-drop it from your file browser.</div>
       <input type="file" name="results-screenshot" id="results-screenshot" accept="image/*" onchange="render_image();">

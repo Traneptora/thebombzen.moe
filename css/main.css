@@ -52,12 +52,11 @@ b, strong {
 }
 
 section {
-    margin-bottom: 0.5em;
+    margin-bottom: 1.0em;
 }
 
-ul, ol {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+li {
+    margin-bottom: 0.3em;
 }
 
 ::selection {
