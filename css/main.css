@@ -1,0 +1,133 @@
+html {
+    /* allows the scrollbar to not interrupt flow */
+    padding-right: calc(100vw - 100%);
+}
+
+body {
+    background-color: #080813;
+    text-align: center;
+    color: #C0C0C0; 
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 1.25;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link, a:visited, a:hover {
+    color: #4F8FFF;
+}
+
+a:active, a:focus {
+    color: #DA4B33;
+}
+
+select, option, section > input {
+    font-size: 18px;
+    border: none;
+}
+
+select, option {
+    background-color: #C0C0C0;
+    width: 100%;
+    color: #080813;
+}
+
+select, section > input {
+    margin-top: 0.4em;
+    margin-bottom: 1.0em;
+}
+
+b, strong {
+    color: #F49B43;
+}
+
+section {
+    margin-bottom: 0.5em;
+}
+
+ul, ol {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+::selection {
+    background-color: #404060;
+}
+
+.wrapper {
+    text-align: left;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.heading, .main-heading {
+    color: #F49B43;
+    font-weight: 600;
+}
+
+.main-heading {
+    font-size: 80px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+main[data-filter-type="b"] #project-name :not(.item-b, .item-all),
+main[data-filter-type="c"] #project-name :not(.item-c, .item-all),
+main[data-filter-type="d"] #project-name :not(.item-d, .item-all),
+main[data-filter-type="e"] #project-name :not(.item-e, .item-all),
+main[data-filter-type="h"] #project-name :not(.item-h, .item-all),
+main[data-filter-type="g"] #project-name :not(.item-g, .item-all),
+main[data-filter-type="q"] #project-name :not(.item-q, .item-all),
+main[data-filter-type="t"] #project-name :not(.item-t, .item-all) {
+    display: none;
+}
+
+main[data-filter-series="pr4"] #project-name :not(.series-pr4, .series-all),
+main[data-filter-series="pr3"] #project-name :not(.series-pr3, .series-all),
+main[data-filter-series="pr2"] #project-name :not(.series-pr2, .series-all),
+main[data-filter-series="pr1"] #project-name :not(.series-pr1, .series-all) {
+    display: none;
+}
+
+#error-report {
+    display: none;
+}
+
+main[data-project-name="unlisted"] #error-report {
+    display: block;
+}
+
+main[data-project-name="unlisted"] input[type="submit"] {
+    display: none;
+}
+
+#canvas {
+    width: 100%;
+    max-height: 600px;
+    object-fit: contain;
+}
+
+#canvas[src=""] {
+    display: none;
+}
+
+.small-help {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+footer {
+    margin-top: 1em;
+    text-align: right;
+}
+
+footer a {
+    display: block;
+}
