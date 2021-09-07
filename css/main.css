@@ -26,7 +26,13 @@ a:active, a:focus {
 }
 
 select, option, section > input {
-    font-size: 18px;
+    font-size: 36px;
+}
+
+@media only screen and (min-width: 1024px){
+    select, option, section > input {
+        font-size: 18px;
+    }
 }
 
 select, option {
