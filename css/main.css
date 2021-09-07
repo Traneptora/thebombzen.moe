@@ -137,3 +137,7 @@ footer {
 footer a {
     display: block;
 }
+
+#results-screenshot {
+    max-width: 100%;
+}
