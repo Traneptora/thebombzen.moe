@@ -27,13 +27,13 @@ a:active, a:focus {
 
 select, option, section > input {
     font-size: 18px;
-    border: none;
 }
 
 select, option {
     background-color: #C0C0C0;
     width: 100%;
     color: #080813;
+    border: none;
 }
 
 select, section > input {
