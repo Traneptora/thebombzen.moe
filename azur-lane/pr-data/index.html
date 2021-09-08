@@ -20,70 +20,7 @@
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap">
-  <script defer>
-    function series_filter(){
-      document.getElementById('main').dataset.filterSeries = document.getElementById('project-series').value;
-    }
-    function type_filter(){
-      document.getElementById('main').dataset.filterType = document.getElementById('project-type').value;
-    }
-    function name_filter(){
-      const checked = document.querySelector('#project-name option:checked');
-      document.getElementById('report-color').textContent = checked.dataset.projectColor;
-      document.getElementById('report-length').textContent = checked.dataset.projectLength;
-      document.getElementById('report-cost').textContent = checked.dataset.projectCost;
-      document.getElementById('main').dataset.projectName = checked.value;
-      if (checked.value === '' || checked.value === 'unknown' || checked.value === 'unlisted'){
-        return; // my work here is done.  but you did't do anything. *swooshes cape*
-      }
-      const series = document.getElementById('project-series');
-      if ((series.value === '' || series.value === 'unknown') && checked.dataset.projectSeries !== "all"){
-        series.value = checked.dataset.projectSeries;
-        series_filter();
-      }
-      const type = document.getElementById('project-type');
-      if (type.value === '' || type.value === 'unknown' && checked.dataset.projectType !== "all"){
-        type.value = checked.dataset.projectType;
-        type_filter();
-      }
-    }
-    function render_file(blob){
-      if (!blob || !blob.type.startsWith('image/')){
-        document.getElementById('canvas').src = '';
-        return;
-      }
-      document.getElementById('canvas').src = URL.createObjectURL(blob);
-    }
-    function render_image(){
-      const file = document.getElementById('results-screenshot').files[0];
-      render_file(file);
-    }
-    window.addEventListener('paste', async function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const file = (e.clipboardData || e.originalEvent.clipboardData).items[0].getAsFile();
-      render_file(file);
-    });
-    window.addEventListener('dragover', function(e){
-      e.preventDefault();
-      e.stopPropagation();
-    });
-    window.addEventListener('drop', function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      if (e.dataTransfer.files[0]){
-        render_file(e.dataTransfer.files[0]);
-        return;
-      }
-    });
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('results-screenshot').value = '';
-      name_filter();
-      series_filter();
-      type_filter();
-      render_image();
-    });
-  </script>
+  <script defer src="/azur-lane/pr-data/pr-data.js"></script>
   <title>PR Data Submission</title>
 </head>
 <body>
@@ -103,7 +40,7 @@
         <li>Upload screenshots as-is. Cropping them makes it harder to auto-detect what is there.</li>
       </ul>
     </section>
-    <form action="javascript:assert(true);">
+    <form action="javascript:submit_result();">
     <section>
       <div class="heading">
         <span>Select the research project series (also called season):</span>
@@ -349,8 +286,12 @@
     <section>
       <input type="submit" id="submit" value="Submit Research Result">
     </section>
-    <section id="error-report">
-      <span><strong>Do not submit the result through this form.</strong> Join the <a href="https://discord.gg/dmrG9kXpxE">ECTL Discord</a>, submit the result in <code style="background-color: #404060;">#pr-data</code>, and bother <b>Sedna#4917</b> that there is a missing project.</span>
+    <section>
+      <div class="heading" id="error-report-upload">A screenshot is required.</div>
+      <div id="server-response-status"></div>
+      <div id="error-report-missing">
+        <span><strong>Do not submit the result through this form.</strong> Join the <a href="https://discord.gg/dmrG9kXpxE">ECTL Discord</a>, submit the result in <span style="background-color: #404060; color: #E0E0E0">#pr-data</span>, and bother <b>Sedna#4917</b> that there is a missing project.</span>
+      </div>
     </section>
     <section>
       <span>If you notice any bugs or there are any problems or concerns, please let me know on Discord at <b>Sedna#4917</b>. You can also open an issue on the <a href="https://github.com/thebombzen/azur-lane/">GitHub repository</a>.</span>

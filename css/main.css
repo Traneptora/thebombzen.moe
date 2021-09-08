@@ -101,11 +101,11 @@ main[data-filter-series="pr1"] #project-name :not(.series-pr1, .series-all) {
     display: none;
 }
 
-#error-report {
+#error-report-missing, #error-report-upload {
     display: none;
 }
 
-main[data-project-name="unlisted"] #error-report {
+main[data-project-name="unlisted"] #error-report-missing {
     display: block;
 }
 
@@ -119,7 +119,7 @@ main[data-project-name="unlisted"] input[type="submit"] {
     object-fit: contain;
 }
 
-#canvas[src=""] {
+#canvas[src="data:,"] {
     display: none;
 }
 
@@ -139,4 +139,8 @@ footer a {
 
 #results-screenshot {
     max-width: 100%;
+}
+
+#server-response-status {
+    display: none;
 }
