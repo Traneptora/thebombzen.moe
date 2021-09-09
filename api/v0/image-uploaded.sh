@@ -79,4 +79,7 @@ project_type="$4"
 project_name="$5"
 original_filename="${original_filename##*/}"
 file_extension="${original_filename#"${original_filename%.*}"}"
+if [ -z "${file_extension#.}" ] ; then
+    file_extension=".$(file --brief --extension - <"$input_filename" | awk -F'/' '{print $1}')"
+fi
 check_and_push "$input_filename" "$file_extension" "$original_filename" "$project_series" "$project_type" "$project_name"
