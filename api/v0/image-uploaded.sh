@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -o pipefail
+set -m
 
 check_and_push(){
     filename="$1"
@@ -60,15 +61,25 @@ check_and_push(){
     webhook="$(gzip -c -d - <"${this_dir}/webhook_url" | base64 --wrap=0 | tr '+/' '-_' | tr -d '=' | sed -r 's:^([0-9]+)_(.*).{4}:\1/\2:')"
     if [ -z "$cached_message_id" ] ; then
         content="$(printf 'Original: `%s`\nChecksum: `%s\n`Upload Timestamp: <t:%d>\nProject Type: `%s`\nProject Series: `%s`\nProject Name: `%s`\n' "$original" "$checksum" "$now_time" "$project_type" "$project_series" "$project_name")"
-        message_id="$(curl -sS --request POST --header 'Content-Type: multipart/form-data' --url "https://discord.com/api/webhooks/${webhook}" --form file="@${filename}; filename=pr-data_${checksum}${ext}" --form content="$content" | jq -r '.["id"]')"
-        jq --arg value "$message_id" '. | .["message-id"]=$value' <"$json_file" >"${json_file}.cache"
-        mv >&2 -f -v -- "${json_file}.cache" "$json_file"
-        rm >&2 -f -v -- "$filename"
+        _upload "$webhook" "$filename" "$checksum" "$ext" "$content" "$json_file" &
     else
         content="$(printf 'Original: `%s`\nChecksum: `%s\n`Upload Timestamp: <t:%d>\nEdit Timestamp: <t:%d>\nProject Type: `%s`\nProject Series: `%s`\nProject Name: `%s`\n' "$original" "$checksum" "$cached_crtime" "$now_time" "$project_type" "$project_series" "$project_name")"
         curl >&2 -sS --request PATCH --header 'Content-Type: multipart/form-data' --url "https://discord.com/api/webhooks/${webhook}/messages/${cached_message_id}" --form content="$content"
         rm >&2 -f -v -- "${json_file}.cache"
     fi
+}
+
+_upload(){
+    webhook="$1"
+    filename="$2"
+    checksum="$3"
+    ext="$4"
+    content="$5"
+    json_file="$6"
+    message_id="$(curl -sS --request POST --header 'Content-Type: multipart/form-data' --url "https://discord.com/api/webhooks/${webhook}" --form file="@${filename}; filename=pr-data_${checksum}${ext}" --form content="$content" | jq -r '.["id"]')"
+    jq --arg value "$message_id" '. | .["message-id"]=$value' <"$json_file" >"${json_file}.cache"
+    mv >&2 -f -v -- "${json_file}.cache" "$json_file"
+    rm >&2 -f -v -- "$filename"
 }
 
 this_dir="$(dirname "$0")"
