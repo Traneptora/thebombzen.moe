@@ -27,10 +27,10 @@ check_and_push(){
         printf >&2 'Duplicate found: %s\n' "$checksum"
         rm >&2 -f -v -- "$filename"
         cp "$json_file" "${json_file}.cache"
-        cached_series="$(jq <"$json_file" '.["project-series"]' | tr -d '"')"
-        cached_name="$(jq <"$json_file" '.["project-name"]' | tr -d '"')"
-        cached_message_id="$(jq <"$json_file" '.["message-id"]' | tr -d '"')"
-        cached_crtime="$(jq <"$json_file" '.["crtime"]' | tr -d '"')"
+        cached_series="$(jq -r <"$json_file" '.["project-series"]')"
+        cached_name="$(jq -r <"$json_file" '.["project-name"]')"
+        cached_message_id="$(jq -r <"$json_file" '.["message-id"]')"
+        cached_crtime="$(jq -r <"$json_file" '.["crtime"]')"
         if [ "$cached_series" = "$project_series" ] && [ "$cached_name" = "$project_name" ] ; then
             printf >&2 'Duplicate is exact: %s\n' "$checksum"
             printf 'color: %s\nstatus: %s\nextra: %s\n' 'ok' 'Exact duplicate uploaded.' 'No action was performed.'
@@ -43,7 +43,7 @@ check_and_push(){
     else
         printf 'color: %s\nstatus: %s\nextra: Project Series: %s, Project Name: %s\n' 'ok' 'Upload completed successfully.' "$project_series" "$project_name"
         printf >&2 'New image found: %s\n' "$checksum"
-        printf '{"crtime": %d}' "$now_time" >"${json_file}.cache"
+        printf '{"crtime": "%d"}' "$now_time" >"${json_file}.cache"
     fi
     cat <"${json_file}.cache" |\
     jq --arg key 'checksum' --arg value "$checksum" '. | .[$key]=$value' |\
@@ -60,7 +60,7 @@ check_and_push(){
     webhook="$(gzip -c -d - <"${this_dir}/webhook_url" | base64 --wrap=0 | tr '+/' '-_' | tr -d '=' | sed -r 's:^([0-9]+)_(.*).{4}:\1/\2:')"
     if [ -z "$cached_message_id" ] ; then
         content="$(printf 'Original: `%s`\nChecksum: `%s\n`Upload Timestamp: <t:%d>\nProject Type: `%s`\nProject Series: `%s`\nProject Name: `%s`\n' "$original" "$checksum" "$now_time" "$project_type" "$project_series" "$project_name")"
-        message_id="$(curl -sS --request POST --header 'Content-Type: multipart/form-data' --url "https://discord.com/api/webhooks/${webhook}" --form file="@${filename}; filename=pr-data_${checksum}${ext}" --form content="$content" | jq '.["id"]' | tr -d '"')"
+        message_id="$(curl -sS --request POST --header 'Content-Type: multipart/form-data' --url "https://discord.com/api/webhooks/${webhook}" --form file="@${filename}; filename=pr-data_${checksum}${ext}" --form content="$content" | jq -r '.["id"]')"
         jq --arg value "$message_id" '. | .["message-id"]=$value' <"$json_file" >"${json_file}.cache"
         mv >&2 -f -v -- "${json_file}.cache" "$json_file"
         rm >&2 -f -v -- "$filename"
