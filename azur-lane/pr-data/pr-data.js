@@ -1,9 +1,11 @@
 function series_filter(){
     document.getElementById('main').dataset.filterSeries = document.getElementById('project-series').value;
 }
+
 function type_filter(){
     document.getElementById('main').dataset.filterType = document.getElementById('project-type').value;
 }
+
 function name_filter(){
     const checked = document.querySelector('#project-name option:checked');
     document.getElementById('report-color').textContent = checked.dataset.projectColor;
@@ -24,48 +26,30 @@ function name_filter(){
         type_filter();
     }
 }
-function render_file(blob){
-    if (!blob || !blob.type.startsWith('image/')){
-        document.getElementById('canvas').src = 'data:,';
-    } else {
-        document.getElementById('canvas').src = URL.createObjectURL(blob);
-    }
-    validate_result();
-}
-function render_image(){
-    const file = document.getElementById('results-screenshot').files[0];
-    render_file(file);
-}
-window.addEventListener('paste', async function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const file = (e.clipboardData || e.originalEvent.clipboardData).items[0].getAsFile();
-    render_file(file);
-});
-window.addEventListener('dragover', function(e){
-    e.preventDefault();
-    e.stopPropagation();
-});
-window.addEventListener('drop', function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.dataTransfer.files[0]){
-        render_file(e.dataTransfer.files[0]);
-        return;
-    }
-});
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('results-screenshot').value = '';
-    document.getElementById('canvas').src = 'data:,';
-    name_filter();
-    series_filter();
-    type_filter();
-});
+
 function validate_result(){
-    const valid = document.getElementById('canvas').src !== 'data:,'
+    const src = document.getElementById('canvas').src;
+    const valid = src && src !== 'data:,';
     document.getElementById('submit').disabled = !valid;
     return valid;
 }
+
+function display_blob(blob){
+    const url = blob && blob.type.startsWith('image/') ? URL.createObjectURL(blob) : 'data:,';
+    document.getElementById('canvas').src = url;
+    validate_result();
+}
+
+function render_image(){
+    const file = document.getElementById('results-screenshot').files[0];
+    display_blob(file);
+}
+
+function suppress(e) {
+    e.preventDefault();
+    e.stopPropagation();
+}
+
 function submit_result(){
     if (!validate_result()){
         return;
@@ -85,6 +69,7 @@ function submit_result(){
             disp.textContent = 'Uploading... unknown percent complete.';
         }
     });
+
     xhr.addEventListener('load', (event) => {
         const disp = document.getElementById('server-response-status');
         disp.style.display = 'block';
@@ -96,11 +81,14 @@ function submit_result(){
         }
         document.getElementById('submit').disabled = false;
     });
+
     xhr.addEventListener('error', (event) => {
         document.getElementById('server-response-status').style.display = 'block';
         document.getElementById('server-response-status').textContent = 'Unknown error occurred :(';
     });
+
     xhr.open('POST', '/api/v0/azur-lane/pr-data/');
+
     const formData = new FormData();
     formData.append('project-series', document.getElementById('project-series').value);
     formData.append('project-type', document.getElementById('project-type').value);
@@ -112,3 +100,28 @@ function submit_result(){
         xhr.send(formData);
     });
 }
+
+window.addEventListener('paste', async (e) => {
+    suppress(e);
+    const file = (e.clipboardData || e.originalEvent.clipboardData).items[0];
+    if (file){
+        display_blob(file.getAsFile());
+    }
+});
+
+window.addEventListener('dragover', suppress);
+
+window.addEventListener('drop', async (e) => {
+    suppress(e);
+    if (e.dataTransfer.files[0]){
+        display_blob(e.dataTransfer.files[0]);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', async () => {
+    document.getElementById('results-screenshot').value = '';
+    document.getElementById('canvas').src = 'data:,';
+    name_filter();
+    series_filter();
+    type_filter();
+});
