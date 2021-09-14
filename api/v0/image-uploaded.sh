@@ -61,7 +61,7 @@ check_and_push(){
     webhook="$(gzip -c -d - <"${this_dir}/webhook_url" | base64 --wrap=0 | tr '+/' '-_' | tr -d '=' | sed -r 's:^([0-9]+)_(.*).{4}:\1/\2:')"
     if [ -z "$cached_message_id" ] ; then
         content="$(printf 'Original: `%s`\nChecksum: `%s\n`Upload Timestamp: <t:%d>\nProject Type: `%s`\nProject Series: `%s`\nProject Name: `%s`\n' "$original" "$checksum" "$now_time" "$project_type" "$project_series" "$project_name")"
-        _upload "$webhook" "$filename" "$checksum" "$ext" "$content" "$json_file" </dev/null >/dev/null 2>>"${dirname}/uploads.log" &
+        _upload "$webhook" "$filename" "$checksum" "$ext" "$content" "$json_file" </dev/null >>"${dirname}/uploads.log" 2>&1 &
     else
         content="$(printf 'Original: `%s`\nChecksum: `%s\n`Upload Timestamp: <t:%d>\nEdit Timestamp: <t:%d>\nProject Type: `%s`\nProject Series: `%s`\nProject Name: `%s`\n' "$original" "$checksum" "$cached_crtime" "$now_time" "$project_type" "$project_series" "$project_name")"
         curl >&2 -sS --request PATCH --header 'Content-Type: multipart/form-data' --url "https://discord.com/api/webhooks/${webhook}/messages/${cached_message_id}" --form content="$content"
