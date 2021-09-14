@@ -67,6 +67,7 @@ check_and_push(){
         curl >&2 -sS --request PATCH --header 'Content-Type: multipart/form-data' --url "https://discord.com/api/webhooks/${webhook}/messages/${cached_message_id}" --form content="$content"
         rm >&2 -f -v -- "${json_file}.cache"
     fi
+    chmod 644 -- "$json_file"
 }
 
 _upload(){
