@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link rel="preload" as="style" href="/css/main.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap">
+
+  <title>Ship Leveling Calculator</title>
+  <meta property="og:image" content="https://thebombzen.moe/img/avatar/256.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thebombzen.moe/azur-lane/experience/">
+  <meta property="og:title" content="Ship Leveling Calculator">
+  <meta property="og:description" content="Calculate experience required from level A to level B in Azur Lane.">
+
+  <link rel="icon" type="image/png" sizes="512x512" href="/img/avatar/512.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/img/avatar/256.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/img/avatar/128.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/avatar/64.png">
+  <link rel="icon" type="image/vnd.microsoft.icon" sizes="16x16" href="/img/avatar/favicon.ico">
+  <!-- cause apple, apparently -->
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/img/avatar/180.png">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap">
+  <script src="/azur-lane/experience/experience.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="main-heading">Ship Leveling Calculator</header>
+    <section></section>
+    <main id="main">
+      <form action="javascript:calculate_experience();">
+        <section>
+          <div class="heading">
+            <span>Current Level:</span>
+          </div>
+          <input type="text" id="txt-level-a" value="100">
+          <div class="heading">
+            <span>Target Level:</span>
+          </div>
+          <input type="text" id="txt-level-b" value="120">
+        </section>
+        <section>
+          <div class="heading">
+            <span>Ship Type:</span>
+          </div>
+          <div class="small-help">Ultra Rare <em>retrofits</em> use the Normal Ship table. Rainbow ships have the same table on all servers.</div>
+          <select id="ship-table">
+            <option value="en">Normal Ship (EN/JP Server)</option>
+            <option value="cn">Normal Ship (CN Server)</option>
+            <option value="ur">Rainbow Ship (Ultra Rare or Decisive)</option>
+          </select>
+        </section>
+        <section>
+          <div class="heading">
+            <span>Experience Needed:</span>
+          </div>
+          <div id="exp-needed"></div>
+        </section>
+        <section>
+          <input type="submit" value="Calculate Experience Needed">
+        </section>
+      </form>
+    </main>
+  </div>
+</body>
+</html>
