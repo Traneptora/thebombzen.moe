@@ -1,0 +1,51 @@
+/*
+ * pr-data.css
+ */
+
+main[data-filter-type="b"] #project-name :not(.item-b, .item-all),
+main[data-filter-type="c"] #project-name :not(.item-c, .item-all),
+main[data-filter-type="d"] #project-name :not(.item-d, .item-all),
+main[data-filter-type="e"] #project-name :not(.item-e, .item-all),
+main[data-filter-type="h"] #project-name :not(.item-h, .item-all),
+main[data-filter-type="g"] #project-name :not(.item-g, .item-all),
+main[data-filter-type="q"] #project-name :not(.item-q, .item-all),
+main[data-filter-type="t"] #project-name :not(.item-t, .item-all) {
+    display: none;
+}
+
+main[data-filter-series="pr4"] #project-name :not(.series-pr4, .series-all),
+main[data-filter-series="pr3"] #project-name :not(.series-pr3, .series-all),
+main[data-filter-series="pr2"] #project-name :not(.series-pr2, .series-all),
+main[data-filter-series="pr1"] #project-name :not(.series-pr1, .series-all) {
+    display: none;
+}
+
+#error-report-missing, #error-report-upload {
+    display: none;
+}
+
+main[data-project-name="unlisted"] #error-report-missing {
+    display: block;
+}
+
+main[data-project-name="unlisted"] input[type="submit"] {
+    display: none;
+}
+
+#canvas {
+    width: 100%;
+    max-height: 600px;
+    object-fit: contain;
+}
+
+#canvas[src="data:,"] {
+    display: none;
+}
+
+#results-screenshot {
+    max-width: 100%;
+}
+
+#server-response-status {
+    display: none;
+}

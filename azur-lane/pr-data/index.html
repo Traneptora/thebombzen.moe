@@ -4,6 +4,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link rel="preload" as="style" href="/css/main.css">
+  <link rel="preload" as="style" href="/azur-lane/pr-data/pr-data.css">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap">
 
   <title>PR Data Submission</title>
@@ -22,12 +23,13 @@
   <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/img/avatar/180.png">
 
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/azur-lane/pr-data/pr-data.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap">
   <script defer src="/azur-lane/pr-data/pr-data.js"></script>
 </head>
 <body>
   <div class="wrapper">
-    <header class="main-heading">PR Data Submission</header>
+    <header>PR Data Submission</header>
     <main id="main">
       <section>
       <p>We’re collecting data for PR research. Use this page to upload screenshots of your PR Research Results to help out with the data gathering effort. Keep in mind:</p>
@@ -41,9 +43,7 @@
     </section>
     <form action="javascript:submit_result();">
     <section>
-      <div class="heading">
-        <span>Select the research project series (also called season):</span>
-      </div>
+      <div class="heading">Select the research project series (also called season):</div>
       <div class="small-help">This is the <em>project</em> series, marked by a numeral on the top left of the project box. It might not match your chosen focus.</div>
       <select name="project-series" id="project-series" required onchange="series_filter();">
         <option value="">Select Series</option>
@@ -289,11 +289,11 @@
       <div class="heading" id="error-report-upload">A screenshot is required.</div>
       <div id="server-response-status"></div>
       <div id="error-report-missing">
-        <span><strong>Do not submit the result through this form.</strong> Join the <a href="https://discord.gg/dmrG9kXpxE">ECTL Discord</a>, submit the result in <span style="background-color: #404060; color: #E0E0E0">#pr-data</span>, and bother <b>Sedna#4917</b> that there is a missing project.</span>
+        <strong>Do not submit the result through this form.</strong> Join the <a href="https://discord.gg/dmrG9kXpxE">ECTL Discord</a>, submit the result in <span style="background-color: #404060; color: #E0E0E0">#pr-data</span>, and bother <b>Sedna#4917</b> that there is a missing project.
       </div>
     </section>
     <section>
-      <span>If you notice any bugs or there are any problems or concerns, please let me know on Discord at <b>Sedna#4917</b>. You can also open an issue on the <a href="https://github.com/thebombzen/thebombzen.moe/">GitHub repository</a>.</span>
+      If you notice any bugs or there are any problems or concerns, please let me know on Discord at <b>Sedna#4917</b>. You can also open an issue on the <a href="https://github.com/thebombzen/thebombzen.moe/">GitHub repository</a>.
     </section>
     </form>
     </main>
