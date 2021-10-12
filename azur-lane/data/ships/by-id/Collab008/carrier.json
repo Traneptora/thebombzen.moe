@@ -1,0 +1,29 @@
+{
+    "Name": "Green Heart",
+    "Reload": 114,
+    "ReloadUnkai": 114,
+    "Slot1": {
+        "MLB": {
+            "F": 2
+        },
+        "Retrofit": {
+            "F": 2
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 3
+        },
+        "Retrofit": {
+            "D": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "D": 3
+        },
+        "Retrofit": {
+            "D": 3
+        }
+    }
+}

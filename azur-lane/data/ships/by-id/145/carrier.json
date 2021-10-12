@@ -1,0 +1,29 @@
+{
+    "Name": "Illustrious",
+    "Reload": 117,
+    "ReloadUnkai": 117,
+    "Slot1": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 2
+        },
+        "Retrofit": {
+            "T": 2
+        }
+    }
+}

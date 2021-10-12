@@ -1,0 +1,29 @@
+{
+    "Name": "I-13",
+    "Reload": 109,
+    "ReloadUnkai": 109,
+    "Slot1": {
+        "MLB": {
+            "N": 2
+        },
+        "Retrofit": {
+            "N": 2
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "N": 2
+        },
+        "Retrofit": {
+            "N": 2
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "S": 2
+        },
+        "Retrofit": {
+            "S": 2
+        }
+    }
+}

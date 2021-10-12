@@ -1,0 +1,29 @@
+{
+    "Name": "Langley",
+    "Reload": 128,
+    "ReloadUnkai": 123,
+    "Slot1": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "D": 2
+        },
+        "Retrofit": {
+            "D": 2
+        }
+    }
+}

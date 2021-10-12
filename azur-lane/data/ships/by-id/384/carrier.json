@@ -1,0 +1,29 @@
+{
+    "Name": "Akagi-chan",
+    "Reload": 125,
+    "ReloadUnkai": 125,
+    "Slot1": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 2
+        },
+        "Retrofit": {
+            "D": 2
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 3
+        },
+        "Retrofit": {
+            "T": 3
+        }
+    }
+}

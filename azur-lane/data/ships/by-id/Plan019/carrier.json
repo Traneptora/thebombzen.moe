@@ -1,0 +1,33 @@
+{
+    "Name": "Hakuryuu",
+    "Reload": 126,
+    "ReloadUnkai": 126,
+    "Slot1": {
+        "MLB": {
+            "F": 3,
+            "T": 3
+        },
+        "Retrofit": {
+            "F": 3,
+            "T": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 4
+        },
+        "Retrofit": {
+            "D": 4
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "D": 2,
+            "T": 2
+        },
+        "Retrofit": {
+            "D": 2,
+            "T": 2
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "Name": "Vert",
+    "Reload": 111,
+    "ReloadUnkai": 111,
+    "Slot1": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 2
+        },
+        "Retrofit": {
+            "D": 2
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "D": 2
+        },
+        "Retrofit": {
+            "D": 2
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "Name": "Centaur",
+    "Reload": 160,
+    "ReloadUnkai": 160,
+    "Slot1": {
+        "MLB": {
+            "F": 2
+        },
+        "Retrofit": {
+            "F": 2
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "F": 2
+        },
+        "Retrofit": {
+            "F": 2
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 4
+        },
+        "Retrofit": {
+            "T": 4
+        }
+    }
+}

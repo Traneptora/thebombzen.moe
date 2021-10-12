@@ -1,0 +1,29 @@
+{
+    "Name": "Glorious",
+    "Reload": 109,
+    "ReloadUnkai": 109,
+    "Slot1": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "T": 2
+        },
+        "Retrofit": {
+            "T": 2
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 2
+        },
+        "Retrofit": {
+            "T": 2
+        }
+    }
+}

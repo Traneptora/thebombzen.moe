@@ -1,0 +1,29 @@
+{
+    "Name": "Long Island",
+    "Reload": 187,
+    "ReloadUnkai": 182,
+    "Slot1": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 3
+        },
+        "Retrofit": {
+            "D": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "N": 1
+        },
+        "Retrofit": {
+            "N": 1
+        }
+    }
+}

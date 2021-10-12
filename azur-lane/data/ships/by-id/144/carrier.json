@@ -1,0 +1,29 @@
+{
+    "Name": "Ark Royal",
+    "Reload": 132,
+    "ReloadUnkai": 117,
+    "Slot1": {
+        "MLB": {
+            "T": 3
+        },
+        "Retrofit": {
+            "T": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "T": 3
+        },
+        "Retrofit": {
+            "T": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "D": 2
+        },
+        "Retrofit": {
+            "D": 2
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "Name": "Shoukaku",
+    "Reload": 120,
+    "ReloadUnkai": 120,
+    "Slot1": {
+        "MLB": {
+            "F": 2
+        },
+        "Retrofit": {
+            "F": 2
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 2
+        },
+        "Retrofit": {
+            "D": 2
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 4
+        },
+        "Retrofit": {
+            "T": 4
+        }
+    }
+}

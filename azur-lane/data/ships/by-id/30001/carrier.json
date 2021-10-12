@@ -1,0 +1,29 @@
+{
+    "Name": "Hiryuu META",
+    "Reload": 138,
+    "ReloadUnkai": 138,
+    "Slot1": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 2
+        },
+        "Retrofit": {
+            "D": 2
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 3
+        },
+        "Retrofit": {
+            "T": 3
+        }
+    }
+}

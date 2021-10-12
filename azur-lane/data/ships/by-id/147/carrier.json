@@ -1,0 +1,31 @@
+{
+    "Name": "Formidable",
+    "Reload": 117,
+    "ReloadUnkai": 117,
+    "Slot1": {
+        "MLB": {
+            "D": 2,
+            "F": 2
+        },
+        "Retrofit": {
+            "D": 2,
+            "F": 2
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "T": 3
+        },
+        "Retrofit": {
+            "T": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 3
+        },
+        "Retrofit": {
+            "T": 3
+        }
+    }
+}

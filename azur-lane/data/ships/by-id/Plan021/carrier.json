@@ -1,0 +1,29 @@
+{
+    "Name": "August von Parseval",
+    "Reload": 120,
+    "ReloadUnkai": 120,
+    "Slot1": {
+        "MLB": {
+            "F": 2
+        },
+        "Retrofit": {
+            "F": 2
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 3
+        },
+        "Retrofit": {
+            "D": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 3
+        },
+        "Retrofit": {
+            "T": 3
+        }
+    }
+}

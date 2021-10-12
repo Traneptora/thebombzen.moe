@@ -1,0 +1,31 @@
+{
+    "Name": "Aquila",
+    "Reload": 127,
+    "ReloadUnkai": 127,
+    "Slot1": {
+        "MLB": {
+            "F": 2
+        },
+        "Retrofit": {
+            "F": 2
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 2,
+            "F": 2
+        },
+        "Retrofit": {
+            "D": 2,
+            "F": 2
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 4
+        },
+        "Retrofit": {
+            "T": 4
+        }
+    }
+}

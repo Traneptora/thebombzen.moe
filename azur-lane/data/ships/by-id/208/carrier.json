@@ -1,0 +1,30 @@
+{
+    "Name": "Fusou",
+    "Reload": 134,
+    "ReloadUnkai": 138,
+    "Slot1": {
+        "MLB": {
+            "N": 3
+        },
+        "Retrofit": {
+            "N": 2
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "N": 3
+        },
+        "Retrofit": {
+            "N": 3,
+            "S": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "N": 1
+        },
+        "Retrofit": {
+            "N": 1
+        }
+    }
+}

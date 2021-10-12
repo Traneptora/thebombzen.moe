@@ -1,0 +1,29 @@
+{
+    "Name": "Independence",
+    "Reload": 202,
+    "ReloadUnkai": 182,
+    "Slot1": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 4
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "T": 3
+        },
+        "Retrofit": {
+            "T": 4
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "N": 1
+        },
+        "Retrofit": {
+            "N": 1
+        }
+    }
+}

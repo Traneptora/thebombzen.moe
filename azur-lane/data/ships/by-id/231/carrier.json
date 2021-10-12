@@ -1,0 +1,33 @@
+{
+    "Name": "Shinano",
+    "Reload": 126,
+    "ReloadUnkai": 126,
+    "Slot1": {
+        "MLB": {
+            "D": 2,
+            "F": 2,
+            "T": 2
+        },
+        "Retrofit": {
+            "D": 2,
+            "F": 2,
+            "T": 2
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 3
+        },
+        "Retrofit": {
+            "D": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 4
+        },
+        "Retrofit": {
+            "T": 4
+        }
+    }
+}

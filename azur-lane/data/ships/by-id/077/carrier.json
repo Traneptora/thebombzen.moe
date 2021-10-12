@@ -1,0 +1,29 @@
+{
+    "Name": "Enterprise",
+    "Reload": 132,
+    "ReloadUnkai": 132,
+    "Slot1": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 3
+        },
+        "Retrofit": {
+            "D": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 2
+        },
+        "Retrofit": {
+            "T": 2
+        }
+    }
+}
