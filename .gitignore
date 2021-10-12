@@ -4,3 +4,5 @@ webhook_url
 # pr-data uploads
 api/v0/pr-data/uploads/*
 
+# python stuff
+__pycache__
