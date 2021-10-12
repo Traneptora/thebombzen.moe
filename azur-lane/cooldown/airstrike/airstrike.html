@@ -9,13 +9,14 @@
   <link rel="preload" as="script" href="/azur-lane/cooldown/cooldown-common.js">
   <link rel="preload" as="script" href="/azur-lane/cooldown/airstrike/airstrike.js">
 
-
   <title>Airstrike Cooldown Calculator</title>
   <meta property="og:image" content="https://thebombzen.moe/img/avatar/256.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thebombzen.com/azur-lane/cooldown/airstrike/">
   <meta property="og:title" content="Airstrike Cooldown Calculator">
   <meta property="og:description" content="Calculate the cooldown for an airstrike in Azur Lane.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" type="image/png" sizes="512x512" href="/img/avatar/512.png">
   <link rel="icon" type="image/png" sizes="256x256" href="/img/avatar/256.png">
@@ -132,7 +133,6 @@
           <div class="heading">First Plane Cooldown:</div>
           <div class="plane-select-row">
             <select id="plane1cddropdown" onchange="update_textfields(1); calculate_reload();"></select>
-            &nbsp;
             <input type="text" id="plane1cdtextfield" value="10.90">
           </div>
         </div>
@@ -146,7 +146,6 @@
           <div class="heading">Second Plane Cooldown:</div>
           <div class="plane-select-row">
             <select id="plane2cddropdown" onchange="update_textfields(2); calculate_reload();"></select>
-            &nbsp;
             <input type="text" id="plane2cdtextfield" value="11.88">
           </div>
         </div>
@@ -160,7 +159,6 @@
           <div class="heading">Third Plane Cooldown:</div>
           <div class="plane-select-row">
             <select id="plane3cddropdown" onchange="update_textfields(3); calculate_reload();"></select>
-            &nbsp;
             <input type="text" id="plane3cdtextfield" value="11.37">
           </div>
         </div>

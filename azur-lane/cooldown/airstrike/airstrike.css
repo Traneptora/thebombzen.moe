@@ -8,9 +8,20 @@ body.calculator :is(select, section > input) {
 
 .plane-row, .reload-row {
     display: flex;
-    flex-direction: row;
-    justify-content: left;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: stretch;
+    width: 100%;
+}
+
+.reload-column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reload-column:first-of-type {
     width: 100%;
 }
 
@@ -21,52 +32,72 @@ body.calculator :is(select, section > input) {
 }
 
 .plane-column:first-child {
-    width: 67%;
-}
-
-.reload-column {
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.reload-column:first-of-type {
-    width: 34%;
+    width: 100%;
 }
 
 .plane-select-row {
     display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 :is(.plane-column, .reload-column) input[type="text"] {
-    width: 200px;
+    width: 100%;
+}
+
+.plane-column input[type="text"] {
+    margin-top: 0.5em;
 }
 
 .reload-row :is(select, option) {
-    width: 250px;
+    width: 100%;
 }
 
 .plane-row :is(select, option) {
     margin-top: 0px;
     margin-bottom: 0px;
-    width: 350px;
+    width: 100%;
     text-align: left;
-}
-
-.reload-column .button-and-label {
-    height: 100%;
-}
-
-body.calculator :is(select, option, section > input) {
-    font-size: 32px;
 }
 
 @media only screen and (min-width: 1024px){
     body.calculator :is(select, option, section > input) {
         font-size: 16px;
     }
+    .plane-row, .reload-row, .plane-select-row {
+        flex-direction: row;
+    }
+    .plane-select-row {
+        align-items: flex-end;
+    }
+    .reload-row {
+        width: 100%;
+    }
+    .reload-column {
+        width: 33%;
+    }
+    .reload-column:first-of-type {
+        width: 34%;
+    }
+    :is(.plane-column, .reload-column) input[type="text"] {
+        width: 200px;
+    }
+    .reload-row :is(select, option) {
+        width: 250px;
+    }
+    .plane-row :is(select, option) {
+        width: 60%;
+    }
+    .plane-column:first-of-type {
+        width: 67%;
+    }
+    .plane-column input[type="text"] {
+        margin-top: 0;
+        margin-left: 5px;
+    }
+}
+
+.reload-column .button-and-label {
+    height: 100%;
 }
