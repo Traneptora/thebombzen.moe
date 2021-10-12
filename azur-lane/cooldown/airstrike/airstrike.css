@@ -1,0 +1,72 @@
+/*
+ * airstrike.css
+ */
+
+body.calculator :is(select, section > input) {
+    margin-bottom: 0.0em;
+}
+
+.plane-row, .reload-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: stretch;
+    width: 100%;
+}
+
+.plane-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.plane-column:first-child {
+    width: 67%;
+}
+
+.reload-column {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reload-column:first-of-type {
+    width: 34%;
+}
+
+.plane-select-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-end;
+}
+
+:is(.plane-column, .reload-column) input[type="text"] {
+    width: 200px;
+}
+
+.reload-row :is(select, option) {
+    width: 250px;
+}
+
+.plane-row :is(select, option) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 350px;
+    text-align: left;
+}
+
+.reload-column .button-and-label {
+    height: 100%;
+}
+
+body.calculator :is(select, option, section > input) {
+    font-size: 32px;
+}
+
+@media only screen and (min-width: 1024px){
+    body.calculator :is(select, option, section > input) {
+        font-size: 16px;
+    }
+}

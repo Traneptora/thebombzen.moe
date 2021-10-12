@@ -13,7 +13,7 @@ body {
     color: #C0C0C0; 
     font-family: 'Source Sans Pro', sans-serif;
     line-height: 1.25;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
 }
 
@@ -70,6 +70,7 @@ footer {
 
 footer a {
     display: block;
+    margin-bottom: 0.5em;
 }
 
 header, .heading {
@@ -78,7 +79,7 @@ header, .heading {
 }
 
 header {
-    font-size: 80px;
+    font-size: 64px;
     text-align: center;
 }
 
@@ -99,4 +100,53 @@ header {
 
 .hidden {
     display: none;
+}
+
+.button-and-label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    align-items: center;
+}
+
+.button-and-label
+:is(input[type=checkbox],
+    input[type=radiobutton],
+    input[type=button],
+    input[type=submit],
+    input[type=reset],
+    button
+) {
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+.button-and-label label {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.expand-zone-box,
+.expand-zone-body,
+.expand-zone-default {
+    display: none;
+}
+
+.expand-zone-default {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.expand-zone-box:checked ~ label .expand-zone-body {
+    display: block;
+}
+
+.expand-zone-box:not(:checked) ~ label .expand-zone-default {
+    display: block;
 }
