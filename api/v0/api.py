@@ -6,6 +6,7 @@ import json
 import traceback
 
 from pr_data import post as pr_data_post
+from dump import post as dump_post
 
 endpoints = {
     '/azur-lane/pr-data/': {
@@ -18,8 +19,10 @@ endpoints = {
 
 def is_post_request(environ):
     if environ['REQUEST_METHOD'].upper() != 'POST':
-        return False
-    return environ.get('CONTENT_TYPE', '').startswith('multipart/form-data')
+        return (False, False)
+    if environ.get('CONTENT_TYPE', '').startswith('multipart/form-data'):
+        return (True, True)
+    return (True, False)
 
 def application(env, start_response):
     try:
@@ -51,7 +54,10 @@ def dispatch(env):
     if request_uri not in endpoints:
         return ('404 Not Found', None)
     method_table = endpoints[request_uri]
-    if is_post_request(env):
+    post, formdata = is_post_request(env)
+    if post:
+        if not formdata:
+            return ('400 Bad Request', 'Please use content-type: multipart/form-data')
         if 'post' in method_table:
             return method_table['post'](env)
     elif env['REQUEST_METHOD'].upper() == 'GET':
