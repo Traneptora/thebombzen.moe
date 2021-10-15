@@ -18,10 +18,10 @@ def post(env):
             r = requests.post(webhook, files={'file': (upload.filename, upload.file)})
             js = r.json()
             ret = {'success': r.ok, 'response': js}
-            if 'attachments' in js and
+            if ('attachments' in js and
                     type(js['attachments']) is list and
                     len(js['attachments']) > 0 and
-                    'url' in js['attachments'][0]:
+                    'url' in js['attachments'][0]):
                 ret['url'] = js['attachments'][0]['url']
             return (str(r.status_code), ret)
         else:
