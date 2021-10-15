@@ -43,7 +43,10 @@ def response_checker(env):
     if status.startswith('301') or status.startswith('302'):
         headers += [('location', result)]
         return (status, headers, [])
-    result = [json.dumps({'success': False, 'status': status}).encode()]
+    result_dict = {'success': False, 'status': status}
+    if result:
+        result_dict['result'] = result
+    result = [json.dumps(result_dict).encode()]
     return (status, headers, result)
 
 def dispatch(env):
