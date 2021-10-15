@@ -15,7 +15,7 @@ def post(env):
     if form.getvalue('action', '') == 'upload' and 'upload' in form:
         upload = form['upload']
         if upload is not None and upload.filename is not None and upload.file is not None:
-            r = requets.post(webhook, files={'file': (upload.filename, upload.file)})
+            r = requests.post(webhook, files={'file': (upload.filename, upload.file)})
             return (r.status_code, {'success': r.ok, 'response': r.json()})
         else:
             return ('400 Bad Request', 'Invalid Upload')
