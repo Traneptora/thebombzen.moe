@@ -1,5 +1,5 @@
 # webhook URLs
-webhook_url
+webhook_url_*
 
 # pr-data uploads
 api/v0/pr-data/uploads/*
