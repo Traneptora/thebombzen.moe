@@ -23,7 +23,7 @@ def post(env):
                     len(js['attachments']) > 0 and
                     'url' in js['attachments'][0]):
                 ret['url'] = js['attachments'][0]['url']
-            return (str(r.status_code), ret)
+            return (str(r.status_code), ret, [('access-control-allow-origin', '*')])
         else:
             return ('400 Bad Request', 'Invalid Upload')
     return ('400 Bad Request', 'Unsupported action')
