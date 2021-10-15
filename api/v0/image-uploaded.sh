@@ -58,7 +58,7 @@ check_and_push(){
     jq --arg key 'mtime' --arg value "$now_time" '. | .[$key]=$value' |\
     jq --arg key 'size' --arg value "$filesize" '. | .[$key]=$value' |\
     jq -c '.' >"$json_file"
-    webhook="$(gzip -c -d - <"${this_dir}/webhook_url" | base64 --wrap=0 | tr '+/' '-_' | tr -d '=' | sed -r 's:^([0-9]+)_(.*).{4}:\1/\2:')"
+    webhook="$(gzip -c -d - <"${this_dir}/webhook_url_pr_data" | base64 --wrap=0 | tr '+/' '-_' | tr -d '=' | sed -r 's:^([0-9]+)_(.*).{4}:\1/\2:')"
     if [ -z "$cached_message_id" ] ; then
         content="$(printf 'Original: `%s`\nChecksum: `%s\n`Upload Timestamp: <t:%d>\nProject Type: `%s`\nProject Series: `%s`\nProject Name: `%s`\n' "$original" "$checksum" "$now_time" "$project_type" "$project_series" "$project_name")"
         _upload "$webhook" "$filename" "$checksum" "$ext" "$content" "$json_file" </dev/null >>"${dirname}/uploads.log" 2>&1 &
