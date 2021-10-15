@@ -7,12 +7,12 @@ import requests
 
 from api_common import get_post_form
 
-with open('dump_webhook_url') as f:
+with open('webhook_url_dump') as f:
     webhook = f.read()
 
 def post(env):
     form = get_post_form(env)
-    if form['action'] == 'upload':
+    if form.get('action') == 'upload' and 'upload' in form:
         upload = form['upload']
         if upload is not None and upload.filename is not None and upload.file is not None:
             r = requets.post(webhook, files={'file': (upload.filename, upload.file)})
