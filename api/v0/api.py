@@ -36,7 +36,7 @@ def application(env, start_response):
         return [json.dumps({'success': False, 'status': status}).encode()]
 
 def response_checker(env):
-    status, result, headers, *_ = dispatch(env), [], None
+    status, result, headers, *_ = *dispatch(env), [], None
     headers += [('Content-Type', 'application/json')]
     if status.startswith('200'):
         return (status, headers, [json.dumps(result).encode()])
