@@ -28,7 +28,7 @@ def post(env, relative_uri):
                 url = js['attachments'][0]['url']
             else:
                 return ('503 Service Unavailable', 'Backend Down')
-            ret['url'] = 'https://thebombzen.moe/api/v0/dump/' + base64.b64encode(brotli.compress(url.encode()), altchars='-_')
+            ret['url'] = 'https://thebombzen.moe/api/v0/dump/' + base64.b64encode(brotli.compress(url.encode()), altchars=b'-_')
             return (str(r.status_code), ret, [('access-control-allow-origin', '*')])
         else:
             return ('400 Bad Request', 'Invalid Upload')
@@ -38,7 +38,7 @@ def get(env, relative_uri):
     # server still python 3.8
     encoded_tail = relative_uri[len('/dump/'):]
     try:
-        comp_uri = base64.b64decode(encoded_tail, altchars='-_', validate=True)
+        comp_uri = base64.b64decode(encoded_tail, altchars=b'-_', validate=True)
     except binascii.Error:
         return ('404 Not Found', 'Not base64url')
     try:
