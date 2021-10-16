@@ -4,6 +4,7 @@
 import base64
 import binascii
 import re
+import json
 import zlib
 
 import requests
@@ -11,13 +12,14 @@ import requests
 from api_common import get_post_form
 
 with open('webhook_url_dump') as f:
-    webhook = f.read()
+    webhooks = json.load(f)
 
 def post(env, relative_uri):
     form = get_post_form(env)
     if form.getvalue('action', '') == 'upload' and 'upload' in form:
         upload = form['upload']
         if upload is not None and upload.filename is not None and upload.file is not None:
+            webhook = webhooks.get(form.getvalue('dump-location', 'default'), webhooks['default'])
             r = requests.post(webhook, files={'file': (upload.filename, upload.file)})
             js = r.json()
             ret = {'success': r.ok, 'response': js}
