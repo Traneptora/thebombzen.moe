@@ -28,7 +28,7 @@ def post(env, relative_uri):
                 url = js['attachments'][0]['url']
             else:
                 return ('503 Service Unavailable', 'Backend Down')
-            ret['url'] = 'https://thebombzen.moe/api/v0/dump/' + base64.b64encode(brotli.compress(url.encode()), altchars=b'-_')
+            ret['url'] = 'https://thebombzen.moe/api/v0/dump/' + base64.b64encode(brotli.compress(url.encode()), altchars=b'-_').decode()
             return (str(r.status_code), ret, [('access-control-allow-origin', '*')])
         else:
             return ('400 Bad Request', 'Invalid Upload')
