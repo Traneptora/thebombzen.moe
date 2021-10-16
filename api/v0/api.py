@@ -7,6 +7,7 @@ import traceback
 
 from pr_data import post as pr_data_post
 from dump import post as dump_post
+from dump import get as dump_get
 
 endpoints = {
     '/azur-lane/pr-data/': {
@@ -14,6 +15,7 @@ endpoints = {
     },
     '/dump/': {
         'post': dump_post,
+        'get': dump_get,
     },
 }
 
@@ -62,8 +64,7 @@ def dispatch(env):
         if not formdata:
             return ('400 Bad Request', 'Please use content-type: multipart/form-data')
         if 'post' in method_table:
-            return method_table['post'](env)
-    elif env['REQUEST_METHOD'].upper() == 'GET':
-        if 'get' in method_table:
-            return method_table['get'](env)
+            return method_table['post'](env, request_uri)
+    elif env['REQUEST_METHOD'].lower() in method_table:
+        return method_table[env['REQUEST_METHOD'].lower()](env, request_uri)
     return ('405 Method Not Allowed', None)

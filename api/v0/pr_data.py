@@ -48,7 +48,7 @@ def get_asset(asset):
         return load_asset(asset)
     return asset_cache[asset]['data']
 
-def post(env):
+def post(env, relative_uri):
     form = get_post_form(env)
     project_series = form.getvalue('project-series', '')
     project_type = form.getvalue('project-type', '')
