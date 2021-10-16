@@ -30,7 +30,7 @@ def post(env, relative_uri):
                 return ('503 Service Unavailable', 'Backend Down')
             match = re.match(r'^https://cdn\.discordapp\.com/attachments/([0-9]+)/([0-9]+)/(.*)$', url)
             if match:
-                s0, s1, fname = match.group(0, 1, 2)
+                s0, s1, fname = match.group(1, 2, 3)
                 payload = int(s0).to_bytes(8, byteorder='little') + int(s1).to_bytes(8, byteorder='little') + fname.encode()
                 ret['url'] = 'https://thebombzen.moe/api/v0/dump/' + base64.b64encode(zlib.compress(payload, level=9), altchars=b'-_').decode()
             else:
