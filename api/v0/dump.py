@@ -3,8 +3,7 @@
 
 import base64
 import binascii
-import brotli
-import tempfile
+import re
 import zlib
 
 import requests
@@ -29,7 +28,13 @@ def post(env, relative_uri):
                 url = js['attachments'][0]['url']
             else:
                 return ('503 Service Unavailable', 'Backend Down')
-            ret['url'] = 'https://thebombzen.moe/api/v0/dump/' + base64.b64encode(zlib.compress(url.encode(), level=9), altchars=b'-_').decode()
+            match = re.match(r'^https://cdn\.discordapp\.com/attachments/([0-9]+)/([0-9]+)/(.*)$', url)
+            if match:
+                s0, s1, fname = match.group(0, 1, 2)
+                payload = int(s0).to_bytes(8, byteorder='little') + int(s1).to_bytes(8, byteorder='little') + fname.encode()
+                ret['url'] = 'https://thebombzen.moe/api/v0/dump/' + base64.b64encode(zlib.compress(payload, level=9), altchars=b'-_').decode()
+            else:
+                ret['url'] = url
             return (str(r.status_code), ret, [('access-control-allow-origin', '*')])
         else:
             return ('400 Bad Request', 'Invalid Upload')
@@ -43,9 +48,11 @@ def get(env, relative_uri):
     except binascii.Error:
         return ('404 Not Found', 'Not base64url')
     try:
-        uri = zlib.decompress(comp_uri).decode()
+        payload = zlib.decompress(comp_uri).decode()
+        s0 = int.from_bytes(payload[0:8])
+        s1 = int.from_bytes(payload[8:16])
+        fname = payload[16:].decode()
+        uri = f'https://cdn.discordapp.com/attachments/{s0}/{s1}/{fname}'
     except Exception:
-        return ('404 Not Found', 'Not zlib')
-    if not uri.startswith('https://'):
-        return ('404 Not Found', 'Not HTTPS')
+        return ('404 Not Found', 'Bad Format')
     return ('302 Found', uri)
