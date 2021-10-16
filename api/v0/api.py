@@ -56,11 +56,18 @@ def dispatch(env):
         return ('404 Not Found', None)
     # server still on 3.8
     request_uri = env['REQUEST_URI'][len('/api/v0'):]
-    if request_uri not in endpoints:
+    matched_endpoint = None
+    for endpoint in endpoints:
+        if request_uri.startswith(endpoint):
+            matched_endpoint = endpoint
+            break
+    if matched_endpoint is None:
         return ('404 Not Found', None)
-    method_table = endpoints[request_uri]
+    method_table = endpoints[matched_endpoint]
     post, formdata = is_post_request(env)
     if post:
+        if matched_endpoint != request_uri:
+            return ('404 Not Found', 'Bad Endpoint')
         if not formdata:
             return ('400 Bad Request', 'Please use content-type: multipart/form-data')
         if 'post' in method_table:
