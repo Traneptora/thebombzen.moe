@@ -5,6 +5,7 @@ import base64
 import binascii
 import re
 import zlib
+import traceback
 
 import requests
 
@@ -49,10 +50,11 @@ def get(env, relative_uri):
         return ('404 Not Found', 'Not base64url')
     try:
         payload = zlib.decompress(comp_uri).decode()
-        s0 = int.from_bytes(payload[0:8])
-        s1 = int.from_bytes(payload[8:16])
+        s0 = int.from_bytes(payload[0:8], endian='little')
+        s1 = int.from_bytes(payload[8:16], endian='little')
         fname = payload[16:].decode()
         uri = f'https://cdn.discordapp.com/attachments/{s0}/{s1}/{fname}'
     except Exception:
+        traceback.print_exc()
         return ('404 Not Found', 'Bad Format')
     return ('302 Found', uri)
