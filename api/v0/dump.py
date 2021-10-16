@@ -25,7 +25,10 @@ def post(env, relative_uri):
                     type(js['attachments']) is list and
                     len(js['attachments']) > 0 and
                     'url' in js['attachments'][0]):
-                ret['url'] = js['attachments'][0]['url']
+                url = js['attachments'][0]['url']
+            else:
+                return ('503 Service Unavailable', 'Backend Down')
+            ret['url'] = 'https://thebombzen.moe/api/v0/dump/' + base64.b64encode(brotli.compress(url.encode()), altchars='-_')
             return (str(r.status_code), ret, [('access-control-allow-origin', '*')])
         else:
             return ('400 Bad Request', 'Invalid Upload')
