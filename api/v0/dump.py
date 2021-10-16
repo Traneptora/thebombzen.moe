@@ -5,6 +5,7 @@ import base64
 import binascii
 import brotli
 import tempfile
+import zlib
 
 import requests
 
@@ -28,7 +29,7 @@ def post(env, relative_uri):
                 url = js['attachments'][0]['url']
             else:
                 return ('503 Service Unavailable', 'Backend Down')
-            ret['url'] = 'https://thebombzen.moe/api/v0/dump/' + base64.b64encode(brotli.compress(url.encode()), altchars=b'-_').decode()
+            ret['url'] = 'https://thebombzen.moe/api/v0/dump/' + base64.b64encode(zlib.compress(url.encode(), level=9), altchars=b'-_').decode()
             return (str(r.status_code), ret, [('access-control-allow-origin', '*')])
         else:
             return ('400 Bad Request', 'Invalid Upload')
@@ -42,9 +43,9 @@ def get(env, relative_uri):
     except binascii.Error:
         return ('404 Not Found', 'Not base64url')
     try:
-        uri = brotli.decompress(comp_uri).decode()
+        uri = zlib.decompress(comp_uri).decode()
     except Exception:
-        return ('404 Not Found', 'Not brotli')
+        return ('404 Not Found', 'Not zlib')
     if not uri.startswith('https://'):
         return ('404 Not Found', 'Not HTTPS')
     return ('302 Found', uri)
