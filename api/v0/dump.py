@@ -40,7 +40,7 @@ def get(env, relative_uri):
         return ('404 Not Found', 'Not base64url')
     try:
         uri = brotli.decompress(comp_uri).decode()
-    except Error:
+    except Exception:
         return ('404 Not Found', 'Not brotli')
     if not uri.startswith('https://'):
         return ('404 Not Found', 'Not HTTPS')
