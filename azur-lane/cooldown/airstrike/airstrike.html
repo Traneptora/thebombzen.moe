@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link rel="preload" as="style" href="/css/main.css">
-  <link rel="preload" as="style" href="/azur-lane/cooldown/airstrike/airstrike.css">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap">
-  <link rel="preload" as="script" href="/azur-lane/cooldown/cooldown-common.js">
-  <link rel="preload" as="script" href="/azur-lane/cooldown/airstrike/airstrike.js">
+  <link rel="preload" as="style" href="airstrike.css">
+  <link rel="preload" as="script" href="../cooldown-common.js">
+  <link rel="preload" as="script" href="airstrike.js">
 
   <title>Airstrike Cooldown Calculator</title>
   <meta property="og:image" content="https://thebombzen.moe/img/avatar/256.png">
@@ -27,15 +24,14 @@
   <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/img/avatar/180.png">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/azur-lane/cooldown/airstrike/airstrike.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap">
-  <script defer src="/azur-lane/cooldown/cooldown-common.js"></script>
-  <script defer src="/azur-lane/cooldown/airstrike/airstrike.js"></script>
+  <link rel="stylesheet" href="airstrike.css">
+  <script defer src="../cooldown-common.js"></script>
+  <script defer src="airstrike.js"></script>
 </head>
 <body class="calculator">
   <div class="wrapper">
-    <header>Airstrike Cooldown Calculator</header>
-  <section></section>
+    <header>Airstrike Cooldown&nbsp;Calculator</header>
+  <div class="section"></div>
   <main id="main">
     <section>
       <input type="checkbox" class="expand-zone-box" id="instructions" checked>
@@ -49,7 +45,7 @@
               <li>Choose the ship’s equipment.</li>
             </ul>
             <p class="expand-zone-default">
-              <i>(Click to show/hide instructions)</i>
+              <i>(<span class="desktop">Click</span><span class="mobile">Tap</span> to show/hide instructions)</i>
             </p>
         </div>
       </label>
@@ -68,7 +64,7 @@
             <li>You can provide custom data for any of the dropdowns by choosing “Other” from the bottom of the menu.</li>
           </ul>
           <p class="expand-zone-default">
-            <i>(Click to show/hide tips)</i>
+            <i>(<span class="desktop">Click</span><span class="mobile">Tap</span> to show/hide tips)</i>
           </p>
         </div>
       </label>
@@ -123,7 +119,7 @@
           <input type="text" id="cdreduction1textfield" value="0.0">
         </section>
         <section class="reload-column">
-          <div class="heading">Initial Cooldown Reduction Percent:</div>
+          <div class="heading">First Cooldown Reduction Percent:</div>
           <div class="small-help">for one airstrike, for example on <a href="https://azurlane.koumakan.jp/Kaga">Kaga</a></div>
           <input type="text" id="cdreduction2textfield" value="0.0">
         </section>

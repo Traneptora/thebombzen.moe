@@ -46,8 +46,8 @@ body.calculator :is(select, section > input) {
     width: 100%;
 }
 
-.plane-column input[type="text"] {
-    margin-top: 0.5em;
+.plane-row :is(input[type="text"]) {
+    margin-bottom: 0.5em;
 }
 
 .reload-row :is(select, option) {
@@ -55,21 +55,19 @@ body.calculator :is(select, section > input) {
 }
 
 .plane-row :is(select, option) {
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
     width: 100%;
     text-align: left;
 }
 
+.reload-column .button-and-label {
+    height: 100%;
+}
+
 @media only screen and (min-width: 1024px){
-    body.calculator :is(select, option, section > input) {
-        font-size: 16px;
-    }
     .plane-row, .reload-row, .plane-select-row {
         flex-direction: row;
-    }
-    .plane-select-row {
-        align-items: flex-end;
     }
     .reload-row {
         width: 100%;
@@ -80,24 +78,29 @@ body.calculator :is(select, section > input) {
     .reload-column:first-of-type {
         width: 34%;
     }
-    :is(.plane-column, .reload-column) input[type="text"] {
-        width: 200px;
+    :is(.reload-column, .plane-column) input[type="text"] {
+        width: 60%;
     }
     .reload-row :is(select, option) {
-        width: 250px;
+        width: 75%;
     }
     .plane-row :is(select, option) {
         width: 60%;
     }
+    .plane-row input[type="text"] {
+        margin-bottom: 0px;
+    }
+    .plane-column {
+        width: 33%;
+    }
     .plane-column:first-of-type {
         width: 67%;
     }
-    .plane-column input[type="text"] {
-        margin-top: 0;
-        margin-left: 5px;
+    .plane-select-row {
+        align-items: flex-end;
     }
-}
-
-.reload-column .button-and-label {
-    height: 100%;
+    .plane-select-row input[type="text"] {
+        margin-left: 5px;
+        width: 30%;
+    }
 }

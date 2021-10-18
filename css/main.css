@@ -2,6 +2,8 @@
  * main.css
  */
 
+@import '/fonts/work-sans.css';
+
 html {
     /* allows the scrollbar to not interrupt flow */
     padding-right: calc(100vw - 100%);
@@ -11,14 +13,25 @@ body {
     background-color: #080813;
     text-align: center;
     color: #C0C0C0; 
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Work Sans', system-ui, 'Segoe UI', Roboto, 'DejaVu Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
     line-height: 1.25;
     font-weight: 400;
 }
 
+.wrapper {
+    text-align: left;
+    margin: 0 auto;
+    width: 95%;
+}
+
 @media only screen and (min-width: 1024px) {
+    /* leave default font size unset on mobile */
     body {
         font-size: 18px;
+    }
+    /* leave default screen width on mobile */
+    .wrapper {
+        width: 1000px;
     }
 }
 
@@ -34,29 +47,34 @@ a:active, a:focus {
     color: #DA4B33;
 }
 
-select, option, section > input {
+select, option, optgroup, input {
+    color: #080813;
     font-size: 1.0em;
 }
 
-@media only screen and (min-width: 1024px){
-    select, section > input {
-        margin-top: 0.4em;
-        margin-bottom: 1.0em;
-    }
+select, optgroup, input {
+    font-weight: 600;
 }
 
-select, option {
-    background-color: #C0C0C0;
+option {
+    font-weight: 500;
+}
+
+select, input {
+    margin-top: 0.4em;
+}
+
+select, option, optgroup, input[type="text"] {
     width: 100%;
-    color: #080813;
     border: none;
 }
 
-b, strong {
+b, strong, .bold {
     color: #F49B43;
+    font-weight: 700;
 }
 
-section {
+section, .section {
     margin-bottom: 1.0em;
 }
 
@@ -74,49 +92,48 @@ footer a {
     margin-bottom: 0.5em;
 }
 
-header, .heading {
-    color: #F49B43;
-    font-weight: 600;
-}
-
 header {
-    font-size: 1.5em;
+    font-size: 1.4em;
     text-align: center;
-    font-weight: 700;
+    color: #F49B43;
+    font-weight: 500;
 }
 
 @media only screen and (min-width: 1024px){
-    .wrapper {
-        width: 900px;
-    }
     header {
-        font-size: 64px;
-        font-weight: 600;
+        font-size: 3.0em;
     }
+}
+
+.mobile {
+    display: revert;
+}
+
+.desktop {
+    display: none;
+}
+
+@media only screen and (min-width: 1024px){
+    .mobile {
+        display: none;
+    }
+    .desktop {
+        display: revert;
+    }
+}
+
+.heading {
+    color: #F49B43;
+    font-weight: 600;
 }
 
 ::selection {
     background-color: #404060;
 }
 
-.wrapper {
-    text-align: left;
-    width: 95%;
-    margin: 0 auto;
-}
-
 .small-help {
     font-weight: 300;
     font-size: 0.9em;
-}
-
-@media only screen and (min-width: 1024px){
-    .wrapper {
-        width: 900px;
-    }
-    .small-help {
-        font-size: 16px;
-    }
 }
 
 .hidden {

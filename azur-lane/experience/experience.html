@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
   <link rel="preload" as="style" href="/css/main.css">
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap">
 
   <title>Ship Leveling Calculator</title>
   <meta property="og:image" content="https://thebombzen.moe/img/avatar/256.png">
@@ -12,6 +9,8 @@
   <meta property="og:url" content="https://thebombzen.moe/azur-lane/experience/">
   <meta property="og:title" content="Ship Leveling Calculator">
   <meta property="og:description" content="Calculate experience required from level A to level B in Azur Lane.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" type="image/png" sizes="512x512" href="/img/avatar/512.png">
   <link rel="icon" type="image/png" sizes="256x256" href="/img/avatar/256.png">
@@ -22,8 +21,7 @@
   <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/img/avatar/180.png">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap">
-  <script defer src="/azur-lane/experience/experience.js"></script>
+  <script defer src="experience.js"></script>
 </head>
 <body>
   <div class="wrapper">
@@ -32,10 +30,14 @@
     <main id="main">
       <form action="javascript:calculate_experience();">
         <section>
-          <div class="heading">Current Level:</div>
-          <input type="text" id="txt-level-a" value="1">
-          <div class="heading">Target Level:</div>
-          <input type="text" id="txt-level-b" value="125">
+          <div class="section">
+            <div class="heading">Current Level:</div>
+            <input type="text" id="txt-level-a" value="1">
+          </div>
+          <div class="section">
+            <div class="heading">Target Level:</div>
+            <input type="text" id="txt-level-b" value="125">
+          </div>
         </section>
         <section>
           <div class="heading">Ship Type:</div>
