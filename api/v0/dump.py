@@ -3,8 +3,9 @@
 
 import base64
 import binascii
-import re
+import hashlib
 import json
+import re
 import zlib
 
 import requests
@@ -14,33 +15,40 @@ from api_common import get_post_form
 with open('webhook_url_dump') as f:
     webhooks = json.load(f)
 
+def upload(form):
+    upload = form['upload']
+    if upload is None or upload.filename is None or upload.file is None:
+        return ('400 Bad Request', 'Invalid Upload')
+    webhook = webhooks.get(form.getvalue('dump-location', 'default'), webhooks['default'])
+    r = requests.post(webhook, files={'file': (upload.filename, upload.file)})
+    js = r.json()
+    ret = {'success': r.ok, 'statusCode': r.status_code, 'response': js}
+    try:
+        ret['url'] = str(js['attachments'][0]['url'])
+    except (LookupError, TypeError, ValueError) as ex:
+        return ('503 Service Unavailable', 'Backend Down')
+    return (str(r.status_code), ret, [('access-control-allow-origin', '*')])
+
+re_strip = re.compile(r'[^0-9A-Za-z\-_=]')
+
+def dump(form):
+    dump_file = form['dump-file']
+    if dump_file is None or dump_file.file is None:
+        return ('400 Bad Request', 'Invalid Dump')
+    location = form.getvalue('dump-location', 'default')
+    if re_strip.search(location):
+        return ('400 Bad Request', 'Invalid Dump Location')
+    if len(location) == 0 or len(location) > 64:
+        return ('400 Bad Request', 'Bad Location Size')
+    return ('501 Not Implemented', None)
+
 def post(env, relative_uri):
     form = get_post_form(env)
-    if form.getvalue('action', '') == 'upload' and 'upload' in form:
-        upload = form['upload']
-        if upload is not None and upload.filename is not None and upload.file is not None:
-            webhook = webhooks.get(form.getvalue('dump-location', 'default'), webhooks['default'])
-            r = requests.post(webhook, files={'file': (upload.filename, upload.file)})
-            js = r.json()
-            ret = {'success': r.ok, 'response': js}
-            if ('attachments' in js and
-                    type(js['attachments']) is list and
-                    len(js['attachments']) > 0 and
-                    'url' in js['attachments'][0]):
-                url = js['attachments'][0]['url']
-            else:
-                return ('503 Service Unavailable', 'Backend Down')
-            # match = re.match(r'^https://cdn\.discordapp\.com/attachments/([0-9]+)/([0-9]+)/(.*)$', url)
-            # if match:
-            #     s0, s1, fname = match.group(1, 2, 3)
-            #     payload = int(s0).to_bytes(8, byteorder='little') + int(s1).to_bytes(8, byteorder='little') + fname.encode()
-            #     ret['url'] = 'https://thebombzen.moe/api/v0/dump/' + base64.b64encode(zlib.compress(payload, level=9), altchars=b'-_').decode()
-            # else:
-            #     ret['url'] = url
-            ret['url'] = url
-            return (str(r.status_code), ret, [('access-control-allow-origin', '*')])
-        else:
-            return ('400 Bad Request', 'Invalid Upload')
+    action = form.getvalue('action', '')
+    if action == 'upload' and 'upload' in form:
+        return upload(form)
+    if action == 'dump' and 'dump-file' in form:
+        return dump(form)
     return ('400 Bad Request', 'Unsupported action')
 
 def get(env, relative_uri):
