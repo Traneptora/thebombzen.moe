@@ -27,7 +27,7 @@ with open('webhook_url_dump') as f:
 
 def send_to_webhook(webhook_url, filename, blob):
 
-    r = requests.post(webhook, files={'file': (filename, blob)})
+    r = requests.post(webhook_url, files={'file': (filename, blob)})
     js = r.json()
     ret = {'success': r.ok, 'statusCode': r.status_code, 'response': js}
     try:
@@ -44,7 +44,7 @@ def upload(form):
     ret = send_to_webhook(webhook, upload.filename, upload.file)
     if ret is None:
         return ('503 Service Unavailable', 'Backend Down')
-    return (str(r.status_code), ret, [('access-control-allow-origin', '*')])
+    return (str(ret['statusCode']), ret, [('access-control-allow-origin', '*')])
 
 re_strip = re.compile(r'[^0-9A-Za-z\-_=]|(^$)')
 re_eq = re.compile(r'=')
@@ -87,7 +87,7 @@ def dump(form):
     dump_file_hash = base64.b64encode(hash_obj.digest(), altchars=b'-_')[:-2].decode()
     dump_hash = None
     need_upload = False
-    entry = dump_cur.execute('SELECT * FROM dump WHERE namespace=? AND dumpid=?', (namespace, dump_id))
+    entry = dump_cur.execute('SELECT * FROM dump WHERE namespace=? AND dumpid=?', (namespace, dump_id)).fetchone()
     now = int(time.time())
     if entry is not None:
         entry = DumpEntry(*entry)
@@ -102,22 +102,22 @@ def dump(form):
         need_upload = True
 
     if need_upload:
-        webhook = webhooks['namespace']
-        resp = send_to_webhook(webhook, re_eq.sub(dump_id, ','), dump_data)
+        webhook = webhooks[namespace]
+        resp = send_to_webhook(webhook, re_eq.sub(dump_id, ',') + '.' + dump_ext, dump_data)
         if resp is None:
             dump_con.rollback()
             return ('503 Service Unavailable', 'Backend Down')
         if entry is None:
-            entry = DumpEntry(namespace, now, now, dump_id, dump_hash, dump_file_hash, resp['url'], resp['response'].encode())
+            entry = DumpEntry(namespace, now, now, dump_id, dump_hash, dump_file_hash, resp['url'], json.dumps(resp['response']).encode())
             dump_cur.execute('INSERT INTO dump VALUES (?, ?, ?, ?, ?, ?, ?, ?)', entry)
         else:
             dump_cur.execute('UPDATE dump SET mtime=?,dumphash=?,dumpfilehash=?,upstreamurl=?,extra=? WHERE namespace=? and dumpid=?',
-                (now, dump_hash, dump_file_hash, resp['url'], resp['response'].encode()))
+                (now, dump_hash, dump_file_hash, resp['url'], json.dumps(resp['response']).encode()))
         dump_con.commit()
         return (str(resp['statusCode']), resp, [('access-control-allow-origin', '*')])
     else:
         dump_con.rollback()
-        return ('200 OK', entry.upstreamurl, upstream.extra)
+        return ('200 OK', {'success': True, 'statusCode': '200 OK', 'url': entry.upstreamurl, 'response': json.loads(entry.extra.decode())}, [('access-control-allow-origin', '*')])
 
 def post(env, relative_uri):
     form = get_post_form(env)
@@ -125,7 +125,11 @@ def post(env, relative_uri):
     if action == 'upload' and 'upload' in form:
         return upload(form)
     if action == 'dump' and 'dump-file' in form:
-        return dump(form)
+        try:
+            return dump(form)
+        except BaseException as ex:
+            dump_con.rollback()
+            raise ex
     return ('400 Bad Request', 'Unsupported action')
 
 def get(env, relative_uri):
