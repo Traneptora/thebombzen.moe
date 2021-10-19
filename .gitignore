@@ -1,6 +1,7 @@
 # webhook URLs
 webhook_url_*
 dump.db
+dump-empty.db
 
 # pr-data uploads
 api/v0/pr-data/uploads/*
