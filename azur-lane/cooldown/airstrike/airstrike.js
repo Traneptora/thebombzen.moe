@@ -116,7 +116,7 @@ var torp_bombers = [
     { 'value': '11.37', 'text': 'B7A Ryusei', 'name': 'ryusei' },
     { 'value': '11.17', 'text': 'Junkers Ju-87 D-4' },
     { 'value': '10.97', 'text': 'Swordfish (818 Squadron)' },
-    { 'value': '10.60', 'text': 'B6N Saiun' },
+    { 'value': '10.60', 'text': 'C6N Saiun Kai Prototype' },
     { 'value': '10.31', 'text': 'Fairey Barracuda' },
     { 'value':  '9.98', 'text': 'Fairey Albacore' },
 ];
