@@ -17,7 +17,7 @@ import wand.image
 
 from api_common import get_post_form
 
-DumpEntry = collections.namedtuple('DumpEntry', 'namespace crtime mtime dumpid dumphash dumpfilehash upstreamurl extra')
+DumpEntry = collections.namedtuple('DumpEntry', 'namespace crtime mtime dumpid dumphash dumpfilehash upstreamurl extra clienthash')
 
 dump_con = sqlite3.connect('dump.db')
 dump_cur = dump_con.cursor()
@@ -44,6 +44,7 @@ def upload(form):
     ret = send_to_webhook(webhook, upload.filename, upload.file)
     if ret is None:
         return ('503 Service Unavailable', 'Backend Down')
+    del ret['response']
     return (str(ret['statusCode']), ret, [('access-control-allow-origin', '*')])
 
 re_strip = re.compile(r'[^0-9A-Za-z\-_=]|(^$)')
@@ -60,18 +61,26 @@ def image_hash(blob):
         traceback.print_exc()
     return None
 
+def validate(form):
+    namespace = form.getvalue('dump-location', 'default')
+    if re_strip.search(namespace):
+        return (False, '400 Bad Request', 'Invalid Dump Location')
+    if len(namespace) > 64:
+        return (False, '400 Bad Request', 'Bad Location Size')
+    dump_id = form.getvalue('dump-id', '')
+    if re_strip.search(dump_id):
+        return (False, '400 Bad Request', 'Invalid Dump ID')
+    return (True, namespace, dump_id)
+
 def dump(form):
     dump_file = form['dump-file']
     if dump_file is None or dump_file.file is None:
         return ('400 Bad Request', 'Invalid Dump')
-    namespace = form.getvalue('dump-location', 'default')
-    if re_strip.search(namespace):
-        return ('400 Bad Request', 'Invalid Dump Location')
-    if len(namespace) > 64:
-        return ('400 Bad Request', 'Bad Location Size')
-    dump_id = form.getvalue('dump-id', '')
-    if re_strip.search(dump_id):
-        return ('400 Bad Request', 'Invalid Dump ID')
+    ok, a, b, = validate(form)
+    if ok:
+        namespace, dump_id = a, b
+    else:
+        return (a, b)
     dump_ext = form.getvalue('dump-ext', '')
     if re_strip.search(dump_ext):
         return ('400 Bad Request', 'Invalid Dump Extension')
@@ -100,7 +109,7 @@ def dump(form):
         if dump_hash is None:
             dump_hash = dump_file_hash
         need_upload = True
-
+    xxh = form.getvalue('dump-xxhash', '')
     if need_upload:
         webhook = webhooks[namespace]
         resp = send_to_webhook(webhook, re_eq.sub(dump_id, ',') + '.' + dump_ext, dump_data)
@@ -108,16 +117,32 @@ def dump(form):
             dump_con.rollback()
             return ('503 Service Unavailable', 'Backend Down')
         if entry is None:
-            entry = DumpEntry(namespace, now, now, dump_id, dump_hash, dump_file_hash, resp['url'], json.dumps(resp['response']).encode())
-            dump_cur.execute('INSERT INTO dump VALUES (?, ?, ?, ?, ?, ?, ?, ?)', entry)
+            entry = DumpEntry(namespace, now, now, dump_id, dump_hash, dump_file_hash, resp['url'], json.dumps(resp['response']).encode(), xxh)
+            dump_cur.execute('INSERT INTO dump VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', entry)
         else:
-            dump_cur.execute('UPDATE dump SET mtime=?,dumphash=?,dumpfilehash=?,upstreamurl=?,extra=? WHERE namespace=? and dumpid=?',
-                (now, dump_hash, dump_file_hash, resp['url'], json.dumps(resp['response']).encode()))
+            dump_cur.execute('UPDATE dump SET mtime=?,dumphash=?,dumpfilehash=?,upstreamurl=?,extra=?,clienthash=? WHERE namespace=? and dumpid=?',
+                (now, dump_hash, dump_file_hash, resp['url'], json.dumps(resp['response']).encode(), xxh, namespace, dump_id))
         dump_con.commit()
+        del resp['response']
         return (str(resp['statusCode']), resp, [('access-control-allow-origin', '*')])
     else:
-        dump_con.rollback()
-        return ('200 OK', {'success': True, 'statusCode': '200 OK', 'url': entry.upstreamurl, 'response': json.loads(entry.extra.decode())}, [('access-control-allow-origin', '*')])
+        dump_cur.execute('UPDATE dump SET clienthash=? WHERE namespace=? and dumpid=?', (xxh, namespace, dump_id))
+        dump_con.commit()
+        return ('200 OK', {'success': True, 'statusCode': '200 OK', 'url': entry.upstreamurl}, [('access-control-allow-origin', '*')])
+
+def check(form):
+    dump_xxhash = form.getvalue('dump-xxhash', '')
+    ok, a, b, = validate(form)
+    if ok:
+        namespace, dump_id = a, b
+    else:
+        return (a, b)
+    entry = dump_cur.execute('SELECT * FROM dump WHERE namespace=? and dumpid=? and clienthash=?', (namespace, dump_id, dump_xxhash)).fetchone()
+    if entry:
+        entry = DumpEntry(*entry)
+        return ('200 OK', {'success': True, 'statusCode': '200 OK', 'url': entry.upstreamurl}, [('access-control-allow-origin', '*')])
+    else:
+        return ('200 OK', {'success': False, 'statusCode': '200 OK', 'url': None}, [('access-control-allow-origin', '*')])
 
 def post(env, relative_uri):
     form = get_post_form(env)
@@ -130,6 +155,8 @@ def post(env, relative_uri):
         except BaseException as ex:
             dump_con.rollback()
             raise ex
+    if action == 'dump-check' and 'dump-xxhash' in form:
+        return check(form)
     return ('400 Bad Request', 'Unsupported action')
 
 def get(env, relative_uri):
