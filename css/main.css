@@ -2,6 +2,7 @@
  * main.css
  */
 
+/* work sans font self-hosted */
 @import '/fonts/work-sans.css';
 
 html {
@@ -69,8 +70,22 @@ select, option, optgroup, input[type="text"] {
     border: none;
 }
 
-b, strong, .bold {
+.orange {
     color: #F49B43;
+}
+.rust {
+    color: #FF5715;
+}
+
+header, b, strong, .bold, .sun-yellow {
+    color: #F2CE0B;
+}
+
+.heading, .banana {
+    color: #BFA933;
+}
+
+b, strong, .bold {
     font-weight: 700;
 }
 
@@ -92,10 +107,13 @@ footer a {
     margin-bottom: 0.5em;
 }
 
+.heading {
+    font-weight: 600;
+}
+
 header {
     font-size: 1.4em;
     text-align: center;
-    color: #F49B43;
     font-weight: 500;
 }
 
@@ -120,11 +138,6 @@ header {
     .desktop {
         display: revert;
     }
-}
-
-.heading {
-    color: #F49B43;
-    font-weight: 600;
 }
 
 ::selection {
