@@ -27,9 +27,21 @@ function name_filter(){
     }
 }
 
+function conditional_class(condition, className, element) {
+    if (condition){
+        element.classList.add(className);
+    } else {
+        element.classList.remove(className);
+    }
+    return condition;
+}
+
 function validate_result(){
     const src = document.getElementById('canvas').src;
-    const valid = src && src !== 'data:,';
+    let valid = !conditional_class(!src || src === 'data:,', 'rust', document.getElementById('results-screenshot').parentElement.firstElementChild);
+    valid = Array.prototype.map.call(document.querySelectorAll('#project-series, #project-name'),
+        el => !conditional_class(!el.value, 'rust', el.parentElement.firstElementChild)
+    ).reduce((a, b) => a && b, true) && valid;
     document.getElementById('submit').disabled = !valid;
     return valid;
 }
@@ -118,9 +130,15 @@ window.addEventListener('drop', async (e) => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('results-screenshot').value = '';
     document.getElementById('canvas').src = 'data:,';
+    const v = (e) => {
+        if (e.target.value){
+            validate_result();
+        }
+    };
+    document.querySelectorAll('#project-series, #project-name').forEach(el => el.addEventListener('change', v));
     name_filter();
     series_filter();
     type_filter();

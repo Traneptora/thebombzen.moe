@@ -24,7 +24,7 @@
   <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/img/avatar/180.png">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/work-sans.css">
+  <link rel="stylesheet" href="/fonts/work-sans.css">
   <link rel="stylesheet" href="pr-data.css">
   <script defer src="pr-data.js"></script>
 </head>
@@ -64,10 +64,18 @@
       </section>
     <form action="javascript:submit_result();">
     <section>
+      <div class="heading">Select a screenshot of your results:</div>
+      <div>You can also paste it from your clipboard with Ctrl+V, or drag-and-drop it from your file browser.</div>
+      <input type="file" name="results-screenshot" id="results-screenshot" accept="image/*" onchange="render_image();">
+    </section>
+    <div class="section">
+      <img id="canvas" src="data:,">
+    </div>
+    <section>
       <div class="section">
         <div class="heading">Select the research project series (also called season):</div>
         <div class="small-help">This is the <em>project</em> series, marked by a numeral on the top left of the project box. It might not match your chosen focus.</div>
-        <select name="project-series" id="project-series" required onchange="series_filter();">
+        <select name="project-series" id="project-series" onchange="series_filter();">
           <option value="">Select Series</option>
           <optgroup label="Series">
             <option class="filter-pr4" value="pr4">PR4 (Series IV)</option>
@@ -102,7 +110,7 @@
       </div>
       <div class="section">
         <div class="heading">Select the project name:</div>
-        <select name="project-name" id="project-name" required onchange="name_filter();">
+        <select name="project-name" id="project-name" onchange="name_filter();">
           <option value="" class="item-all series-all" data-project-type="all" data-project-series="all" data-project-type="all" data-project-series="all">Select Project</option>
           <optgroup label="B (Data Collection)" class="item-b series-all" data-project-type="b" data-project-series="all" data-project-type="b" data-project-series="all">
             <option value="B-622-MI" class="item-b series-all" data-project-type="b" data-project-series="all" data-project-length="4:00" data-project-color="Blue" data-project-cost="Clear Chapter 3 or onward stages 6 times (on normal mode)">B-622-MI (Chapter 3)</option>
@@ -302,13 +310,7 @@
         <li>Length:&nbsp;<span id="report-length"></span></li>
         <li>Cost:&nbsp;<span id="report-cost"></span></li>
       </ul>
-      <div class="heading">Select a screenshot of your results:</div>
-      <div>You can also paste it from your clipboard with Ctrl+V, or drag-and-drop it from your file browser.</div>
-      <input type="file" name="results-screenshot" id="results-screenshot" accept="image/*" onchange="render_image();">
     </section>
-    <div class="section">
-      <img id="canvas" src="data:,">
-    </div>
     <section>
       <input type="submit" id="submit" value="Submit Research Result">
     </section>
