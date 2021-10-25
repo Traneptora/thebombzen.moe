@@ -192,7 +192,7 @@ function handle_loadout_data_impl(data){
 }
 
 function get_fetch_url_impl(data){
-    return 'https://thebombzen.moe/azur-lane/data/' + data.carrierJSON;
+    return '/azur-lane/data/' + data.carrierJSON;
 }
 
 function ready() {
@@ -205,7 +205,7 @@ function ready() {
         });
         update_textfields(field);
     }
-    fetch('https://thebombzen.moe/azur-lane/data/ships/carriers.json').then((r) => {
+    fetch('/azur-lane/data/ships/carriers.json').then((r) => {
         return r.json();
     }).then((j) => {
         const cache = document.getElementById('select-ship-cache');

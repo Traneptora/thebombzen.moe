@@ -41,7 +41,6 @@ function update_reload_stat(reload){
     calculate_reload();
 }
 
-
 function toggle_affinity(){
     const oath = document.getElementById("box-affinity").checked;
     const reload_stat_txt = document.getElementById("txt-rld-stat-base");
