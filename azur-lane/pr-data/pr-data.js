@@ -49,7 +49,9 @@ function validate_result(){
 function display_blob(blob){
     const url = blob && blob.type.startsWith('image/') ? URL.createObjectURL(blob) : 'data:,';
     document.getElementById('canvas').src = url;
-    validate_result();
+    if(document.getElementById('submit').disabled && url !== 'data:,'){
+        validate_result();
+    }
 }
 
 function render_image(){
@@ -134,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('results-screenshot').value = '';
     document.getElementById('canvas').src = 'data:,';
     const v = (e) => {
-        if (e.target.value){
+        if (document.getElementById('submit').disabled && e.target.value){
             validate_result();
         }
     };
