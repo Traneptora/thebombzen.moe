@@ -3,6 +3,7 @@
 <head>
   <link rel="preload" as="style" href="/css/main.css">
   <link rel="preload" as="style" href="/fonts/work-sans.css">
+  <link rel="preload" as="style" href="../cooldown.css">
   <link rel="preload" as="style" href="airstrike.css">
   <link rel="preload" as="script" href="../cooldown-common.js">
   <link rel="preload" as="script" href="airstrike.js">
@@ -10,7 +11,7 @@
   <title>Airstrike Cooldown Calculator</title>
   <meta property="og:image" content="https://thebombzen.moe/img/avatar/256.png">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://thebombzen.com/azur-lane/cooldown/airstrike/">
+  <meta property="og:url" content="https://thebombzen.moe/azur-lane/cooldown/airstrike/">
   <meta property="og:title" content="Airstrike Cooldown Calculator">
   <meta property="og:description" content="Calculate the cooldown for an airstrike in Azur Lane.">
 
@@ -25,6 +26,8 @@
   <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/img/avatar/180.png">
 
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/fonts/work-sans.css">
+  <link rel="stylesheet" href="../cooldown.css">
   <link rel="stylesheet" href="airstrike.css">
   <script defer src="../cooldown-common.js"></script>
   <script defer src="airstrike.js"></script>
@@ -32,156 +35,156 @@
 <body class="calculator">
   <div class="wrapper">
     <header>Airstrike Cooldown&nbsp;Calculator</header>
-  <div class="section"></div>
-  <main id="main">
-    <section>
-      <input type="checkbox" class="expand-zone-box" id="instructions" checked>
-      <label for="instructions">
-        <div>
-          <div class="heading">Instructions:</div>
+    <div class="section"></div>
+    <main id="main">
+      <section>
+        <input type="checkbox" class="expand-zone-box" id="instructions" checked>
+        <label for="instructions">
+          <div>
+            <div class="heading">Instructions:</div>
+              <ul class="expand-zone-body">
+                <li>Choose a ship from the dropdown.</li>
+                <li>Modify her reload stat if necessary (in case she’s oathed, is under level 120, etc.)</li>
+                <li>Enter any relevant bonus modifiers. These are not automatically generated.</li>
+                <li>Choose the ship’s equipment.</li>
+              </ul>
+              <p class="expand-zone-default">
+                <i>(<span class="desktop">Click</span><span class="mobile">Tap</span> to show/hide instructions)</i>
+              </p>
+          </div>
+        </label>
+      </section>
+      <section>
+        <input type="checkbox" class="expand-zone-box" id="tips">
+        <label for="tips">
+          <div>
+            <div class="heading">Tips:</div>
             <ul class="expand-zone-body">
-              <li>Choose a ship from the dropdown.</li>
-              <li>Modify her reload stat if necessary (in case she’s oathed, is under level 120, etc.)</li>
-              <li>Enter any relevant bonus modifiers. These are not automatically generated.</li>
-              <li>Choose the ship’s equipment.</li>
+              <li>Do not adjust the plane cooldowns based on the equipped in-game numbers. Those are reload-adjusted. This calculator already handles that.</li>
+              <li>In-game does not take into account the 0.1s absolute cooldown. This calculator does.</li>
+              <li>The initial cooldown adds 1.5s based on in-game code. In practice, the fight may start slightly later or sooner depending on lag and some fight-specific factors.</li>
+              <li>If something is off by 0.01s, that’s due to rounding. This calculator rounds to the nearest 0.01s.</li>
+              <li>Watch out for cat skills, not just talents. Bisharmaru and some others can change RLD stat for the flagship.</li>
+              <li>You can provide custom data for any of the dropdowns by choosing “Other” from the bottom of the menu.</li>
             </ul>
             <p class="expand-zone-default">
-              <i>(<span class="desktop">Click</span><span class="mobile">Tap</span> to show/hide instructions)</i>
+              <i>(<span class="desktop">Click</span><span class="mobile">Tap</span> to show/hide tips)</i>
             </p>
-        </div>
-      </label>
-    </section>
-    <section>
-      <input type="checkbox" class="expand-zone-box" id="tips">
-      <label for="tips">
-        <div>
-          <div class="heading">Tips:</div>
-          <ul class="expand-zone-body">
-            <li>Do not adjust the plane cooldowns based on the equipped in-game numbers. Those are reload-adjusted. This calculator already handles that.</li>
-            <li>In-game does not take into account the 0.1s absolute cooldown. This calculator does.</li>
-            <li>The initial cooldown adds 1.5s based on in-game code. In practice, the fight may start slightly later or sooner depending on lag and some fight-specific factors.</li>
-            <li>If something is off by 0.01s, that’s due to rounding. This calculator rounds to the nearest 0.01s.</li>
-            <li>Watch out for cat skills, not just talents. Bisharmaru and some others can change RLD stat for the flagship.</li>
-            <li>You can provide custom data for any of the dropdowns by choosing “Other” from the bottom of the menu.</li>
-          </ul>
-          <p class="expand-zone-default">
-            <i>(<span class="desktop">Click</span><span class="mobile">Tap</span> to show/hide tips)</i>
-          </p>
-        </div>
-      </label>
-    </section>
-    <form action="javascript:calculate_reload();">
-      <section class="reload-row">
-        <section class="reload-column">
-          <div class="heading">Choose ship:</div>
-          <select id="select-ship" data-previous-ship="empty" onchange="acquire_loadout();"></select>
-          <input type="hidden" id="select-ship-cache" value="Enterprise">
+          </div>
+        </label>
+      </section>
+      <form action="javascript:calculate_reload();">
+        <section class="reload-row">
+          <section class="reload-column">
+            <div class="heading">Choose ship:</div>
+            <select id="select-ship" data-previous-ship="empty" onchange="acquire_loadout();"></select>
+            <input type="hidden" id="select-ship-cache" value="Enterprise">
+          </section>
+          <section class="reload-column">
+            <div class="heading">Base RLD Stat:</div>
+            <div class="small-help">without skills, Fleet Tech, or cats</div>
+            <input type="text" id="txt-rld-stat-base" value="132">
+          </section>
+          <section class="reload-column">
+            <div class="button-and-label">
+              <input type="checkbox" id="box-affinity" onclick="toggle_affinity();">
+              <label for="box-affinity">
+                <div class="heading">Ship is oathed?</div>
+                <div class="small-help">and with 200 affinity</div>
+              </label>
+            </div>
+          </section>
         </section>
-        <section class="reload-column">
-          <div class="heading">Base RLD Stat:</div>
-          <div class="small-help">without skills, Fleet Tech, or cats</div>
-          <input type="text" id="txt-rld-stat-base" value="132">
+        <section class="reload-row">
+          <section class="reload-column">
+            <div class="heading">Bonus RLD Stat:</div>
+            <div class="small-help">from Fleet Tech and cats</div>
+            <input type="text" id="txt-rld-stat-bonus" value="0">
+          </section>
+          <section class="reload-column">
+            <div class="heading">Reload Percentage Buff:</div>
+            <div class="small-help">from skills, e.g. from <a href="https://azurlane.koumakan.jp/Queen_Elizabeth">Queen Elizabeth</a></div>
+            <input type="text" id="reloadbufftextfield" value="0.0">
+          </section>
+          <section class="reload-column">
+            <div class="button-and-label">
+              <input type="checkbox" id="beaconbox" onclick="javascript:calculate_reload();">
+              <label for="beaconbox">
+                <div class="heading">Homing Beacon Equipped?</div>
+                <div class="small-help">(only one, it doesn’t stack with itself)</div>
+              </label>
+            </div>
+          </section>
         </section>
-        <section class="reload-column">
-          <div class="button-and-label">
-            <input type="checkbox" id="box-affinity" onclick="toggle_affinity();">
-            <label for="box-affinity">
-              <div class="heading">Ship is oathed?</div>
-              <div class="small-help">and with 200 affinity</div>
-            </label>
+        <section class="reload-row">
+          <section class="reload-column">
+            <div class="heading">Cooldown Reduction Percent:</div>
+            <div class="small-help">for all airstrikes, for example on <a href="https://azurlane.koumakan.jp/Aquila">Aquila</a></div>
+            <input type="text" id="cdreduction1textfield" value="0.0">
+          </section>
+          <section class="reload-column">
+            <div class="heading">First Cooldown Reduction Percent:</div>
+            <div class="small-help">for one airstrike, for example on <a href="https://azurlane.koumakan.jp/Kaga">Kaga</a></div>
+            <input type="text" id="cdreduction2textfield" value="0.0">
+          </section>
+        </section>
+        <section class="plane-row">
+          <div class="plane-column">
+            <div class="heading">First Plane Cooldown:</div>
+            <div class="plane-select-row">
+              <select id="plane1cddropdown" onchange="update_textfields(1); calculate_reload();"></select>
+              <input type="text" id="plane1cdtextfield" value="10.90">
+            </div>
+          </div>
+          <div class="plane-column">
+            <div class="heading">First Plane Count:</div>
+            <input type="text" id="plane1counttextfield" data-stored-value="0" value="3">
           </div>
         </section>
-      </section>
-      <section class="reload-row">
-        <section class="reload-column">
-          <div class="heading">Bonus RLD Stat:</div>
-          <div class="small-help">from Fleet Tech and cats</div>
-          <input type="text" id="txt-rld-stat-bonus" value="0">
-        </section>
-        <section class="reload-column">
-          <div class="heading">Reload Percentage Buff:</div>
-          <div class="small-help">from skills, e.g. from <a href="https://azurlane.koumakan.jp/Queen_Elizabeth">Queen Elizabeth</a></div>
-          <input type="text" id="reloadbufftextfield" value="0.0">
-        </section>
-        <section class="reload-column">
-          <div class="button-and-label">
-            <input type="checkbox" id="beaconbox" onclick="javascript:calculate_reload();">
-            <label for="beaconbox">
-              <div class="heading">Homing Beacon Equipped?</div>
-              <div class="small-help">(only one, it doesn’t stack with itself)</div>
-            </label>
+        <section class="plane-row">
+          <div class="plane-column">
+            <div class="heading">Second Plane Cooldown:</div>
+            <div class="plane-select-row">
+              <select id="plane2cddropdown" onchange="update_textfields(2); calculate_reload();"></select>
+              <input type="text" id="plane2cdtextfield" value="11.88">
+            </div>
+          </div>
+          <div class="plane-column">
+            <div class="heading">Second Plane Count:</div>
+            <input type="text" id="plane2counttextfield" data-stored-value="0" value="3">
           </div>
         </section>
-      </section>
-      <section class="reload-row">
-        <section class="reload-column">
-          <div class="heading">Cooldown Reduction Percent:</div>
-          <div class="small-help">for all airstrikes, for example on <a href="https://azurlane.koumakan.jp/Aquila">Aquila</a></div>
-          <input type="text" id="cdreduction1textfield" value="0.0">
+        <section class="plane-row">
+          <div class="plane-column">
+            <div class="heading">Third Plane Cooldown:</div>
+            <div class="plane-select-row">
+              <select id="plane3cddropdown" onchange="update_textfields(3); calculate_reload();"></select>
+              <input type="text" id="plane3cdtextfield" value="11.37">
+            </div>
+          </div>
+          <div class="plane-column">
+            <div class="heading">Third Plane Count:</div>
+            <input type="text" id="plane3counttextfield" data-stored-value="0" value="2">
+          </div>
         </section>
-        <section class="reload-column">
-          <div class="heading">First Cooldown Reduction Percent:</div>
-          <div class="small-help">for one airstrike, for example on <a href="https://azurlane.koumakan.jp/Kaga">Kaga</a></div>
-          <input type="text" id="cdreduction2textfield" value="0.0">
+        <section>
+            <input type="submit" value="Calculate Airstrike Cooldown">
         </section>
-      </section>
-      <section class="plane-row">
-        <div class="plane-column">
-          <div class="heading">First Plane Cooldown:</div>
-          <div class="plane-select-row">
-            <select id="plane1cddropdown" onchange="update_textfields(1); calculate_reload();"></select>
-            <input type="text" id="plane1cdtextfield" value="10.90">
-          </div>
-        </div>
-        <div class="plane-column">
-          <div class="heading">First Plane Count:</div>
-          <input type="text" id="plane1counttextfield" data-stored-value="0" value="3">
-        </div>
-      </section>
-      <section class="plane-row">
-        <div class="plane-column">
-          <div class="heading">Second Plane Cooldown:</div>
-          <div class="plane-select-row">
-            <select id="plane2cddropdown" onchange="update_textfields(2); calculate_reload();"></select>
-            <input type="text" id="plane2cdtextfield" value="11.88">
-          </div>
-        </div>
-        <div class="plane-column">
-          <div class="heading">Second Plane Count:</div>
-          <input type="text" id="plane2counttextfield" data-stored-value="0" value="3">
-        </div>
-      </section>
-      <section class="plane-row">
-        <div class="plane-column">
-          <div class="heading">Third Plane Cooldown:</div>
-          <div class="plane-select-row">
-            <select id="plane3cddropdown" onchange="update_textfields(3); calculate_reload();"></select>
-            <input type="text" id="plane3cdtextfield" value="11.37">
-          </div>
-        </div>
-        <div class="plane-column">
-          <div class="heading">Third Plane Count:</div>
-          <input type="text" id="plane3counttextfield" data-stored-value="0" value="2">
-        </div>
-      </section>
-      <section>
-          <input type="submit" value="Calculate Airstrike Cooldown">
-      </section>
-      <section>
-        <div><span class="heading">Airstrike Cooldown:</span> <span id="finalcooldown"></span></div>
-        <div><span class="heading">Airstrike First Cooldown:</span> <span id="initcooldown"></span></div>
-        <div><span class="heading">Approximate Strike Timers:</span> <span id="finalstriketimers"></span></div>
-        <div class="small-help">Exact strike timers depend on some fight-specific factors and can be affected by lag.</div>
-      </section>
-      <section>
-        If you notice any bugs or there are any problems or concerns, please let me know on Discord at <b>Sedna#4917</b>. You can also open an issue on the <a href="https://github.com/thebombzen/thebombzen.moe/">GitHub repository</a>.
-      </section>
-    </form>
-  </main>
-  <footer>
-    <a href="https://thebombzen.com/azur-lane/battleship-reload/">Similar Calculator, but for Battleships</a>
-    <a href="/azur-lane/">Azur Lane Utilities</a>
-  </footer>
+        <section>
+          <div><span class="heading">Airstrike Cooldown:</span> <span id="finalcooldown"></span></div>
+          <div><span class="heading">Airstrike First Cooldown:</span> <span id="initcooldown"></span></div>
+          <div><span class="heading">Approximate Strike Timers:</span> <span id="finalstriketimers"></span></div>
+          <div class="small-help">Exact strike timers depend on some fight-specific factors and can be affected by lag.</div>
+        </section>
+        <section>
+          If you notice any bugs or there are any problems or concerns, please let me know on Discord at <b>thebombzen#3287</b>. You can also open an issue on the <a href="https://github.com/thebombzen/thebombzen.moe/">GitHub repository</a>.
+        </section>
+      </form>
+    </main>
+    <footer>
+      <a href="../battleship/">Similar Calculator, but for Battleships</a>
+      <a href="../../">Azur Lane Utilities</a>
+    </footer>
   </div>
 </body>
 </html>

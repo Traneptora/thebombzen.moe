@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="preload" as="style" href="/css/main.css">
+  <link rel="preload" as="style" href="/fonts/work-sans.css">
+  <link rel="preload" as="style" href="../cooldown.css">
+  <link rel="preload" as="script" href="../cooldown-common.js">
+  <link rel="preload" as="script" href="battleship.js">
+
+  <title>Battleship Cooldown Calculator</title>
+  <meta property="og:image" content="https://thebombzen.moe/img/avatar/256.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thebombzen.moe/azur-lane/cooldown/battleship/">
+  <meta property="og:title" content="Battleship Cooldown Calculator">
+  <meta property="og:description" content="Calculate the cooldown for a battleship main gun in Azur Lane.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" sizes="512x512" href="/img/avatar/512.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="/img/avatar/256.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/img/avatar/128.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/img/avatar/64.png">
+  <link rel="icon" type="image/vnd.microsoft.icon" sizes="16x16" href="/img/avatar/favicon.ico">
+  <!-- cause apple, apparently -->
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/img/avatar/180.png">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/fonts/work-sans.css">
+  <link rel="stylesheet" href="../cooldown.css">
+  <script defer src="../cooldown-common.js"></script>
+  <script defer src="battleship.js"></script>
+</head>
+<body class="calculator">
+  <div class="wrapper">
+    <header>Battleship Cooldown&nbsp;Calculator</header>
+    <div class="section"></div>
+    <main id="main">
+      <section>
+        <input type="checkbox" class="expand-zone-box" id="instructions" checked>
+        <label for="instructions">
+          <div>
+            <div class="heading">Instructions:</div>
+              <ul class="expand-zone-body">
+                <li>Choose a ship from the dropdown.</li>
+                <li>Modify her reload stat if necessary (in case she’s oathed, is under level 120, etc.)</li>
+                <li>Enter any relevant bonus modifiers. These are not automatically generated.</li>
+                <li>Choose the ship’s equipment.</li>
+              </ul>
+              <p class="expand-zone-default">
+                <i>(<span class="desktop">Click</span><span class="mobile">Tap</span> to show/hide instructions)</i>
+              </p>
+          </div>
+        </label>
+      </section>
+      <section>
+        <input type="checkbox" class="expand-zone-box" id="tips">
+        <label for="tips">
+          <div>
+            <div class="heading">Tips:</div>
+            <ul class="expand-zone-body">
+              <li>Do not adjust the main gun cooldown based on the equipped in-game numbers. Those are reload-adjusted. This calculator already handles that.</li>
+              <li>The initial cooldown adds 1.5s based on in-game code. In practice, the fight may start slightly later or sooner depending on lag and some fight-specific factors.</li>
+              <li>If something is off by 0.01s, that’s due to rounding. This calculator rounds to the nearest 0.01s.</li>
+              <li>Watch out for cat skills, not just talents. Some cats can change RLD stat for the flagship.</li>
+              <li>You can provide custom data for any of the dropdowns by choosing “Other” from the bottom of the menu.</li>
+              <li>The temporary RLD buff calculates it based on one buff per main gun cycle for the shot timers. This will be accurate on a ship like <a href="https://azurlane.koumakan.jp/Hood">Hood</a> if she always procs, but won’t be accurate if she doesn’t proc and won’t be for units like <a href="https://azurlane.koumakan.jp/Howe">Howe</a> where it’s on a timer.</li>
+            </ul>
+            <p class="expand-zone-default">
+              <i>(<span class="desktop">Click</span><span class="mobile">Tap</span> to show/hide tips)</i>
+            </p>
+          </div>
+        </label>
+      </section>
+      <form action="javascript:calculate_reload();">
+        <section class="reload-row">
+          <div class="section reload-column">
+            <div class="heading">Choose Ship:</div>
+            <select id="select-ship" data-previous-ship="empty" onchange="acquire_loadout();"></select>
+            <input type="hidden" id="select-ship-cache" value="Georgia">
+          </div>
+          <div class="section reload-column">
+            <div class="heading">Base RLD Stat:</div>
+            <div class="small-help">(without skills, Fleet Tech, or cats)</div>
+            <input type="text" id="txt-rld-stat-base" value="163">
+          </div>
+          <div class="section reload-column">
+            <div class="button-and-label">
+              <input type="checkbox" id="box-affinity" onclick="toggle_affinity();">
+              <label for="box-affinity">
+                <div class="heading">Ship is oathed?</div>
+                <div class="small-help">and with 200 affinity</div>
+              </label>
+            </div>
+          </div>
+        </section>
+        <section class="reload-row">
+          <div class="section reload-column">
+            <div class="heading">Bonus RLD Stat:</div>
+            <div class="small-help">from Fleet Tech and cats</div>
+            <input type="text" id="txt-rld-stat-bonus" value="0">
+          </div>
+          <div class="section reload-column">
+            <div class="heading">Reload Percentage Buff:</div>
+            <div class="small-help">from skills, e.g. from <a href="https://azurlane.koumakan.jp/Queen_Elizabeth">Queen Elizabeth</a></div>
+            <input type="text" id="bb-rld-buff-txt" value="0.0">
+          </div>
+          <div class="section reload-column">
+            <div class="button-and-label">
+              <input type="checkbox" id="bb-hpfcr-enable" onclick="javascript:calculate_reload();">
+              <label for="bb-hpfcr-enable">
+                <div class="heading">High Standard Fire Control Radar Equipped?</div>
+                <div class="small-help">(only one, it doesn’t stack with itself)</div>
+              </label>
+            </div>
+          </div>
+        </section>
+        <section class="reload-row">
+          <div class="section reload-column">
+            <div class="heading">Cooldown Reduction Percent:</div>
+            <div class="small-help">for all shots, for example on <a href="https://azurlane.koumakan.jp/Champagne">Champagne</a></div>
+            <input type="text" id="bb-cd-red-txt-1" value="0.0">
+          </div>
+          <div class="section reload-column">
+            <div class="heading">First Cooldown Reduction Percent:</div>
+            <div class="small-help">for one shot, for example on <a href="https://azurlane.koumakan.jp/King_George_V">King George V</a></div>
+            <input type="text" id="bb-cd-red-txt-2" value="0.0">
+          </div>
+        </section>
+        <section class="reload-row">
+          <div class="section reload-column">
+            <div class="button-and-label">
+              <input type="checkbox" id="bb-cd-red-3-enable" onclick="javascript:update_guntextfields();calculate_reload();">
+              <label for="bb-cd-red-3-enable">
+                <div class="heading">Temporary Reload Buff?</div>
+                <div class="small-help">for example, from <a href="https://azurlane.koumakan.jp/Hood">Hood</a></div>
+              </label>
+            </div>
+          </div>
+          <div class="section reload-column bb-cd-red-3-container">
+            <div class="heading">Temporary RLD Buff Duration:</div>
+            <input type="text" id="bb-cd-red-txt-3-time" value="8.0">
+          </div>
+          <div class="section reload-column bb-cd-red-3-container">
+            <div class="heading">Temporary RLD Buff Percent:</div>
+            <input type="text" id="bb-cd-red-txt-3-quant" value="20.0">
+          </div>
+        </section>
+        <section>
+          <div class="heading">Main Gun Cooldown:</div>
+          <select id="bb-mg-1-dropdown" onchange="update_guntextfields(); calculate_reload();">
+            <optgroup label="High Explosive">
+              <option value="triple406mk6" data-imgname="triple-406-mk6.png" data-cd="24.02">Triple 406mm MK6</option>
+              <option value="triple406mk7" data-imgname="triple-406-mk7.png" data-cd="24.22">Triple 406mm Mk7</option>
+              <option value="twin406skc" data-imgname="twin-406-skc.png" data-cd="19.42">Twin 406mm SKC/34</option>
+              <option value="triple305skc" data-imgname="triple-305-skc.png" data-cd="18.20">Triple 305mm SKC/39</option>
+              <option value="triple381proto" data-imgname="triple-381-pr1.png" data-cd="23.14">Triple 381mm Prototype</option>
+              <option value="twin381hood" data-imgname="twin-381-hoodgun.png" data-cd="17.96">Twin 381mm Advanced Main Gun</option>
+              <option value="twin410purple" data-imgname="twin-410-mounted.png" data-cd="20.02">Twin 410mm Mounted</option>
+              <option value="quad380jeanbart" data-imgname="quad-380.png" data-cd="25.80">Quadruple 380mm MLE 1935</option>
+              <option value="quad356kgv" data-imgname="quad-356-kgv.png" data-cd="29.19">Quadruple 356mm Main Gun</option>
+              <option value="triple305gangut" data-imgname="triple-305-pattern1907.png" data-cd="27.40">Triple 305mm (Pattern 1907)</option>
+            </optgroup>
+            <optgroup label="Armor Piercing">
+              <option value="triple410proto" data-imgname="triple-410-pr1.png" data-cd="24.14">Triple 410mm Prototype</option>
+              <option value="triple406mle" data-imgname="triple-406-mle.png" data-cd="24.02" selected>Triple 406mm MLE 1938</option>
+              <option value="twin457proto" data-imgname="twin-457-mka.png" data-cd="20.65">Twin 457mm MK A</option>
+              <option value="triple381littorio" data-imgname="triple-381-littorio.png" data-cd="24.02">Triple 381mm Model 1934</option>
+              <option value="twin380bisko" data-imgname="twin-380-skc.png" data-cd="18.38">Twin 380mm SKC/34</option>
+            </optgroup>
+            <optgroup label="Nonstandard Ammo">
+              <option value="lmaoholyfuck" data-imgname="twin-410-confetti.png" data-cd="19.29">Twin 410mm Type 3 Confetti</option>
+              <option value="triple406hms" data-imgname="triple-406-hms.png" data-cd="24.02">Triple 406mm Mk I</option>
+              <option value="triple283bbskc" data-imgname="triple-283-bbskc.png" data-cd="16.63">Triple 283mm SKC/34</option>
+              <option value="quad356nomvp" data-imgname="quad-356-mvpcontrol.png" data-cd="36.87">Blue +0 Quad 356mm Main Gun</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option value="unequipped" data-imgname="stock-gun.png" data-cd="16.76">Stock Gun / Unequipped</option>
+              <option value="other" data-imgname="stock-gun.png" data-cd="">Other</option>
+            </optgroup>
+          </select>
+          <input type="text" id="bb-mg-1-txt" value="19.42">
+        </section>
+        <section>
+          <img id="bb-mg-1-img" src="data:," width="120" height="120" alt="triple40mle">
+        </section>
+        <section>
+          <input type="submit" value="Calculate Main Gun Cooldown">
+        </section>
+        <section>
+          <div><span class="heading">Main Gun Cooldown:</span>&nbsp;<span id="bb-result-cooldown"></span></div>
+          <div><span class="heading">Main Gun First Cooldown:</span>&nbsp;<span id="bb-result-init-cooldown"></span></div>
+          <div style="min-height: 2.5em;"><span class="heading">Approximate Main Gun Shot Timers:</span>&nbsp;<span id="bb-result-shot-timers"></span></div>
+          <div class="small-help">Exact strike timers depend on some fight-specific factors and can be affected by lag.</div>
+        </section>
+        <section>
+          If you notice any bugs or there are any problems or concerns, please let me know on Discord at <b>thebombzen#3287</b>. You can also open an issue on the <a href="https://github.com/thebombzen/thebombzen.moe/">GitHub repository</a>.
+        </section>
+      </form>
+    </main>
+    <footer>
+      <a href="../airstrike/">Similar Calculator, but for Airstrikes</a>
+      <a href="../../">Azur Lane Utilities</a>
+    </footer>
+  </div>
+</body>
+</html>

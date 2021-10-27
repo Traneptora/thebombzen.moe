@@ -2,26 +2,11 @@
  * airstrike.css
  */
 
-body.calculator :is(select, section > input) {
-    margin-bottom: 0.0em;
-}
-
-.plane-row, .reload-row {
+.plane-row {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    width: 100%;
-}
-
-.reload-column {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.reload-column:first-of-type {
     width: 100%;
 }
 
@@ -42,16 +27,12 @@ body.calculator :is(select, section > input) {
     align-items: flex-start;
 }
 
-:is(.plane-column, .reload-column) input[type="text"] {
+.plane-column input[type="text"] {
     width: 100%;
 }
 
 .plane-row :is(input[type="text"]) {
     margin-bottom: 0.5em;
-}
-
-.reload-row :is(select, option) {
-    width: 100%;
 }
 
 .plane-row :is(select, option) {
@@ -61,28 +42,12 @@ body.calculator :is(select, section > input) {
     text-align: left;
 }
 
-.reload-column .button-and-label {
-    height: 100%;
-}
-
 @media only screen and (min-width: 1024px){
-    .plane-row, .reload-row, .plane-select-row {
+    .plane-row, .plane-select-row {
         flex-direction: row;
     }
-    .reload-row {
-        width: 100%;
-    }
-    .reload-column {
-        width: 33%;
-    }
-    .reload-column:first-of-type {
-        width: 34%;
-    }
-    :is(.reload-column, .plane-column) input[type="text"] {
+    .plane-column input[type="text"] {
         width: 60%;
-    }
-    .reload-row :is(select, option) {
-        width: 75%;
     }
     .plane-row :is(select, option) {
         width: 60%;

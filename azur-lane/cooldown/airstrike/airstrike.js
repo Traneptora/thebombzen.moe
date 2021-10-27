@@ -47,7 +47,7 @@ function calculate_reload(){
     let cooldown_reduction = document.getElementById("cdreduction1textfield").value;
     let initial_cooldown_reduction = document.getElementById("cdreduction2textfield").value;
     let beacon = document.getElementById("beaconbox").checked;
-    let cooldown = get_airstrike_cooldown(plane1time, +plane1count, plane2time, +plane2count, plane3time, +plane3count, +reloadstat, +reloadbonus, +reloadbuff, beacon, +cooldown_reduction, +initial_cooldown_reduction);
+    let cooldown = get_airstrike_cooldown(+plane1time, +plane1count, +plane2time, +plane2count, +plane3time, +plane3count, +reloadstat, +reloadbonus, +reloadbuff, beacon, +cooldown_reduction, +initial_cooldown_reduction);
     if (cooldown[0] > 0.0){
         document.getElementById("finalcooldown").textContent = cooldown.shift() + "s";
         document.getElementById("initcooldown").textContent = cooldown[0] + "s";

@@ -40,8 +40,12 @@ a {
     text-decoration: none;
 }
 
-a:link, a:visited, a:hover {
-    color: #4F8FFF;
+a:link, a:visited {
+    color: #2F6FCF;
+}
+
+a:hover {
+    color: #F49B43;
 }
 
 a:active, a:focus {

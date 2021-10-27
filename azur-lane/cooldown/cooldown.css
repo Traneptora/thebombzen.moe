@@ -1,0 +1,57 @@
+/*
+ * cooldown.css
+ */
+
+body.calculator :is(select, section > input) {
+    margin-bottom: 0.0em;
+}
+
+.reload-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+}
+
+.reload-column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reload-column:first-of-type {
+    width: 100%;
+}
+
+.reload-column input[type="text"] {
+    width: 100%;
+}
+
+.reload-row :is(select, option) {
+    width: 100%;
+}
+
+.reload-column .button-and-label {
+    height: 100%;
+}
+
+@media only screen and (min-width: 1024px){
+    .reload-row {
+        flex-direction: row;
+        width: 100%;
+    }
+    .reload-column {
+        width: 33%;
+    }
+    .reload-column:first-of-type {
+        width: 34%;
+    }
+    .reload-column input[type="text"] {
+        width: 60%;
+    }
+    .reload-row :is(select, option) {
+        width: 75%;
+    }
+}
