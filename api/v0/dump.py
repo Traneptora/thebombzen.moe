@@ -13,9 +13,8 @@ import sqlite3
 import zlib
 
 import requests
-import wand.image
 
-from api_common import get_post_form
+from api_common import get_post_form, image_hash, send_to_webhook
 
 DumpEntry = collections.namedtuple('DumpEntry', 'namespace crtime mtime dumpid dumphash dumpfilehash upstreamurl extra clienthash')
 
@@ -24,17 +23,6 @@ dump_cur = dump_con.cursor()
 
 with open('webhook_url_dump') as f:
     webhooks = json.load(f)
-
-def send_to_webhook(webhook_url, filename, blob):
-
-    r = requests.post(webhook_url, files={'file': (filename, blob)})
-    js = r.json()
-    ret = {'success': r.ok, 'statusCode': r.status_code, 'response': js}
-    try:
-        ret['url'] = str(js['attachments'][0]['url'])
-    except (LookupError, TypeError, ValueError) as ex:
-        return None
-    return ret
 
 def upload(form):
     upload = form['upload']
@@ -50,16 +38,6 @@ def upload(form):
 re_strip = re.compile(r'[^0-9A-Za-z\-_=]|(^$)')
 re_eq = re.compile(r'=')
 
-def image_hash(blob):
-    try:
-        with wand.image.Image(blob=blob) as img:
-            img_data = img.make_blob(format='rgba')
-            hash_obj = hashlib.sha3_224()
-            hash_obj.update(img_data)
-            return base64.b64encode(hash_obj.digest(), altchars=b'-_')[:-2].decode()
-    except Exception:
-        traceback.print_exc()
-    return None
 
 def validate(form):
     namespace = form.getvalue('dump-location', 'default')

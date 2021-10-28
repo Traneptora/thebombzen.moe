@@ -1,15 +1,25 @@
 # python3 uwsgi
 # for pr-data
 
+import collections
+import json
 import os
-import re
-import subprocess
+import sqlite3
 import sys
-import tempfile
-from api_common import get_post_form
+import time
 
-asset_cache = {}
-static_asset_dir = 'pr-data/static/'
+import requests
+
+from api_common import get_post_form, image_hash, send_to_webhook
+
+PrDataEntry = collections.namedtuple('PrDataEntry', [
+    'imagehash', 'crtime', 'mtime', 'original', 'extension',
+    'projectseries', 'projecttype', 'projectname',
+    'filesize', 'clienthash', 'messageid',
+    ])
+
+prdata_con = sqlite3.connect('pr-data.db')
+prdata_cur = prdata_con.cursor()
 
 def eprint(*args, **kwargs):
     kwargs['file'] = sys.stderr
@@ -19,53 +29,88 @@ def eprint(*args, **kwargs):
 def logprint(*args, **kwargs):
     eprint(*args, **kwargs)
 
-def canonicalize_asset(asset):
-    return asset if asset.startswith(static_asset_dir) else static_asset_dir + asset
-
-def canonicalassets(f):
-    def inner(asset):
-        return f(canonicalize_asset(asset))
-    return inner
-
-@canonicalassets
-def load_asset(asset):
-    logprint(f'Loading asset: {asset}')
-    mtime = os.path.getmtime(asset)
-    with open(asset, 'rb') as fd:
-        asset_cache[asset] = {
-            'mtime': mtime,
-            'data' : fd.read(),
-        }
-    return asset_cache[asset]['data']
-
-@canonicalassets
-def get_asset(asset):
-    if asset not in asset_cache:
-        return load_asset(asset)
-    mtime = os.path.getmtime(asset)
-    if asset_cache[asset]['mtime'] != mtime:
-        logprint(f'Asset changed on disk: {asset}')
-        return load_asset(asset)
-    return asset_cache[asset]['data']
-
 def post(env, relative_uri):
     form = get_post_form(env)
+    action = form.getvalue('action', '')
+    try:
+        if action == 'submit':
+            return submit(form)
+        if action == 'check':
+            return check(form)
+    except BaseException as ex:
+        prdata_con.rollback()
+        raise ex
+    return ('400 Bad Request', 'Unsupported action')
+
+def find(xxh):
+    entry = prdata_cur.execute('SELECT * FROM prdata WHERE clienthash=?', (xxh,)).fetchone()
+    return PrDataEntry(*entry) if entry is not None else None
+
+def check(form):
+    xxh = form.getvalue('client-xxhash', '')
+    if len(xxh) == 0:
+        return ('200 OK', {'success': True, 'cacheHit': False})
+    entry = find(xxh)
+    return ('200 OK', {'success': True, 'cacheHit': entry is not None})
+
+def submit(form):
     project_series = form.getvalue('project-series', '')
     project_type = form.getvalue('project-type', '')
     project_name = form.getvalue('project-name', '')
-    results_screenshot = form['results-screenshot']
-    if project_series == '' or project_name == '' or results_screenshot is None or results_screenshot.filename is None or results_screenshot.filename == '':
+    entry = None
+    if bool(form.getvalue('use-cached-upload', False)):
+        entry = find(form.getvalue('client-xxhash', ''))
+    results_screenshot = form['results-screenshot'] if 'results-screenshot' in form else None
+    if project_series == '' or project_name == '' or entry is None and (results_screenshot is None or results_screenshot.filename is None or results_screenshot.filename == ''):
         return ('400 Bad Request', None)
-    fd, tmp_name = tempfile.mkstemp(prefix='pr-data-', dir='/tmp/')
-    tmp = os.fdopen(fd, mode='w+b')
-    tmp.write(results_screenshot.file.read())
-    status = subprocess.run(['./image-uploaded.sh', tmp_name, results_screenshot.filename, project_series.upper(), project_type.upper(), project_name.upper()], capture_output=True).stdout.decode()
-    status_dict = {}
-    for line in status.splitlines():
-        match = re.match(r'(\w+):\s(.*)', line)
-        if not match:
-            logprint(line)
-        k, v = match.group(1, 2)
-        status_dict[k] = v
-    status_dict.update({'success': True})
-    return ('200 OK', status_dict)
+    now = int(time.time())
+    blob = results_screenshot.file.read() if entry is None else None
+    filesize = len(blob) if entry is None else entry.filesize
+    sent_image_hash = image_hash(blob) if entry is None else entry.imagehash
+    if not sent_image_hash:
+        return ('415 Unsupported Media Type', {'success': False, 'color': 'error', 'status': 'Invalid Upload.', 'extra': 'Unsupported File.'})
+    original = results_screenshot.filename if entry is None else entry.original
+    entry = prdata_cur.execute('SELECT * FROM prdata WHERE imagehash=?', (sent_image_hash,)).fetchone()
+    need_upload = True
+    if entry:
+        entry = PrDataEntry(*entry)
+        if entry.projectname == project_name and entry.projectseries == project_series:
+            need_upload = False
+    if need_upload:
+        content = f'Image Hash: `{sent_image_hash}`\nOriginal: `{original}`\nUpload Timestamp: <t:{entry.crtime if entry else now}>\n'
+        content += f'Project Type: `{project_type}`\nProject Series: `{project_series.upper()}`\nProject Name: `{project_name}`\n'
+        with open('webhook_url_pr_data') as f:
+            webhooks = json.load(f)
+        webhook = webhooks['pr-data']
+        try:
+            ext = original[original.rindex('.'):]
+        except ValueError:
+            # no extension
+            ext  = '.png'
+        if entry:
+            content += f'Edit Timestamp: <t:{now}>'
+            resp = requests.patch(f'{webhook}/messages/{entry.messageid}', data={'content': content})
+            if resp.ok:
+                prdata_cur.execute('UPDATE prdata SET mtime=?, original=?, extension=?, projectseries=?, projecttype=?, projectname=?, filesize=?, clienthash=? WHERE imagehash=?',
+                    (now, original, ext, project_series, project_type, project_name, filesize, form.getvalue('client-xxhash', ''), sent_image_hash))
+                prdata_con.commit()
+                return ('200 OK', {'color': 'ok', 'status': 'Metadata Updated.',
+                    'extra': f'Project Series: {project_series.upper()}. Project Name: {project_name}.'})
+            else:
+                prdata_con.rollback()
+                return ('502 Bad Gateway', 'Error in backend.')
+        else:
+            resp = requests.post(webhook, files={'file': (sent_image_hash + ext, blob)}, data={'content': content})
+            if resp.ok:
+                message_id = int(resp.json()['id'])
+                prdata_cur.execute('INSERT INTO prdata VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', (sent_image_hash, now, now, original, ext,
+                    project_series, project_type, project_name, filesize, form.getvalue('client-xxhash', ''), message_id))
+                prdata_con.commit()
+                return ('200 OK', {'success': True, 'color': 'ok',
+                    'status': 'Upload completed successfully.',
+                    'extra': f'Project Series: {project_series.upper()}. Project Name: {project_name}.'})
+            else:
+                prdata_con.rollback()
+                return ('502 Bad Gateway', 'Error in backend.')
+    else:
+        return ('200 OK', {'success': True, 'color': 'ok', 'status': 'Exact Duplicate Uploaded.', 'extra': 'No action was performed.'})

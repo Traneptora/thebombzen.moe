@@ -93,11 +93,7 @@ function submit_result(){
         const disp = document.getElementById('server-response-status');
         disp.style.display = 'block';
         const response = JSON.parse(xhr.response);
-        if (response.success){
-            disp.textContent = response.status + ' ' + response.extra;
-        } else {
-            disp.textContent = 'Backend error occurred, try again later.';
-        }
+        disp.textContent = (response.status || 'Error:') + ' ' + (response.extra || 'Backend error occurred, try again later.');
         document.getElementById('submit').disabled = false;
     });
 
@@ -112,18 +108,38 @@ function submit_result(){
     formData.append('action', 'submit');
     formData.append('project-series', document.getElementById('project-series').value);
     formData.append('project-type', document.getElementById('project-type').value);
-    formData.append('project-name', document.getElementById('project-name').value);  
-    return fetch(document.getElementById('canvas').src).then(r => r.blob()).then((blob) => {
-        return blob.arrayBuffer().then((b) => {
-            return Array.from(h64raw(new Uint8Array(b), 0, 0)).map(i => i.toString(16)).join('').toLowerCase();
-        }).then((h) => {
+    formData.append('project-name', document.getElementById('project-name').value);
+
+    return fetch(document.getElementById('canvas').src)
+        .then(r => r.blob())
+        .then((blob) => {
+            formData.append('results-screenshot', blob);
+            return blob.arrayBuffer();
+        }).then((b) => Array.from(h64raw(new Uint8Array(b), 0, 0)).map(i => i.toString(16)).join('').toLowerCase())
+        .then((h) => {
+            formData.set('client-xxhash', h);
+            const checkFormData = new FormData();
+            checkFormData.set('action', 'check');
+            checkFormData.set('client-xxhash', h);
+            return fetch('/api/v0/azur-lane/pr-data/', {
+                method: 'POST',
+                mode: 'cors',
+                cache: 'no-cache',
+                credentials: 'omit',
+                referrerPolicy: 'no-referrer',
+                body: checkFormData,
+            });
+        }).then(r => r.json())
+        .then((j) => {
+            console.log(j);
+            if (j.cacheHit){
+                formData.delete('results-screenshot');
+                formData.set('use-cached-upload', true);
+            }
             document.getElementById('server-response-status').style.display = 'block';
             document.getElementById('server-response-status').textContent = '';
-            formData.append('client-xxhash', h);
-            formData.append('results-screenshot', blob);
-            xhr.send(formData);
+            return xhr.send(formData);
         });
-    });
 }
 
 window.addEventListener('paste', async (e) => {
