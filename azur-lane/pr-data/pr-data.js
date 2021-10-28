@@ -1,3 +1,8 @@
+var h64raw;
+import('/js/xxhash-wasm@0.4.2.js').then(async (h) => {
+    h64raw = (await (h.default())).h64Raw;
+});
+
 function series_filter(){
     document.getElementById('main').dataset.filterSeries = document.getElementById('project-series').value;
 }
@@ -84,7 +89,7 @@ function submit_result(){
         }
     });
 
-    xhr.addEventListener('load', (event) => {
+    xhr.addEventListener('load', async (e) => {
         const disp = document.getElementById('server-response-status');
         disp.style.display = 'block';
         const response = JSON.parse(xhr.response);
@@ -96,7 +101,7 @@ function submit_result(){
         document.getElementById('submit').disabled = false;
     });
 
-    xhr.addEventListener('error', (event) => {
+    xhr.addEventListener('error', async (e) => {
         document.getElementById('server-response-status').style.display = 'block';
         document.getElementById('server-response-status').textContent = 'Unknown error occurred :(';
     });
@@ -104,14 +109,20 @@ function submit_result(){
     xhr.open('POST', '/api/v0/azur-lane/pr-data/');
 
     const formData = new FormData();
+    formData.append('action', 'submit');
     formData.append('project-series', document.getElementById('project-series').value);
     formData.append('project-type', document.getElementById('project-type').value);
     formData.append('project-name', document.getElementById('project-name').value);  
-    fetch(document.getElementById('canvas').src).then(r => r.blob()).then((blob) => {
-        document.getElementById('server-response-status').style.display = 'block';
-        document.getElementById('server-response-status').textContent = '';
-        formData.append('results-screenshot', blob);
-        xhr.send(formData);
+    return fetch(document.getElementById('canvas').src).then(r => r.blob()).then((blob) => {
+        return blob.arrayBuffer().then((b) => {
+            return Array.from(h64raw(new Uint8Array(b), 0, 0)).map(i => i.toString(16)).join('').toLowerCase();
+        }).then((h) => {
+            document.getElementById('server-response-status').style.display = 'block';
+            document.getElementById('server-response-status').textContent = '';
+            formData.append('client-xxhash', h);
+            formData.append('results-screenshot', blob);
+            xhr.send(formData);
+        });
     });
 }
 
@@ -132,7 +143,7 @@ window.addEventListener('drop', async (e) => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('results-screenshot').value = '';
     document.getElementById('canvas').src = 'data:,';
     const v = (e) => {
