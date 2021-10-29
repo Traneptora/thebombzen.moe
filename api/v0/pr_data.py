@@ -67,6 +67,7 @@ def submit(form):
     blob = results_screenshot.file.read() if entry is None else None
     filesize = len(blob) if entry is None else entry.filesize
     sent_image_hash = image_hash(blob) if entry is None else entry.imagehash
+    clienthash = form.getvalue('client-xxhash', '')
     if not sent_image_hash:
         return ('415 Unsupported Media Type', {'success': False, 'color': 'error', 'status': 'Invalid Upload.', 'extra': 'Unsupported File.'})
     original = results_screenshot.filename if entry is None else entry.original
@@ -92,7 +93,7 @@ def submit(form):
             resp = requests.patch(f'{webhook}/messages/{entry.messageid}', data={'content': content})
             if resp.ok:
                 prdata_cur.execute('UPDATE prdata SET mtime=?, original=?, extension=?, projectseries=?, projecttype=?, projectname=?, filesize=?, clienthash=? WHERE imagehash=?',
-                    (now, original, ext, project_series, project_type, project_name, filesize, form.getvalue('client-xxhash', ''), sent_image_hash))
+                    (now, original, ext, project_series, project_type, project_name, filesize, clienthash, sent_image_hash))
                 prdata_con.commit()
                 return ('200 OK', {'color': 'ok', 'status': 'Metadata Updated.',
                     'extra': f'Project Series: {project_series.upper()}. Project Name: {project_name}.'})
@@ -104,7 +105,7 @@ def submit(form):
             if resp.ok:
                 message_id = int(resp.json()['id'])
                 prdata_cur.execute('INSERT INTO prdata VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', (sent_image_hash, now, now, original, ext,
-                    project_series, project_type, project_name, filesize, form.getvalue('client-xxhash', ''), message_id))
+                    project_series, project_type, project_name, filesize, clienthash, message_id))
                 prdata_con.commit()
                 return ('200 OK', {'success': True, 'color': 'ok',
                     'status': 'Upload completed successfully.',
@@ -113,4 +114,6 @@ def submit(form):
                 prdata_con.rollback()
                 return ('502 Bad Gateway', 'Error in backend.')
     else:
+        prdata_cur.execute('UPDATE prdata SET clienthash=? WHERE imagehash=?', (clienthash, sent_image_hash))
+        prdata_con.commit()
         return ('200 OK', {'success': True, 'color': 'ok', 'status': 'Exact Duplicate Uploaded.', 'extra': 'No action was performed.'})
