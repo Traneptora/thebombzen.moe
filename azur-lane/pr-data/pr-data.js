@@ -1,6 +1,5 @@
-var h64raw;
-import('/js/xxhash-wasm@0.4.2.js').then(async (h) => {
-    h64raw = (await (h.default())).h64Raw;
+const h64promise = import('/js/xxhash-wasm@0.4.2.js').then(h => h.default()).then((d) => {
+    return d.h64Raw;
 });
 
 function series_filter(){
@@ -51,17 +50,65 @@ function validate_result(){
     return valid;
 }
 
-function display_blob(blob){
-    const url = blob && blob.type.startsWith('image/') ? URL.createObjectURL(blob) : 'data:,';
-    document.getElementById('canvas').src = url;
-    if(document.getElementById('submit').disabled && url !== 'data:,'){
-        validate_result();
+async function get_canvas_blob(){
+    let src = document.getElementById('canvas').src;
+    if (src && src === ''){
+        src = 'data:,';
     }
+    return fetch(src).then(r => r.blob());
 }
 
-function render_image(){
+async function get_canvas_xxh(blob){
+    let ab;
+    if (blob){
+        ab = blob.arrayBuffer();
+    } else {
+        ab = get_canvas_blob().then(b => b.arrayBuffer());
+    }
+    const h64raw = await h64promise;
+    return ab.then(b => Array.from(h64raw(new Uint8Array(b), 0, 0)).map(i => i.toString(16)).join('').toLowerCase());
+}
+
+async function check_upload(xxh){
+    const checkFormData = new FormData();
+    checkFormData.set('action', 'check');
+    checkFormData.set('client-xxhash', xxh);
+    return fetch('/api/v0/azur-lane/pr-data/', {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'omit',
+        referrerPolicy: 'no-referrer',
+        body: checkFormData,
+    }).then(r => r.json());
+}
+
+async function display_blob(blob){
+    const url = blob && blob.type.startsWith('image/') ? URL.createObjectURL(blob) : 'data:,';
+    document.getElementById('canvas').src = url;
+    return get_canvas_xxh().then(xxh => check_upload(xxh)).then((j) => {
+        if (j.cacheHit){
+            document.getElementById('project-series').value = j.projectSeries;
+            document.getElementById('project-type').value = j.projectType;
+            document.getElementById('project-name').value = j.projectName;
+        } else {
+            document.getElementById('project-series').value = '';
+            document.getElementById('project-type').value = '';
+            document.getElementById('project-name').value = '';
+        }
+        name_filter();
+        series_filter();
+        type_filter();
+    }).then(() => {
+        if(document.getElementById('submit').disabled && url !== 'data:,'){
+            validate_result();
+        }
+    });
+}
+
+async function render_image(){
     const file = document.getElementById('results-screenshot').files[0];
-    display_blob(file);
+    await display_blob(file);
 }
 
 function suppress(e) {
@@ -110,26 +157,14 @@ function submit_result(){
     formData.append('project-type', document.getElementById('project-type').value);
     formData.append('project-name', document.getElementById('project-name').value);
 
-    return fetch(document.getElementById('canvas').src)
-        .then(r => r.blob())
+    return get_canvas_blob()
         .then((blob) => {
             formData.append('results-screenshot', blob);
-            return blob.arrayBuffer();
-        }).then((b) => Array.from(h64raw(new Uint8Array(b), 0, 0)).map(i => i.toString(16)).join('').toLowerCase())
-        .then((h) => {
+            return get_canvas_xxh(blob);
+        }).then((h) => {
             formData.set('client-xxhash', h);
-            const checkFormData = new FormData();
-            checkFormData.set('action', 'check');
-            checkFormData.set('client-xxhash', h);
-            return fetch('/api/v0/azur-lane/pr-data/', {
-                method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'omit',
-                referrerPolicy: 'no-referrer',
-                body: checkFormData,
-            });
-        }).then(r => r.json())
+            return check_upload(h);
+        })
         .then((j) => {
             console.log(j);
             if (j.cacheHit){
@@ -146,7 +181,7 @@ window.addEventListener('paste', async (e) => {
     suppress(e);
     const file = (e.clipboardData || e.originalEvent.clipboardData).items[0];
     if (file){
-        display_blob(file.getAsFile());
+        await display_blob(file.getAsFile());
     }
 });
 
@@ -155,7 +190,7 @@ window.addEventListener('dragover', suppress);
 window.addEventListener('drop', async (e) => {
     suppress(e);
     if (e.dataTransfer.files[0]){
-        display_blob(e.dataTransfer.files[0]);
+        await display_blob(e.dataTransfer.files[0]);
     }
 });
 

@@ -51,7 +51,10 @@ def check(form):
     if len(xxh) == 0:
         return ('200 OK', {'success': True, 'cacheHit': False})
     entry = find(xxh)
-    return ('200 OK', {'success': True, 'cacheHit': entry is not None})
+    if entry is None:
+        return ('200 OK', {'success': True, 'cacheHit': False})
+    return ('200 OK', {'success': True, 'cacheHit': True,
+        'projectSeries': entry.projectseries, 'projectType': entry.projecttype, 'projectName': entry.projectname})
 
 def submit(form):
     project_series = form.getvalue('project-series', '')
