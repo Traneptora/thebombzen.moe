@@ -54,7 +54,20 @@ a:active, a:focus {
 
 select, option, optgroup, input {
     color: #080813;
+}
+
+select, input {
     font-size: 1.0em;
+}
+
+option, optgroup {
+    font-size: 0.5em;
+}
+
+@media only screen and (min-width: 1024px) {
+    option, optgroup {
+        font-size: 1.0em;
+    }
 }
 
 select, optgroup, input {
