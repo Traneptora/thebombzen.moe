@@ -71,7 +71,14 @@
       <input type="file" name="results-screenshot" id="results-screenshot" accept="image/*" onchange="render_image();">
     </section>
     <div class="section">
-      <img id="canvas" src="data:,">
+      <div class="section">
+        <input type="checkbox" id="box-autocrop" checked>
+        <label for="box-autocrop" checked>Autocrop Image?</label>
+      </div>
+      <div class="section" id="canvas-container">
+        <img id="source-image" src="data:,">
+        <canvas id="canvas"></canvas>
+      </div>
     </div>
     <section>
       <div class="section">

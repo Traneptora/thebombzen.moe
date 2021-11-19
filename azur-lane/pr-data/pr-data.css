@@ -32,13 +32,20 @@ main[data-project-name="unlisted"] input[type="submit"] {
     display: none;
 }
 
-#canvas {
-    width: 100%;
-    max-height: 600px;
-    object-fit: contain;
+#canvas-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-#canvas[src="data:,"] {
+#source-image {
+    display: none;
+    object-fit: contain;
+    max-width: 960px;
+    max-height: 720px;
+}
+
+#source-image[src="data:,"] ~ #canvas {
     display: none;
 }
 

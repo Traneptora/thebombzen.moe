@@ -41,7 +41,7 @@ function conditional_class(condition, className, element) {
 }
 
 function validate_result(){
-    const src = document.getElementById('canvas').src;
+    const src = document.getElementById('source-image').src;
     let valid = !conditional_class(!src || src === 'data:,', 'rust', document.getElementById('results-screenshot').parentElement.firstElementChild);
     valid = Array.prototype.map.call(document.querySelectorAll('#project-series, #project-name'),
         el => !conditional_class(!el.value, 'rust', el.parentElement.firstElementChild)
@@ -51,11 +51,7 @@ function validate_result(){
 }
 
 async function get_canvas_blob(){
-    let src = document.getElementById('canvas').src;
-    if (src && src === ''){
-        src = 'data:,';
-    }
-    return fetch(src).then(r => r.blob());
+    return fetch(document.getElementById('canvas').toDataURL()).then(r => r.blob());
 }
 
 async function get_canvas_xxh(blob){
@@ -83,9 +79,41 @@ async function check_upload(xxh){
     }).then(r => r.json());
 }
 
-async function display_blob(blob){
+async function acquire_source(blob){
     const url = blob && blob.type.startsWith('image/') ? URL.createObjectURL(blob) : 'data:,';
-    document.getElementById('canvas').src = url;
+    const origImage = document.getElementById('source-image');
+    origImage.src = url;
+}
+
+async function source_loaded(){
+    const origImage = document.getElementById('source-image');
+    if (origImage.src === 'data:,') {
+        return;
+    }
+    const autoCrop = document.getElementById('box-autocrop').checked;
+    const canvas = document.getElementById('canvas');
+    if (autoCrop) {
+        canvas.style.display = 'block';
+        origImage.style.display = 'none';
+        const context = canvas.getContext('2d');
+        if (origImage.naturalWidth * 9 > origImage.naturalHeight * 16) {
+            /* wider than 16:9 */
+            canvas.width = origImage.naturalHeight * 8 / 9;
+            canvas.height = origImage.naturalHeight * 2 / 3;
+            const origX = (origImage.naturalWidth - canvas.width) / 2;
+            const origY = (origImage.naturalHeight - canvas.height) / 2;
+            context.drawImage(origImage, origX, origY, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+        } else if (origImage.naturalWidth * 9 < origImage.naturalHeight * 16) {
+            canvas.width = origImage.naturalWidth / 2;
+            canvas.height = origImage.naturalWidth * 3 / 8;
+            const origX = (origImage.naturalWidth - canvas.width) / 2;
+            const origY = (origImage.naturalHeight - canvas.height) / 2;
+            context.drawImage(origImage, origX, origY, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+        }
+    } else {
+        canvas.style.display = 'none';
+        origImage.style.display = 'block';
+    }
     return get_canvas_xxh().then(xxh => check_upload(xxh)).then((j) => {
         if (j.cacheHit){
             document.getElementById('project-series').value = j.projectSeries;
@@ -100,7 +128,7 @@ async function display_blob(blob){
         series_filter();
         type_filter();
     }).then(() => {
-        if(document.getElementById('submit').disabled && url !== 'data:,'){
+        if(document.getElementById('submit').disabled && origImage.src !== 'data:,'){
             validate_result();
         }
     });
@@ -108,7 +136,7 @@ async function display_blob(blob){
 
 async function render_image(){
     const file = document.getElementById('results-screenshot').files[0];
-    await display_blob(file);
+    await acquire_source(file);
 }
 
 function suppress(e) {
@@ -181,7 +209,7 @@ window.addEventListener('paste', async (e) => {
     suppress(e);
     const file = (e.clipboardData || e.originalEvent.clipboardData).items[0];
     if (file){
-        await display_blob(file.getAsFile());
+        await acquire_source(file.getAsFile());
     }
 });
 
@@ -190,13 +218,13 @@ window.addEventListener('dragover', suppress);
 window.addEventListener('drop', async (e) => {
     suppress(e);
     if (e.dataTransfer.files[0]){
-        await display_blob(e.dataTransfer.files[0]);
+        await acquire_source(e.dataTransfer.files[0]);
     }
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('results-screenshot').value = '';
-    document.getElementById('canvas').src = 'data:,';
+    document.getElementById('source-image').src = 'data:,';
     const v = (e) => {
         if (document.getElementById('submit').disabled && e.target.value){
             validate_result();
@@ -206,4 +234,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     name_filter();
     series_filter();
     type_filter();
+    document.getElementById('source-image').addEventListener('load', source_loaded);
+    document.getElementById('box-autocrop').addEventListener('change', source_loaded);
 });
