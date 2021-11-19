@@ -92,28 +92,23 @@ async function source_loaded(){
     }
     const autoCrop = document.getElementById('box-autocrop').checked;
     const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
     if (autoCrop) {
-        canvas.style.display = 'block';
-        origImage.style.display = 'none';
-        const context = canvas.getContext('2d');
         if (origImage.naturalWidth * 9 > origImage.naturalHeight * 16) {
             /* wider than 16:9 */
             canvas.width = origImage.naturalHeight * 8 / 9;
             canvas.height = origImage.naturalHeight * 2 / 3;
-            const origX = (origImage.naturalWidth - canvas.width) / 2;
-            const origY = (origImage.naturalHeight - canvas.height) / 2;
-            context.drawImage(origImage, origX, origY, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
         } else if (origImage.naturalWidth * 9 < origImage.naturalHeight * 16) {
             canvas.width = origImage.naturalWidth / 2;
             canvas.height = origImage.naturalWidth * 3 / 8;
-            const origX = (origImage.naturalWidth - canvas.width) / 2;
-            const origY = (origImage.naturalHeight - canvas.height) / 2;
-            context.drawImage(origImage, origX, origY, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
         }
     } else {
-        canvas.style.display = 'none';
-        origImage.style.display = 'block';
+        canvas.width = origImage.naturalWidth;
+        canvas.height = origImage.naturalHeight;
     }
+    const origX = (origImage.naturalWidth - canvas.width) / 2;
+    const origY = (origImage.naturalHeight - canvas.height) / 2;
+    context.drawImage(origImage, origX, origY, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
     return get_canvas_xxh().then(xxh => check_upload(xxh)).then((j) => {
         if (j.cacheHit){
             document.getElementById('project-series').value = j.projectSeries;

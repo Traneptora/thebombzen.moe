@@ -40,9 +40,10 @@ main[data-project-name="unlisted"] input[type="submit"] {
 
 #source-image {
     display: none;
-    object-fit: contain;
-    max-width: 960px;
-    max-height: 720px;
+}
+
+#canvas {
+    max-width: 100%;
 }
 
 #source-image[src="data:,"] ~ #canvas {
