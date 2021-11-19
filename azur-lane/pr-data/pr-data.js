@@ -51,7 +51,12 @@ function validate_result(){
 }
 
 async function get_canvas_blob(){
-    return fetch(document.getElementById('canvas').toDataURL()).then(r => r.blob());
+    return new Promise((resolve, reject) => {
+        const callback = (blob) => {
+            resolve(blob);
+        };
+        document.getElementById('canvas').toBlob(callback, 'image/png');
+    });
 }
 
 async function get_canvas_xxh(blob){
