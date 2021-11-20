@@ -2,6 +2,8 @@ const h64promise = import('/js/xxhash-wasm@0.4.2.js').then(h => h.default()).the
     return d.h64Raw;
 });
 
+const decodePNG = import('/js/lodepng.js').then(l => l.decodePNG);
+
 function series_filter(){
     document.getElementById('main').dataset.filterSeries = document.getElementById('project-series').value;
 }
@@ -67,7 +69,12 @@ async function get_canvas_xxh(blob){
         ab = get_canvas_blob().then(b => b.arrayBuffer());
     }
     const h64raw = await h64promise;
-    return ab.then(b => Array.from(h64raw(new Uint8Array(b), 0, 0)).map(i => i.toString(16)).join('').toLowerCase());
+    const decode = await decodePNG;
+    return ab.then(b => new Uint8Array(b))
+        .then(i => decode(i))
+        .then(d => {
+            return h64raw(d.data, d.width, d.height).map(x => x.toString(16)).join('').toLowerCase();
+        });
 }
 
 async function check_upload(xxh){
