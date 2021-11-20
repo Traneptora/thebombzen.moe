@@ -110,7 +110,7 @@ async function source_loaded(){
             /* wider than 16:9 */
             canvas.width = origImage.naturalHeight * 8 / 9;
             canvas.height = origImage.naturalHeight * 2 / 3;
-        } else if (origImage.naturalWidth * 9 < origImage.naturalHeight * 16) {
+        } else {
             canvas.width = origImage.naturalWidth / 2;
             canvas.height = origImage.naturalWidth * 3 / 8;
         }
