@@ -1,486 +1,143 @@
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 100;
-  font-display: swap;
-  src: url('work-sans/EuSrwoihwA3ZOhaIbsAKsg8KmVrJvEiTtjWQgg.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 100;
-  font-display: swap;
-  src: url('work-sans/MWg8oGnso6OluMJXpKp46gi_rN8uLqpQz-qFpA.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 100;
-  font-display: swap;
-  src: url('work-sans/bgGmr00aIhbhqjQv7v6z-5iPtwDg08WQhWPbyg.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 200;
-  font-display: swap;
-  src: url('work-sans/LWDSLVuKPN9g6StxE3AwWOzC35QxwIn5bPmAeQ.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 200;
-  font-display: swap;
-  src: url('work-sans/sasmfVUq13MGo9Pg26Sv4RwBMAIoz8Qy_RWTVg.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 200;
-  font-display: swap;
-  src: url('work-sans/Ahx-HS9oS3ZFygd3Hxa1nUdCQjrSOo1beldUdQ.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 300;
-  font-display: swap;
-  src: url('work-sans/99xH0dMICI3nJBuz6pXUPlzMtdkJUtqcHAvUOA.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 300;
-  font-display: swap;
-  src: url('work-sans/y909h5hUVs90z1OBD7GDX7fPE5ndz0fqpYkntw.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 300;
-  font-display: swap;
-  src: url('work-sans/v2gG8HeZux4J_GPN-SeigKfcSv_fkJCKXPBiYA.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('work-sans/ekZecCdQ4_ZLWrYBERcQlnfrps3JTU3tGSr04w.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('work-sans/wQJzcr5skd4gk5LzdcX1mCSvclkiZFxvxahlOQ.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('work-sans/v4oUR9qpqIofqSaVX_yOrUJyFKadNuFfrGrFfQ.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url('work-sans/YX6oBynTwjvbIg0XFrKBAuCIXhBiV_2QIrwRFQ.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url('work-sans/YfMQQRDv_VniQY9cUoJjNCsb000xAt-8TrfoBw.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url('work-sans/PfDXBKrD7A56bkutLBDEAv97SWAWEPj9v5SUlw.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 600;
-  font-display: swap;
-  src: url('work-sans/FGTcJkufFwzpVg_KXPHCnBD2rY2l8aEUiqMD1Q.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 600;
-  font-display: swap;
-  src: url('work-sans/adk1NPSVcCa0jtp6k0PuuU-LP7xlD9ROtRNvBA.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 600;
-  font-display: swap;
-  src: url('work-sans/cR6LIMZttNO55O8D_o_dG2uR0kLS8sj23fNsGw.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 700;
-  font-display: swap;
-  src: url('work-sans/UZ8PNDWffBYXVfl0NY8ms88dHidZq12saDT6eg.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 700;
-  font-display: swap;
-  src: url('work-sans/wkwHQ4xItPxISEXA6T-6IB7Ghb7K8E5dnjZkZw.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 700;
-  font-display: swap;
-  src: url('work-sans/FZv_rkMUQhxOcOBPLPrQA6a6w10yWF-0NIW26g.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 800;
-  font-display: swap;
-  src: url('work-sans/mGypTgSLRGqXhzfs8ZNsRDGSFxgo164REphQFg.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 800;
-  font-display: swap;
-  src: url('work-sans/wja6iz5Rp535ItENTFDDCE4QkImkpCgOZCT3WQ.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 800;
-  font-display: swap;
-  src: url('work-sans/urhow88YkMP4S5cbmtYzyFcL08G70zDXBieRQQ.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 900;
-  font-display: swap;
-  src: url('work-sans/iw0z68dpr96nc6ryv3bQGCIobDWBvy7TosT67A.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 900;
-  font-display: swap;
-  src: url('work-sans/8ASdlc7VJypj9hc6qReAYXkqHvj53IOB-zUAYA.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: italic;
-  font-weight: 900;
-  font-display: swap;
-  src: url('work-sans/nMNYhywB_qeHTwwNCzMKadvnerTXMxhb57cHnw.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
 @font-face {
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url('work-sans/0m1dzHNCMZe5A1ZyjFtxEA2iYHW1bkhdCWwK0Q.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  src: url('work-sans/normal-100.woff2') format('woff2');
 }
-/* latin-ext */
+
 @font-face {
   font-family: 'Work Sans';
   font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('work-sans/normal-200.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('work-sans/normal-300.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('work-sans/normal-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('work-sans/normal-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('work-sans/normal-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('work-sans/normal-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('work-sans/normal-800.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('work-sans/normal-900.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-style: italic;
   font-weight: 100;
   font-display: swap;
-  src: url('work-sans/88_JW6gH9mjRLnx6mJF8ouErrE0jUDdKy5tvHA.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url('work-sans/italic-100.woff2') format('woff2');
 }
-/* latin */
+
 @font-face {
   font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 100;
-  font-display: swap;
-  src: url('work-sans/k832FcEExezPubDlpzIieGAMvMWYXzT3p01S5g.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
+  font-style: italic;
   font-weight: 200;
   font-display: swap;
-  src: url('work-sans/xznCofAdP7MfIck-kiYhe-pwymgzI4_f3XKQbg.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  src: url('work-sans/italic-200.woff2') format('woff2');
 }
-/* latin-ext */
+
 @font-face {
   font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 200;
-  font-display: swap;
-  src: url('work-sans/Zk9OrtkfdCdowDxAkr-_LQ7-nntaRg_GmBnq8g.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 200;
-  font-display: swap;
-  src: url('work-sans/2SdtBGdxUgOAuzxYiGZS_itXVEs0wbwoYF34Jg.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
+  font-style: italic;
   font-weight: 300;
   font-display: swap;
-  src: url('work-sans/yZDMxfmVR0kI808cIku3R9ecW5MZMTTayB02uQ.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  src: url('work-sans/italic-300.woff2') format('woff2');
 }
-/* latin-ext */
+
 @font-face {
   font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url('work-sans/ORJahaEmCwQk02mZo_WgTIuNZKTU2trsNL7qnQ.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url('work-sans/CsLZ9W4b7xY3feher2ympsw-63FdZDkAL_SwUg.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
+  font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url('work-sans/oOMc1vpHupR8dXFtbnA6cqadjR_e8XtTSH_AyQ.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  src: url('work-sans/italic-400.woff2') format('woff2');
 }
-/* latin-ext */
+
 @font-face {
   font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('work-sans/LtrHJUwpF8DRW8plb9WgIX2f4qQrjlbkKheqgQ.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('work-sans/iWNXH3cCulKc_AxRxIo9qpJys--ggW1HmP20Tw.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
+  font-style: italic;
   font-weight: 500;
   font-display: swap;
-  src: url('work-sans/g9btZomrabf3UX_9y-QUxU8t0Ih6RJFfwxGlhA.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  src: url('work-sans/italic-500.woff2') format('woff2');
 }
-/* latin-ext */
+
 @font-face {
   font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('work-sans/gXEEWcHOweAP3KiXMctpxpEwJXPgZ9z1-M3Nkw.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('work-sans/vnUTxresNwPnH54sZDF3wpVDw7qdCjhimC8wpg.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
+  font-style: italic;
   font-weight: 600;
   font-display: swap;
-  src: url('work-sans/iea80vRhb6o85PiKlIMw4gFFAw4LyFpdQGam8g.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  src: url('work-sans/italic-600.woff2') format('woff2');
 }
-/* latin-ext */
+
 @font-face {
   font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('work-sans/HrEPtK-ll6_Ls93wihKxcU39uibpSlFKz8VL0g.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('work-sans/nj6UcJPPCEIpo1TvLILg0ZEcmGiGpj4JvRuZmQ.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
+  font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url('work-sans/FdEV_vBqjHPWW4rX0h9QvWQ8kR3BZKFmDfMGLQ.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  src: url('work-sans/italic-700.woff2') format('woff2');
 }
-/* latin-ext */
+
 @font-face {
   font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('work-sans/EDrwL83hCzecHhzfHi07IDM1OeIx_hFozpQWoA.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('work-sans/F4jJciFruaB3KAiQ-Rf0ng0oxDgu1HBtRPdAvw.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
+  font-style: italic;
   font-weight: 800;
   font-display: swap;
-  src: url('work-sans/taHoaMSkYZszOd3Uf6wfwdt0_rt93ahMMB7uYA.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+  src: url('work-sans/italic-800.woff2') format('woff2');
 }
-/* latin-ext */
+
 @font-face {
   font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url('work-sans/FqS_s0DwikBvfcMJMOY0EtG95aHFwR6cdMXffQ.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url('work-sans/B361qFkvv8LR03jaJN2962EC4XjUcRdyC-GbPw.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-/* vietnamese */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
+  font-style: italic;
   font-weight: 900;
   font-display: swap;
-  src: url('work-sans/YlJYoFg6ktDCv9IxLaculroIXqgPPDV7CmyHaA.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url('work-sans/t227H8MxT43yzLFVVAJkjCL5VJ0JfFIPq0v83g.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Work Sans';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url('work-sans/xnAxMQ57Kc2y-4M6RlXDWJb61RH1y95-TUHqqQ.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url('work-sans/italic-900.woff2') format('woff2');
 }
