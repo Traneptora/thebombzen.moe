@@ -1,8 +1,5 @@
-const h64promise = import('/js/xxhash-wasm@0.4.2.js').then(h => h.default()).then((d) => {
-    return d.h64Raw;
-});
-
-const decodePNG = import('/js/lodepng.js').then(l => l.decodePNG);
+const h64raw = import('/js/xxhash-wasm@0.4.2.js').then(m => m.default()).then(d => d.h64Raw);
+const lodepng_decode = import('/js/lodepng.js').then(m => m.lodepng_decode);
 
 function series_filter(){
     document.getElementById('main').dataset.filterSeries = document.getElementById('project-series').value;
@@ -62,19 +59,13 @@ async function get_canvas_blob(){
 }
 
 async function get_canvas_xxh(blob){
-    let ab;
-    if (blob){
-        ab = blob.arrayBuffer();
-    } else {
-        ab = get_canvas_blob().then(b => b.arrayBuffer());
-    }
-    const h64raw = await h64promise;
-    const decode = await decodePNG;
-    return ab.then(b => new Uint8Array(b))
-        .then(i => decode(i))
-        .then(d => {
-            return h64raw(d.data, d.width, d.height).map(x => x.toString(16)).join('').toLowerCase();
-        });
+    let arrayBuf = blob ? blob.arrayBuffer() : get_canvas_blob().then(blob => blob.arrayBuffer());
+    return arrayBuf.then(buf => new Uint8Array(buf))
+        .then(img => {
+            return lodepng_decode.then(decoder => decoder(img));
+        }).then(imgdata => {
+            return h64raw.then(hasher => hasher(imgdata.data, imgdata.width, imgdata.height));
+        }).then(h => h.map(x => x.toString(16)).join('').toLowerCase());
 }
 
 async function check_upload(xxh){
@@ -212,35 +203,33 @@ function submit_result(){
         });
 }
 
-window.addEventListener('paste', async (e) => {
-    suppress(e);
-    const file = (e.clipboardData || e.originalEvent.clipboardData).items[0];
-    if (file){
-        await acquire_source(file.getAsFile());
-    }
-});
-
-window.addEventListener('dragover', suppress);
-
-window.addEventListener('drop', async (e) => {
-    suppress(e);
-    if (e.dataTransfer.files[0]){
-        await acquire_source(e.dataTransfer.files[0]);
-    }
-});
-
-document.addEventListener('DOMContentLoaded', async () => {
+async function ready(domclEvent){
+    window.addEventListener('paste', async (e) => {
+        suppress(e);
+        const file = (e.clipboardData || e.originalEvent.clipboardData).items[0];
+        if (file){
+            await acquire_source(file.getAsFile());
+        }
+    });
+    window.addEventListener('dragover', suppress);
+    window.addEventListener('drop', async (e) => {
+        suppress(e);
+        if (e.dataTransfer.files[0]){
+            await acquire_source(e.dataTransfer.files[0]);
+        }
+    });
     document.getElementById('results-screenshot').value = '';
     document.getElementById('source-image').src = 'data:,';
-    const v = (e) => {
+    document.querySelectorAll('#project-series, #project-name').forEach(el => el.addEventListener('change', (e) => {
         if (document.getElementById('submit').disabled && e.target.value){
             validate_result();
         }
-    };
-    document.querySelectorAll('#project-series, #project-name').forEach(el => el.addEventListener('change', v));
+    }));
     name_filter();
     series_filter();
     type_filter();
     document.getElementById('source-image').addEventListener('load', source_loaded);
     document.getElementById('box-autocrop').addEventListener('change', source_loaded);
-});
+}
+
+document.addEventListener('DOMContentLoaded', ready);
