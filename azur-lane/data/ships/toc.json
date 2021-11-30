@@ -165,6 +165,51 @@
             "dataJSON": "ships/by-id/10077/ship.json"
         },
         {
+            "DataDir": "ships/by-id/10081",
+            "Name": "Rikka Takarada",
+            "ShipID": "10081",
+            "dataJSON": "ships/by-id/10081/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10082",
+            "Name": "Akane Shinjo",
+            "ShipID": "10082",
+            "battleshipJSON": "ships/by-id/10082/battleship.json",
+            "dataJSON": "ships/by-id/10082/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10083",
+            "Name": "Hass",
+            "ShipID": "10083",
+            "dataJSON": "ships/by-id/10083/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10084",
+            "Name": "Namiko",
+            "ShipID": "10084",
+            "dataJSON": "ships/by-id/10084/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10085",
+            "Name": "Yume Minami",
+            "ShipID": "10085",
+            "dataJSON": "ships/by-id/10085/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10086",
+            "Name": "Chise Asukagawa",
+            "ShipID": "10086",
+            "carrierJSON": "ships/by-id/10086/carrier.json",
+            "dataJSON": "ships/by-id/10086/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10087",
+            "Name": "Mujina",
+            "ShipID": "10087",
+            "battleshipJSON": "ships/by-id/10087/battleship.json",
+            "dataJSON": "ships/by-id/10087/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Collab001",
             "Name": "Neptune (Neptunia)",
             "ShipID": "Collab001",
@@ -369,6 +414,13 @@
             "ShipID": "30005",
             "battleshipJSON": "ships/by-id/30005/battleship.json",
             "dataJSON": "ships/by-id/30005/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/30006",
+            "Name": "Hiyou META",
+            "ShipID": "30006",
+            "carrierJSON": "ships/by-id/30006/carrier.json",
+            "dataJSON": "ships/by-id/30006/ship.json"
         },
         {
             "DataDir": "ships/by-id/Plan001",
@@ -3260,6 +3312,24 @@
             "Name": "New Orleans",
             "ShipID": "521",
             "dataJSON": "ships/by-id/521/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/522",
+            "Name": "Le Terrible",
+            "ShipID": "522",
+            "dataJSON": "ships/by-id/522/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/523",
+            "Name": "Maill\u00e9 Br\u00e9z\u00e9",
+            "ShipID": "523",
+            "dataJSON": "ships/by-id/523/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/524",
+            "Name": "Foch",
+            "ShipID": "524",
+            "dataJSON": "ships/by-id/524/ship.json"
         }
     ]
 }

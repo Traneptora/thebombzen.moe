@@ -43,6 +43,20 @@
             "dataJSON": "ships/by-id/10073/ship.json"
         },
         {
+            "DataDir": "ships/by-id/10082",
+            "Name": "Akane Shinjo",
+            "ShipID": "10082",
+            "battleshipJSON": "ships/by-id/10082/battleship.json",
+            "dataJSON": "ships/by-id/10082/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10087",
+            "Name": "Mujina",
+            "ShipID": "10087",
+            "battleshipJSON": "ships/by-id/10087/battleship.json",
+            "dataJSON": "ships/by-id/10087/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Collab044",
             "Name": "Super Gamer Kizuna AI",
             "ShipID": "Collab044",

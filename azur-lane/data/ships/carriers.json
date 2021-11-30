@@ -43,6 +43,13 @@
             "dataJSON": "ships/by-id/10072/ship.json"
         },
         {
+            "DataDir": "ships/by-id/10086",
+            "Name": "Chise Asukagawa",
+            "ShipID": "10086",
+            "carrierJSON": "ships/by-id/10086/carrier.json",
+            "dataJSON": "ships/by-id/10086/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Collab004",
             "Name": "Vert",
             "ShipID": "Collab004",
@@ -125,6 +132,13 @@
             "ShipID": "30004",
             "carrierJSON": "ships/by-id/30004/carrier.json",
             "dataJSON": "ships/by-id/30004/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/30006",
+            "Name": "Hiyou META",
+            "ShipID": "30006",
+            "carrierJSON": "ships/by-id/30006/carrier.json",
+            "dataJSON": "ships/by-id/30006/ship.json"
         },
         {
             "DataDir": "ships/by-id/Plan019",
