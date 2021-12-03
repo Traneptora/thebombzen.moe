@@ -5,11 +5,11 @@ if (!instantiate){
     };
 }
 
-const instance = await instantiate(fetch('/js/@cwasm-lodepng@0.1.6.wasm')).then(r => r.instance);
+const instance_promise = instantiate(fetch('/js/@cwasm-lodepng@0.1.6.wasm')).then(r => r.instance);
 
 /* BEGIN FROM @cwasm/lodepng@0.1.6/index.js */
-function lodepng_decode(input) {
-    //const instance = await instanceP;
+async function lodepng_decode(input) {
+    const instance = await instance_promise;
     // Allocate memory to hand over the input data to WASM
     const inputPointer = instance.exports.malloc(input.byteLength);
     const targetView = new Uint8Array(instance.exports.memory.buffer, inputPointer, input.byteLength);
@@ -53,8 +53,8 @@ function lodepng_decode(input) {
     return new ImageData(output, width, height);
 }
 
-function lodepng_encode(input) {
-    //const instance = await instanceP;
+async function lodepng_encode(input) {
+    const instance = await instance_promise;
     // Allocate memory to hand over the input data to WASM
     const inputPointer = instance.exports.malloc(input.data.byteLength);
     const targetView = new Uint8Array(instance.exports.memory.buffer, inputPointer, input.data.byteLength);

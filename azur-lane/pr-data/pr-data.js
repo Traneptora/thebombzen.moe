@@ -1,5 +1,13 @@
-const h64raw = import('/js/xxhash-wasm@0.4.2.js').then(m => m.default()).then(d => d.h64Raw);
-const lodepng_decode = import('/js/lodepng.js').then(m => m.lodepng_decode);
+const h64raw_promise = import('/js/xxhash-wasm@0.4.2.js').then(m => m.default()).then(d => d.h64Raw);
+const lodepng_decode_promise = import('/js/lodepng.js').then(m => m.lodepng_decode);
+
+async function h64raw(data, seed1, seed2) {
+    return h64raw_promise.then(hasher => hasher(data, seed1, seed2));
+}
+
+async function lodepng_decode(buffer) {
+    return lodepng_decode_promise.then(decoder => decoder(buffer));
+}
 
 function series_filter(){
     document.getElementById('main').dataset.filterSeries = document.getElementById('project-series').value;
@@ -61,17 +69,17 @@ async function get_canvas_blob(){
 async function get_canvas_xxh(blob){
     let arrayBuf = blob ? blob.arrayBuffer() : get_canvas_blob().then(blob => blob.arrayBuffer());
     return arrayBuf.then(buf => new Uint8Array(buf))
-        .then(img => {
-            return lodepng_decode.then(decoder => decoder(img));
-        }).then(imgdata => {
-            return h64raw.then(hasher => hasher(imgdata.data, imgdata.width, imgdata.height));
-        }).then(h => h.map(x => x.toString(16)).join('').toLowerCase());
+        .then(img => lodepng_decode(img))
+        .then(imgdata => h64raw(imgdata.data, imgdata.width, imgdata.height))
+        .then(h => h.map(x => x.toString(16)).join('').toLowerCase());
 }
 
-async function check_upload(xxh){
+async function check_upload(xxh, width, height){
     const checkFormData = new FormData();
     checkFormData.set('action', 'check');
     checkFormData.set('client-xxhash', xxh);
+    checkFormData.set('image-width', width);
+    checkFormData.set('image-height', height);
     return fetch('/api/v0/azur-lane/pr-data/', {
         method: 'POST',
         mode: 'cors',
@@ -112,7 +120,7 @@ async function source_loaded(){
     const origX = (origImage.naturalWidth - canvas.width) / 2;
     const origY = (origImage.naturalHeight - canvas.height) / 2;
     context.drawImage(origImage, origX, origY, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
-    return get_canvas_xxh().then(xxh => check_upload(xxh)).then((j) => {
+    return get_canvas_xxh().then(xxh => check_upload(xxh, canvas.width, canvas.height)).then((j) => {
         if (j.cacheHit){
             document.getElementById('project-series').value = j.projectSeries;
             document.getElementById('project-type').value = j.projectType;
@@ -146,10 +154,12 @@ function submit_result(){
     if (!validate_result()){
         return;
     }
-    document.getElementById('submit').disabled = true;
+    const submitButton = document.getElementById('submit');
+    submitButton.disabled = true;
+    const disp = document.getElementById('server-response-status');
+    const canvas = document.getElementById('canvas');
     const xhr = new XMLHttpRequest();
     xhr.upload.addEventListener('progress', (event) => {
-        const disp = document.getElementById('server-response-status');
         if (event.lengthComputable){
             const percent = 100.0 * (+event.loaded / +event.total);
             if (percent >= 100.0){
@@ -163,17 +173,18 @@ function submit_result(){
     });
 
     xhr.addEventListener('load', async (e) => {
-        const disp = document.getElementById('server-response-status');
         disp.style.display = 'block';
         const response = JSON.parse(xhr.response);
         disp.textContent = (response.status || 'Error:') + ' ' + (response.extra || 'Backend error occurred, try again later.');
-        document.getElementById('submit').disabled = false;
+        submitButton.disabled = false;
     });
 
-    xhr.addEventListener('error', async (e) => {
-        document.getElementById('server-response-status').style.display = 'block';
-        document.getElementById('server-response-status').textContent = 'Unknown error occurred :(';
-    });
+    const errorFunc = async (e) => {
+        disp.style.display = 'block';
+        disp.textContent = 'Unknown error occurred :(';
+    };
+    xhr.addEventListener('error', errorFunc);
+    xhr.upload.addEventListener('error', errorFunc);
 
     xhr.open('POST', '/api/v0/azur-lane/pr-data/');
 
@@ -189,9 +200,8 @@ function submit_result(){
             return get_canvas_xxh(blob);
         }).then((h) => {
             formData.set('client-xxhash', h);
-            return check_upload(h);
-        })
-        .then((j) => {
+            return check_upload(h, canvas.width, canvas.height);
+        }).then((j) => {
             console.log(j);
             if (j.cacheHit){
                 formData.delete('results-screenshot');
