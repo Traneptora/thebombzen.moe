@@ -9,15 +9,15 @@ async function lodepng_decode(buffer) {
     return lodepng_decode_promise.then(decoder => decoder(buffer));
 }
 
-function series_filter(){
+function series_filter() {
     document.getElementById('main').dataset.filterSeries = document.getElementById('project-series').value;
 }
 
-function type_filter(){
+function type_filter() {
     document.getElementById('main').dataset.filterType = document.getElementById('project-type').value;
 }
 
-function name_filter(){
+function name_filter() {
     const checked = document.querySelector('#project-name option:checked');
     document.getElementById('report-color').textContent = checked.dataset.projectColor;
     document.getElementById('report-length').textContent = checked.dataset.projectLength;
@@ -47,7 +47,7 @@ function conditional_class(condition, className, element) {
     return condition;
 }
 
-function validate_result(){
+function validate_result() {
     const src = document.getElementById('source-image').src;
     let valid = !conditional_class(!src || src === 'data:,', 'rust', document.getElementById('results-screenshot').parentElement.firstElementChild);
     valid = Array.prototype.map.call(document.querySelectorAll('#project-series, #project-name'),
@@ -57,24 +57,21 @@ function validate_result(){
     return valid;
 }
 
-async function get_canvas_blob(){
+async function get_canvas_blob() {
     return new Promise((resolve, reject) => {
-        const callback = (blob) => {
-            resolve(blob);
-        };
-        document.getElementById('canvas').toBlob(callback, 'image/png');
+        document.getElementById('canvas').toBlob(resolve, 'image/png');
     });
 }
 
-async function get_canvas_xxh(blob){
-    let arrayBuf = blob ? blob.arrayBuffer() : get_canvas_blob().then(blob => blob.arrayBuffer());
+async function get_canvas_xxh(blob) {
+    const arrayBuf = blob ? blob.arrayBuffer() : get_canvas_blob().then(blob => blob.arrayBuffer());
     return arrayBuf.then(buf => new Uint8Array(buf))
         .then(img => lodepng_decode(img))
         .then(imgdata => h64raw(imgdata.data, imgdata.width, imgdata.height))
         .then(h => h.map(x => x.toString(16)).join('').toLowerCase());
 }
 
-async function check_upload(xxh, width, height){
+async function check_upload(xxh, width, height) {
     const checkFormData = new FormData();
     checkFormData.set('action', 'check');
     checkFormData.set('client-xxhash', xxh);
@@ -90,13 +87,13 @@ async function check_upload(xxh, width, height){
     }).then(r => r.json());
 }
 
-async function acquire_source(blob){
+async function acquire_source(blob) {
     const url = blob && blob.type.startsWith('image/') ? URL.createObjectURL(blob) : 'data:,';
     const origImage = document.getElementById('source-image');
     origImage.src = url;
 }
 
-async function source_loaded(){
+async function source_loaded() {
     const origImage = document.getElementById('source-image');
     if (origImage.src === 'data:,') {
         return;
@@ -140,9 +137,9 @@ async function source_loaded(){
     });
 }
 
-async function render_image(){
+async function render_image() {
     const file = document.getElementById('results-screenshot').files[0];
-    await acquire_source(file);
+    return acquire_source(file);
 }
 
 function suppress(e) {
@@ -150,8 +147,8 @@ function suppress(e) {
     e.stopPropagation();
 }
 
-function submit_result(){
-    if (!validate_result()){
+function submit_result() {
+    if (!validate_result()) {
         return;
     }
     const submitButton = document.getElementById('submit');
@@ -189,31 +186,24 @@ function submit_result(){
     xhr.open('POST', '/api/v0/azur-lane/pr-data/');
 
     const formData = new FormData();
-    formData.append('action', 'submit');
-    formData.append('project-series', document.getElementById('project-series').value);
-    formData.append('project-type', document.getElementById('project-type').value);
-    formData.append('project-name', document.getElementById('project-name').value);
+    formData.set('action', 'submit');
+    formData.set('project-series', document.getElementById('project-series').value);
+    formData.set('project-type', document.getElementById('project-type').value);
+    formData.set('project-name', document.getElementById('project-name').value);
 
     return get_canvas_blob()
         .then((blob) => {
-            formData.append('results-screenshot', blob);
+            formData.set('results-screenshot', blob);
             return get_canvas_xxh(blob);
         }).then((h) => {
             formData.set('client-xxhash', h);
-            return check_upload(h, canvas.width, canvas.height);
-        }).then((j) => {
-            console.log(j);
-            if (j.cacheHit){
-                formData.delete('results-screenshot');
-                formData.set('use-cached-upload', true);
-            }
-            document.getElementById('server-response-status').style.display = 'block';
-            document.getElementById('server-response-status').textContent = '';
+            disp.style.display = 'block';
+            disp.textContent = '';
             return xhr.send(formData);
         });
 }
 
-async function ready(domclEvent){
+async function ready(domclEvent) {
     window.addEventListener('paste', async (e) => {
         suppress(e);
         const file = (e.clipboardData || e.originalEvent.clipboardData).items[0];
@@ -224,14 +214,14 @@ async function ready(domclEvent){
     window.addEventListener('dragover', suppress);
     window.addEventListener('drop', async (e) => {
         suppress(e);
-        if (e.dataTransfer.files[0]){
+        if (e.dataTransfer.files[0]) {
             await acquire_source(e.dataTransfer.files[0]);
         }
     });
     document.getElementById('results-screenshot').value = '';
     document.getElementById('source-image').src = 'data:,';
     document.querySelectorAll('#project-series, #project-name').forEach(el => el.addEventListener('change', (e) => {
-        if (document.getElementById('submit').disabled && e.target.value){
+        if (document.getElementById('submit').disabled && e.target.value) {
             validate_result();
         }
     }));
