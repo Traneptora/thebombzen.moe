@@ -62,7 +62,11 @@ async function get_canvas_xxh(blob) {
     const arrayBuf = blob ? blob.arrayBuffer() : get_canvas_blob().then(blob => blob.arrayBuffer());
     return arrayBuf.then(buf => UPNG.decode(buf))
         .then(imgdata => h64raw(imgdata.data, imgdata.width, imgdata.height))
-        .then(h => h.map(x => x.toString(16).padStart(2, '0')).join('').toLowerCase());
+        .then((hash) => {
+            return Array.prototype.map.call(hash, (x) => {
+                return x.toString(16).padStart(2, '0');
+            }).join('').toLowerCase();;
+        });
 }
 
 async function check_upload(xxh, width, height) {
