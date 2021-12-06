@@ -68,7 +68,7 @@ async function get_canvas_xxh(blob) {
     return arrayBuf.then(buf => new Uint8Array(buf))
         .then(img => lodepng_decode(img))
         .then(imgdata => h64raw(imgdata.data, imgdata.width, imgdata.height))
-        .then(h => h.map(x => Uint16Array.from(x).toString(16).padStart(2, '0')).join('').toLowerCase());
+        .then(h => h.map(x => x.toString(16).padStart(2, '0')).join('').toLowerCase());
 }
 
 async function check_upload(xxh, width, height) {
