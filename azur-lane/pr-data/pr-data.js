@@ -1,12 +1,7 @@
 const h64raw_promise = import('/js/xxhash-wasm@0.4.2.js').then(m => m.default()).then(d => d.h64Raw);
-const lodepng_decode_promise = import('/js/lodepng.js').then(m => m.lodepng_decode);
 
 async function h64raw(data, seed1, seed2) {
     return h64raw_promise.then(hasher => hasher(data, seed1, seed2));
-}
-
-async function lodepng_decode(buffer) {
-    return lodepng_decode_promise.then(decoder => decoder(buffer));
 }
 
 function series_filter() {
@@ -65,8 +60,7 @@ async function get_canvas_blob() {
 
 async function get_canvas_xxh(blob) {
     const arrayBuf = blob ? blob.arrayBuffer() : get_canvas_blob().then(blob => blob.arrayBuffer());
-    return arrayBuf.then(buf => new Uint8Array(buf))
-        .then(img => lodepng_decode(img))
+    return arrayBuf.then(buf => UPNG.decode(buf))
         .then(imgdata => h64raw(imgdata.data, imgdata.width, imgdata.height))
         .then(h => h.map(x => x.toString(16).padStart(2, '0')).join('').toLowerCase());
 }
