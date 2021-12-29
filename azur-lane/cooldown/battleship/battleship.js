@@ -22,11 +22,17 @@ function get_bbcooldown(weapon_cooldown, rld_stat_base, rld_bonus, reload_percen
     const init_cd_reduction = +init_cooldown_reduction_percent / 100.0 + cd_reduction + (has_boomer_fcr ? 0.15 : 0.0);
     init_cooldown *= (1.0 - init_cd_reduction);
     if (init_cooldown < 0.0) {
-        init_cooldown = 0.0;
+        return {
+            'success': false,
+            'error': 'Invalid initial cooldown'
+        };
     }
     cooldown *= (1.0 - cd_reduction);
     if (cooldown < 0.0) {
-        cooldown = 0.0;
+        return {
+            'success': false,
+            'error': 'Invalid cooldown'
+        };
     }
     init_cooldown += 1.6;
     cooldown += 0.1;
@@ -34,7 +40,14 @@ function get_bbcooldown(weapon_cooldown, rld_stat_base, rld_bonus, reload_percen
     if (cooldown >= 300.0 || init_cooldown >= 300.0) {
         return {
             'success': false,
-            'error': 'Some Error Occurred :('
+            'error': '(Initial)? cooldown too large'
+        };
+    }
+
+    if (!cooldown || !init_cooldown) {
+        return {
+            'success': false,
+            'error': 'Some error occurred :('
         };
     }
 
