@@ -39,8 +39,7 @@ function get_bbcooldown(weapon_cooldown, rld_stat_base, rld_bonus, reload_percen
     }
 
     const shot_count = Math.trunc((300.0 - init_cooldown) / cooldown) + 1;
-    const timers = Array(shot_count).keys()
-        .map(i => init_cooldown + i * cooldown)
+    const timers = new Array(shot_count).map((_, i) => init_cooldown + i * cooldown)
         .map(t => roundBase10(t, 2));
     const cd_str = roundBase10(cooldown, 2);
     const init_cd_str = timers[0];
