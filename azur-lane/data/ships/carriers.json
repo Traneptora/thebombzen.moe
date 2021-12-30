@@ -577,6 +577,13 @@
             "ShipID": "520",
             "carrierJSON": "ships/by-id/520/carrier.json",
             "dataJSON": "ships/by-id/520/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/526",
+            "Name": "Elbe",
+            "ShipID": "526",
+            "carrierJSON": "ships/by-id/526/carrier.json",
+            "dataJSON": "ships/by-id/526/ship.json"
         }
     ]
 }

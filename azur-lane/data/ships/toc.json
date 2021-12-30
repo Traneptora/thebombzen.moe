@@ -423,6 +423,13 @@
             "dataJSON": "ships/by-id/30006/ship.json"
         },
         {
+            "DataDir": "ships/by-id/30007",
+            "Name": "Gneisenau META",
+            "ShipID": "30007",
+            "battleshipJSON": "ships/by-id/30007/battleship.json",
+            "dataJSON": "ships/by-id/30007/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Plan001",
             "Name": "Neptune",
             "ShipID": "Plan001",
@@ -3330,6 +3337,38 @@
             "Name": "Foch",
             "ShipID": "524",
             "dataJSON": "ships/by-id/524/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/525",
+            "Name": "Magdeburg",
+            "ShipID": "525",
+            "dataJSON": "ships/by-id/525/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/526",
+            "Name": "Elbe",
+            "ShipID": "526",
+            "carrierJSON": "ships/by-id/526/carrier.json",
+            "dataJSON": "ships/by-id/526/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/527",
+            "Name": "Prinz Adalbert",
+            "ShipID": "527",
+            "dataJSON": "ships/by-id/527/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/528",
+            "Name": "U-1206",
+            "ShipID": "528",
+            "dataJSON": "ships/by-id/528/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/529",
+            "Name": "Ulrich von Hutten",
+            "ShipID": "529",
+            "battleshipJSON": "ships/by-id/529/battleship.json",
+            "dataJSON": "ships/by-id/529/ship.json"
         }
     ]
 }

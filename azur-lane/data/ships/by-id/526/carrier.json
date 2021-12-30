@@ -1,13 +1,13 @@
 {
-    "Name": "Hiyou META",
-    "Reload": 193,
-    "ReloadUnkai": 193,
+    "Name": "Elbe",
+    "Reload": 186,
+    "ReloadUnkai": 186,
     "Slot1": {
         "MLB": {
-            "F": 2
+            "F": 3
         },
         "Retrofit": {
-            "F": 2
+            "F": 3
         }
     },
     "Slot2": {
@@ -20,10 +20,10 @@
     },
     "Slot3": {
         "MLB": {
-            "T": 2
+            "N": 1
         },
         "Retrofit": {
-            "T": 2
+            "N": 1
         }
     }
 }

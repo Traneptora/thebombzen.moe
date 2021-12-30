@@ -71,6 +71,13 @@
             "dataJSON": "ships/by-id/30005/ship.json"
         },
         {
+            "DataDir": "ships/by-id/30007",
+            "Name": "Gneisenau META",
+            "ShipID": "30007",
+            "battleshipJSON": "ships/by-id/30007/battleship.json",
+            "dataJSON": "ships/by-id/30007/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Plan002",
             "Name": "Monarch",
             "ShipID": "Plan002",
@@ -556,6 +563,13 @@
             "ShipID": "500",
             "battleshipJSON": "ships/by-id/500/battleship.json",
             "dataJSON": "ships/by-id/500/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/529",
+            "Name": "Ulrich von Hutten",
+            "ShipID": "529",
+            "battleshipJSON": "ships/by-id/529/battleship.json",
+            "dataJSON": "ships/by-id/529/ship.json"
         }
     ]
 }
