@@ -29,8 +29,12 @@
     "AirMax": "313",
     "Ammo": "0",
     "Armor": "Medium",
+    "Artist": "\u306d\u3053\u3081\u305f\u308b",
+    "ArtistPixiv": "[https://www.pixiv.net/en/users/4221847 \u306d\u3053\u3081\u305f\u308b]",
+    "ArtistTwitter": "[https://twitter.com/NecoMeta \u306d\u3053\u3081\u305f\u308b@\u4e8c\u65e5\u76ee\u6771\u30e9-36a]",
     "CNName": "\u6613\u5317",
     "Class": "Jade",
+    "ConstructTime": "02:20:00",
     "ConsumptionInitial": "3",
     "ConsumptionMax": "11",
     "Eq1BaseMax": "3",
@@ -91,5 +95,6 @@
     "TorpKai120": "0",
     "TorpKai125": "0",
     "TorpMax": "0",
-    "Type": "Light Aircraft Carrier"
+    "Type": "Light Aircraft Carrier",
+    "VA": "[[:wikipedia:Nene_Hieda|Nene Hieda]]"
 }

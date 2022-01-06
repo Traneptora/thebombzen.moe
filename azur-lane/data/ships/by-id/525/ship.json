@@ -30,7 +30,8 @@
     "Ammo": "0",
     "Armor": "Light",
     "CNName": "\u9a6c\u683c\u5fb7\u5821",
-    "Class": "M",
+    "Class": "M (German)",
+    "ConstructTime": "01:20:00",
     "ConsumptionInitial": "3",
     "ConsumptionMax": "11",
     "Eq1BaseMax": "1",
@@ -91,5 +92,6 @@
     "TorpKai120": "0",
     "TorpKai125": "0",
     "TorpMax": "296",
-    "Type": "Light Cruiser"
+    "Type": "Light Cruiser",
+    "VA": "[[:wikipedia:Satsumi_Matsuda|Satsumi Matsuda]]"
 }

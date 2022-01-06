@@ -29,8 +29,12 @@
     "AirMax": "0",
     "Ammo": "0",
     "Armor": "Heavy",
+    "Artist": "\u304a\u4e45\u3057\u3076\u308a",
+    "ArtistPixiv": "[https://www.pixiv.net/en/users/1079073 \u304a\u4e45\u3057\u3076\u308a]",
+    "ArtistTwitter": "[https://twitter.com/imlllsn \u304a\u4e45\u3057\u3076\u308a]",
     "CNName": "\u4e4c\u5c14\u91cc\u5e0c\u00b7\u51af\u00b7\u80e1\u6ed5",
     "Class": "Ulrich von Hutten",
+    "ConstructTime": "06:00:00",
     "ConsumptionInitial": "9",
     "ConsumptionMax": "17",
     "Eq1BaseMax": "3",
@@ -91,5 +95,6 @@
     "TorpKai120": "0",
     "TorpKai125": "0",
     "TorpMax": "0",
-    "Type": "Battleship"
+    "Type": "Battleship",
+    "VA": "[[:wikipedia:Hibiku_Yamamura|Hibiku Yamamura]]"
 }
