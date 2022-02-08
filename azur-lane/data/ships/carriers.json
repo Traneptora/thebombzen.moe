@@ -141,6 +141,13 @@
             "dataJSON": "ships/by-id/30006/ship.json"
         },
         {
+            "DataDir": "ships/by-id/30008",
+            "Name": "Junyou META",
+            "ShipID": "30008",
+            "carrierJSON": "ships/by-id/30008/carrier.json",
+            "dataJSON": "ships/by-id/30008/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Plan019",
             "Name": "Hakuryuu",
             "ShipID": "Plan019",
@@ -584,6 +591,13 @@
             "ShipID": "526",
             "carrierJSON": "ships/by-id/526/carrier.json",
             "dataJSON": "ships/by-id/526/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/534",
+            "Name": "Chen Hai",
+            "ShipID": "534",
+            "carrierJSON": "ships/by-id/534/carrier.json",
+            "dataJSON": "ships/by-id/534/ship.json"
         }
     ]
 }

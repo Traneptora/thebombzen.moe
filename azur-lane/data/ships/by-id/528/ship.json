@@ -29,6 +29,8 @@
     "AirMax": "0",
     "Ammo": "2",
     "Armor": "Light",
+    "Artist": "\u5e15\u74e6\u6ce2",
+    "ArtistLink": "[https://weibo.com/u/5131774467 \u5e15\u74e6\u6ce2]",
     "CNName": "U-1206",
     "Class": "Type VIIC",
     "ConstructTime": "Cannot Be Constructed",
@@ -68,7 +70,6 @@
     "HealthKai125": "0",
     "HealthMax": "1136",
     "JPName": "U-1206",
-    "KRName": "",
     "Luck": "20",
     "Name": "U-1206",
     "Nationality": "Iron Blood",
@@ -85,6 +86,13 @@
     "ShipID": "528",
     "Speed": "18",
     "SpeedKai": "0",
+    "StatBonus120": "1",
+    "StatBonus120Type": "Torpedo",
+    "StatBonusCollect": "2",
+    "StatBonusCollectType": "Evasion",
+    "TechPoint120": "12",
+    "TechPointCollect": "8",
+    "TechPointMLB": "16",
     "Torp120": "499",
     "Torp125": "505",
     "TorpInitial": "96",
@@ -92,5 +100,6 @@
     "TorpKai120": "0",
     "TorpKai125": "0",
     "TorpMax": "475",
-    "Type": "Submarine"
+    "Type": "Submarine",
+    "VA": "[https://en.wikipedia.org/wiki/Mayuka_Nomura Mayuka Nomura]"
 }

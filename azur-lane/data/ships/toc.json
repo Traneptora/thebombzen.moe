@@ -430,6 +430,13 @@
             "dataJSON": "ships/by-id/30007/ship.json"
         },
         {
+            "DataDir": "ships/by-id/30008",
+            "Name": "Junyou META",
+            "ShipID": "30008",
+            "carrierJSON": "ships/by-id/30008/carrier.json",
+            "dataJSON": "ships/by-id/30008/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Plan001",
             "Name": "Neptune",
             "ShipID": "Plan001",
@@ -3369,6 +3376,37 @@
             "ShipID": "529",
             "battleshipJSON": "ships/by-id/529/battleship.json",
             "dataJSON": "ships/by-id/529/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/530",
+            "Name": "Charybdis",
+            "ShipID": "530",
+            "dataJSON": "ships/by-id/530/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/531",
+            "Name": "Hai Tien",
+            "ShipID": "531",
+            "dataJSON": "ships/by-id/531/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/532",
+            "Name": "Hai Chi",
+            "ShipID": "532",
+            "dataJSON": "ships/by-id/532/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/533",
+            "Name": "Bristol",
+            "ShipID": "533",
+            "dataJSON": "ships/by-id/533/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/534",
+            "Name": "Chen Hai",
+            "ShipID": "534",
+            "carrierJSON": "ships/by-id/534/carrier.json",
+            "dataJSON": "ships/by-id/534/ship.json"
         }
     ]
 }

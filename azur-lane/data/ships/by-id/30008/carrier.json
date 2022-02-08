@@ -1,0 +1,29 @@
+{
+    "Name": "Junyou META",
+    "Reload": 193,
+    "ReloadUnkai": 193,
+    "Slot1": {
+        "MLB": {
+            "F": 0
+        },
+        "Retrofit": {
+            "F": 0
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 0
+        },
+        "Retrofit": {
+            "D": 0
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 0
+        },
+        "Retrofit": {
+            "T": 0
+        }
+    }
+}
