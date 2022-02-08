@@ -32,7 +32,6 @@ ship_cargo_fields = [
     'Name',
     'CNName',
     'JPName',
-    'KRName',
     'Rarity',
     'Nationality',
     'ConstructTime',
@@ -135,6 +134,13 @@ ship_cargo_fields = [
     'Eq3EffInit',
     'Eq3EffInitMax',
     'Eq3EffInitKai',
+    'StatBonusCollectType',
+    'StatBonusCollect',
+    'StatBonus120Type',
+    'StatBonus120',
+    'TechPointCollect',
+    'TechPointMLB',
+    'TechPoint120',
 ]
 
 ship_urls = [
@@ -152,7 +158,6 @@ equip_cargo_fields = [
     'Tech',
     'CNName',
     'JPName',
-    'KRName',
     'ENName',
     'Health',
     'HealthMax',
