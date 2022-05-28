@@ -598,6 +598,27 @@
             "ShipID": "534",
             "carrierJSON": "ships/by-id/534/carrier.json",
             "dataJSON": "ships/by-id/534/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/538",
+            "Name": "Volga",
+            "ShipID": "538",
+            "carrierJSON": "ships/by-id/538/carrier.json",
+            "dataJSON": "ships/by-id/538/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/540",
+            "Name": "Impero",
+            "ShipID": "540",
+            "carrierJSON": "ships/by-id/540/carrier.json",
+            "dataJSON": "ships/by-id/540/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/553",
+            "Name": "Indomitable",
+            "ShipID": "553",
+            "carrierJSON": "ships/by-id/553/carrier.json",
+            "dataJSON": "ships/by-id/553/ship.json"
         }
     ]
 }

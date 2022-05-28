@@ -1,13 +1,13 @@
 {
     "Name": "Unicorn",
-    "Reload": 181,
+    "Reload": 186,
     "ReloadUnkai": 181,
     "Slot1": {
         "MLB": {
             "F": 3
         },
         "Retrofit": {
-            "F": 3
+            "F": 4
         }
     },
     "Slot2": {

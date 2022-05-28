@@ -76,6 +76,18 @@
             "dataJSON": "ships/by-id/516/ship.json"
         },
         {
+            "DataDir": "ships/by-id/549",
+            "Name": "Little Prinz Eugen",
+            "ShipID": "549",
+            "dataJSON": "ships/by-id/549/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/552",
+            "Name": "Little Cheshire",
+            "ShipID": "552",
+            "dataJSON": "ships/by-id/552/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/10061",
             "Name": "Marie Rose",
             "ShipID": "10061",
@@ -435,6 +447,26 @@
             "ShipID": "30008",
             "carrierJSON": "ships/by-id/30008/carrier.json",
             "dataJSON": "ships/by-id/30008/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/30009",
+            "Name": "Scharnhorst META",
+            "ShipID": "30009",
+            "battleshipJSON": "ships/by-id/30009/battleship.json",
+            "dataJSON": "ships/by-id/30009/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/30010",
+            "Name": "Yamashiro META",
+            "ShipID": "30010",
+            "battleshipJSON": "ships/by-id/30010/battleship.json",
+            "dataJSON": "ships/by-id/30010/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/30011",
+            "Name": "Memphis META",
+            "ShipID": "30011",
+            "dataJSON": "ships/by-id/30011/ship.json"
         },
         {
             "DataDir": "ships/by-id/Plan001",
@@ -1294,6 +1326,13 @@
             "ShipID": "136",
             "battleshipJSON": "ships/by-id/136/battleship.json",
             "dataJSON": "ships/by-id/136/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/137",
+            "Name": "Vanguard",
+            "ShipID": "137",
+            "battleshipJSON": "ships/by-id/137/battleship.json",
+            "dataJSON": "ships/by-id/137/ship.json"
         },
         {
             "DataDir": "ships/by-id/140",
@@ -3407,6 +3446,122 @@
             "ShipID": "534",
             "carrierJSON": "ships/by-id/534/carrier.json",
             "dataJSON": "ships/by-id/534/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/535",
+            "Name": "Kiev",
+            "ShipID": "535",
+            "dataJSON": "ships/by-id/535/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/536",
+            "Name": "Arkhangelsk",
+            "ShipID": "536",
+            "battleshipJSON": "ships/by-id/536/battleship.json",
+            "dataJSON": "ships/by-id/536/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/537",
+            "Name": "Soobrazitelny",
+            "ShipID": "537",
+            "dataJSON": "ships/by-id/537/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/538",
+            "Name": "Volga",
+            "ShipID": "538",
+            "carrierJSON": "ships/by-id/538/carrier.json",
+            "dataJSON": "ships/by-id/538/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/539",
+            "Name": "Kronshtadt",
+            "ShipID": "539",
+            "dataJSON": "ships/by-id/539/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/540",
+            "Name": "Impero",
+            "ShipID": "540",
+            "carrierJSON": "ships/by-id/540/carrier.json",
+            "dataJSON": "ships/by-id/540/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/541",
+            "Name": "Pompeo Magno",
+            "ShipID": "541",
+            "dataJSON": "ships/by-id/541/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/542",
+            "Name": "Trieste",
+            "ShipID": "542",
+            "dataJSON": "ships/by-id/542/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/543",
+            "Name": "Seydlitz",
+            "ShipID": "543",
+            "battleshipJSON": "ships/by-id/543/battleship.json",
+            "dataJSON": "ships/by-id/543/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/544",
+            "Name": "L\u00fctzow",
+            "ShipID": "544",
+            "battleshipJSON": "ships/by-id/544/battleship.json",
+            "dataJSON": "ships/by-id/544/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/545",
+            "Name": "Th\u00fcringen",
+            "ShipID": "545",
+            "battleshipJSON": "ships/by-id/545/battleship.json",
+            "dataJSON": "ships/by-id/545/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/546",
+            "Name": "Yorck",
+            "ShipID": "546",
+            "dataJSON": "ships/by-id/546/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/547",
+            "Name": "Emden",
+            "ShipID": "547",
+            "dataJSON": "ships/by-id/547/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/548",
+            "Name": "Elbing",
+            "ShipID": "548",
+            "dataJSON": "ships/by-id/548/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/550",
+            "Name": "Jervis",
+            "ShipID": "550",
+            "dataJSON": "ships/by-id/550/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/551",
+            "Name": "Bellona",
+            "ShipID": "551",
+            "dataJSON": "ships/by-id/551/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/553",
+            "Name": "Indomitable",
+            "ShipID": "553",
+            "carrierJSON": "ships/by-id/553/carrier.json",
+            "dataJSON": "ships/by-id/553/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/554",
+            "Name": "Revenge",
+            "ShipID": "554",
+            "battleshipJSON": "ships/by-id/554/battleship.json",
+            "dataJSON": "ships/by-id/554/ship.json"
         }
     ]
 }

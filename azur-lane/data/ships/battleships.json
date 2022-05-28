@@ -78,6 +78,20 @@
             "dataJSON": "ships/by-id/30007/ship.json"
         },
         {
+            "DataDir": "ships/by-id/30009",
+            "Name": "Scharnhorst META",
+            "ShipID": "30009",
+            "battleshipJSON": "ships/by-id/30009/battleship.json",
+            "dataJSON": "ships/by-id/30009/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/30010",
+            "Name": "Yamashiro META",
+            "ShipID": "30010",
+            "battleshipJSON": "ships/by-id/30010/battleship.json",
+            "dataJSON": "ships/by-id/30010/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Plan002",
             "Name": "Monarch",
             "ShipID": "Plan002",
@@ -293,6 +307,13 @@
             "ShipID": "136",
             "battleshipJSON": "ships/by-id/136/battleship.json",
             "dataJSON": "ships/by-id/136/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/137",
+            "Name": "Vanguard",
+            "ShipID": "137",
+            "battleshipJSON": "ships/by-id/137/battleship.json",
+            "dataJSON": "ships/by-id/137/ship.json"
         },
         {
             "DataDir": "ships/by-id/149",
@@ -570,6 +591,41 @@
             "ShipID": "529",
             "battleshipJSON": "ships/by-id/529/battleship.json",
             "dataJSON": "ships/by-id/529/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/536",
+            "Name": "Arkhangelsk",
+            "ShipID": "536",
+            "battleshipJSON": "ships/by-id/536/battleship.json",
+            "dataJSON": "ships/by-id/536/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/543",
+            "Name": "Seydlitz",
+            "ShipID": "543",
+            "battleshipJSON": "ships/by-id/543/battleship.json",
+            "dataJSON": "ships/by-id/543/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/544",
+            "Name": "L\u00fctzow",
+            "ShipID": "544",
+            "battleshipJSON": "ships/by-id/544/battleship.json",
+            "dataJSON": "ships/by-id/544/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/545",
+            "Name": "Th\u00fcringen",
+            "ShipID": "545",
+            "battleshipJSON": "ships/by-id/545/battleship.json",
+            "dataJSON": "ships/by-id/545/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/554",
+            "Name": "Revenge",
+            "ShipID": "554",
+            "battleshipJSON": "ships/by-id/554/battleship.json",
+            "dataJSON": "ships/by-id/554/ship.json"
         }
     ]
 }
