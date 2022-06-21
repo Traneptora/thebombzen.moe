@@ -110,9 +110,6 @@ function acquire_loadout(){
         update_reload_stat(100);
         calculate_reload();
     } else if (ship_name !== previous_ship) {
-        const handle_data = (data) => {
-            
-        };
         if (ship_dict[ship_name].ship_info){
             handle_loadout_data(ship_dict[ship_name].ship_info);
         } else {
