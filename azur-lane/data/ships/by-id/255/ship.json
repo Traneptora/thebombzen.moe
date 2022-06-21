@@ -50,6 +50,7 @@
     "Eq2EffInitKai": "150%",
     "Eq2EffInitMax": "100%",
     "Eq2Type": "Torpedoes (Missiles on retrofit)",
+    "Eq3BaseKai": null,
     "Eq3BaseMax": "1",
     "Eq3EffInit": "95%",
     "Eq3EffInitKai": "105%",

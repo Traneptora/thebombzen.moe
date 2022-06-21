@@ -92,6 +92,13 @@
             "dataJSON": "ships/by-id/30010/ship.json"
         },
         {
+            "DataDir": "ships/by-id/30012",
+            "Name": "Repulse META",
+            "ShipID": "30012",
+            "battleshipJSON": "ships/by-id/30012/battleship.json",
+            "dataJSON": "ships/by-id/30012/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Plan002",
             "Name": "Monarch",
             "ShipID": "Plan002",

@@ -100,6 +100,7 @@
     "StatBonus120Type": "ASW",
     "StatBonusCollect": "1",
     "StatBonusCollectType": "Health",
+    "SubtypeRetro": null,
     "TechPoint120": "5",
     "TechPointCollect": "3",
     "TechPointMLB": "7",

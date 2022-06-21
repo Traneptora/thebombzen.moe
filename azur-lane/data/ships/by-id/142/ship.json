@@ -100,6 +100,7 @@
     "StatBonus120Type": "Reload",
     "StatBonusCollect": "1",
     "StatBonusCollectType": "ASW",
+    "SubtypeRetro": null,
     "TechPoint120": "14",
     "TechPointCollect": "9",
     "TechPointMLB": "19",
