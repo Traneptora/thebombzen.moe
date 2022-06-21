@@ -62,16 +62,19 @@ def parse_equip_slot(equip_string):
                 lb_json_entry.update(base_state)
     return lb_json
 
+def strip_null(*args):
+    for x in args:
+        yield x if x is not None else 0
+
 def parse_carrier_json(ship_json):
     slot_list = [parse_equip_slot(ship_json['Eq1Type']), parse_equip_slot(ship_json['Eq2Type']),  parse_equip_slot(ship_json['Eq3Type'])]
-    mlb_count = [ship_json.get('Eq1BaseMax', 0), ship_json.get('Eq2BaseMax', 0), ship_json.get('Eq3BaseMax', 0)]
-    kai_count = [ship_json['Eq1BaseKai'], ship_json['Eq2BaseKai'], ship_json.get('Eq3BaseKai', 0)] if 'Eq1BaseKai' in ship_json else [0, 0, 0]
+    mlb_count = list(strip_null(ship_json['Eq1BaseMax'], ship_json['Eq2BaseMax'], ship_json['Eq3BaseMax']))
+    kai_count = list(strip_null(ship_json['Eq1BaseKai'], ship_json['Eq2BaseKai'], ship_json['Eq3BaseKai']))
     carrier_json = {'Slot1':{}, 'Slot2':{}, 'Slot3':{}}
     carrier_json['Name'] = ship_json['Name']
-    reload_pre_kai = int(ship_json['Reload120'])
-    if 'ReloadKai120' in ship_json:
-        reload_120 = int(ship_json['ReloadKai120'])
-        reload_stat = reload_120 if reload_120 > 0 else reload_pre_kai
+    reload_pre_kai = int(*strip_null(ship_json['Reload125']))
+    reload_kai_125 = int(*strip_null(ship_json['ReloadKai125']))
+    reload_stat = reload_kai_125 if reload_kai_125 > 0 else reload_pre_kai
     carrier_json['Reload'] = reload_stat
     carrier_json['ReloadUnkai'] = reload_pre_kai
     for i in range(3):
