@@ -3569,6 +3569,19 @@
             "ShipID": "554",
             "battleshipJSON": "ships/by-id/554/battleship.json",
             "dataJSON": "ships/by-id/554/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/555",
+            "Name": "Joffre",
+            "ShipID": "555",
+            "carrierJSON": "ships/by-id/555/carrier.json",
+            "dataJSON": "ships/by-id/555/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/556",
+            "Name": "L'Indomptable",
+            "ShipID": "556",
+            "dataJSON": "ships/by-id/556/ship.json"
         }
     ]
 }

@@ -619,6 +619,13 @@
             "ShipID": "553",
             "carrierJSON": "ships/by-id/553/carrier.json",
             "dataJSON": "ships/by-id/553/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/555",
+            "Name": "Joffre",
+            "ShipID": "555",
+            "carrierJSON": "ships/by-id/555/carrier.json",
+            "dataJSON": "ships/by-id/555/ship.json"
         }
     ]
 }
