@@ -19,7 +19,7 @@ function name_filter() {
     document.getElementById('report-cost').textContent = checked.dataset.projectCost;
     document.getElementById('main').dataset.projectName = checked.value;
     if (checked.value === '' || checked.value === 'unknown' || checked.value === 'unlisted'){
-        return; // my work here is done.  but you did't do anything. *swooshes cape*
+        return; // my work here is done.  but you didn't do anything. *swooshes cape*
     }
     const series = document.getElementById('project-series');
     if ((series.value === '' || series.value === 'unknown') && checked.dataset.projectSeries !== "all"){

@@ -13,6 +13,7 @@ main[data-filter-type="t"] #project-name :not(.item-t, .item-all) {
     display: none;
 }
 
+main[data-filter-series="pr5"] #project-name :not(.series-pr5, .series-all),
 main[data-filter-series="pr4"] #project-name :not(.series-pr4, .series-all),
 main[data-filter-series="pr3"] #project-name :not(.series-pr3, .series-all),
 main[data-filter-series="pr2"] #project-name :not(.series-pr2, .series-all),
