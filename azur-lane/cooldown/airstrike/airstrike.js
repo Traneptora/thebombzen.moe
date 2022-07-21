@@ -98,6 +98,7 @@ var fighters = [
 
 var dive_bombers = [
     { 'value': '12.00', 'text': 'J5N Tenrai' },
+    { 'value': '12.00', 'text': 'Prototype Su-2' },
     { 'value': '11.91', 'text': 'XSB3C-1 (Goldiver)' },
     { 'value': '11.88', 'text': 'SB2C Helldiver', 'name': 'helldiver' },
     { 'value': '11.71', 'text': 'SBD Dauntless (McClusky)' },
@@ -110,6 +111,7 @@ var dive_bombers = [
 ];
 
 var torp_bombers = [
+    { 'value': '12.50', 'text': 'VIT-2 (VK-107)'},
     { 'value': '12.17', 'text': 'XTB2D-1 Sky Pirate' },
     { 'value': '12.04', 'text': 'TBM Avenger (VT-18)' },
     { 'value': '11.64', 'text': 'Westland Wyvern' },
