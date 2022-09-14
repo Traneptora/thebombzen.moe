@@ -35,7 +35,7 @@
     "ArtistTwitter": "[https://twitter.com/hanasa_criin Criin]",
     "CNName": "\u9ca4",
     "Class": "Kongou",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "5",
     "ConsumptionMax": "14",
     "Eq1BaseKai": null,

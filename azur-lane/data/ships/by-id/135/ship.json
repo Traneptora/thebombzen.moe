@@ -35,7 +35,7 @@
     "ArtistTwitter": "[https://twitter.com/enka996 Enka996]",
     "CNName": "\u5a01\u5c14\u58eb\u4eb2\u738b",
     "Class": "King George V",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "5",
     "ConsumptionMax": "15",
     "Eq1BaseKai": null,

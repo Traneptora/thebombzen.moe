@@ -35,7 +35,7 @@
     "ArtistTwitter": "[https://twitter.com/lino__ Lino]",
     "CNName": "\u8424\u706b\u866b",
     "Class": "G",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "2",
     "ConsumptionMax": "9",
     "Eq1BaseKai": null,

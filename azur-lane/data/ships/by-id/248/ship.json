@@ -35,7 +35,7 @@
     "ArtistTwitter": null,
     "CNName": "\u6c99\u6069\u970d\u65af\u7279",
     "Class": "Scharnhorst",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "4",
     "ConsumptionMax": "13",
     "Eq1BaseKai": null,

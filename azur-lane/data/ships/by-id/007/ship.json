@@ -35,7 +35,7 @@
     "ArtistTwitter": "[https://twitter.com/shenbeixiaoqiu \u4eee\u9762\u30e9\u30a4\u30c0\u30fc\u30b3\u30de\u30ea]",
     "CNName": "\u683c\u91cc\u5fb7\u5229",
     "Class": "Gridley",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "2",
     "ConsumptionMax": "8",
     "Eq1BaseKai": null,

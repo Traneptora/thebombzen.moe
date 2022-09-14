@@ -35,7 +35,7 @@
     "ArtistTwitter": null,
     "CNName": "\u80e1\u8702",
     "Class": "Wasp",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "3",
     "ConsumptionMax": "11",
     "Eq1BaseKai": null,

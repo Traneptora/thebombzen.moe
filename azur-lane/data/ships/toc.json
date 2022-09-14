@@ -476,6 +476,51 @@
             "dataJSON": "ships/by-id/30012/ship.json"
         },
         {
+            "DataDir": "ships/by-id/30013",
+            "Name": "Trento META",
+            "ShipID": "30013",
+            "dataJSON": "ships/by-id/30013/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/30014",
+            "Name": "Renown META",
+            "ShipID": "30014",
+            "battleshipJSON": "ships/by-id/30014/battleship.json",
+            "dataJSON": "ships/by-id/30014/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/20023",
+            "Name": "Plymouth",
+            "ShipID": "20023",
+            "dataJSON": "ships/by-id/20023/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/20024",
+            "Name": "Prinz Rupprecht",
+            "ShipID": "20024",
+            "battleshipJSON": "ships/by-id/20024/battleship.json",
+            "dataJSON": "ships/by-id/20024/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/20025",
+            "Name": "Harbin",
+            "ShipID": "20025",
+            "dataJSON": "ships/by-id/20025/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/20026",
+            "Name": "Chkalov",
+            "ShipID": "20026",
+            "carrierJSON": "ships/by-id/20026/carrier.json",
+            "dataJSON": "ships/by-id/20026/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/20027",
+            "Name": "Brest",
+            "ShipID": "20027",
+            "dataJSON": "ships/by-id/20027/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Plan001",
             "Name": "Neptune",
             "ShipID": "Plan001",
@@ -1889,6 +1934,12 @@
             "Name": "Admiral Hipper",
             "ShipID": "242",
             "dataJSON": "ships/by-id/242/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/243",
+            "Name": "Bl\u00fccher",
+            "ShipID": "243",
+            "dataJSON": "ships/by-id/243/ship.json"
         },
         {
             "DataDir": "ships/by-id/244",
@@ -3582,6 +3633,62 @@
             "Name": "L'Indomptable",
             "ShipID": "556",
             "dataJSON": "ships/by-id/556/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/557",
+            "Name": "Enterprise (Royal Navy)",
+            "ShipID": "557",
+            "dataJSON": "ships/by-id/557/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/558",
+            "Name": "Leonardo da Vinci",
+            "ShipID": "558",
+            "dataJSON": "ships/by-id/558/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/559",
+            "Name": "Giuseppe Garibaldi",
+            "ShipID": "559",
+            "dataJSON": "ships/by-id/559/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/560",
+            "Name": "Bolzano",
+            "ShipID": "560",
+            "dataJSON": "ships/by-id/560/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/561",
+            "Name": "Roma",
+            "ShipID": "561",
+            "battleshipJSON": "ships/by-id/561/battleship.json",
+            "dataJSON": "ships/by-id/561/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/562",
+            "Name": "Alfredo Oriani",
+            "ShipID": "562",
+            "dataJSON": "ships/by-id/562/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/563",
+            "Name": "Emanuele Pessagno",
+            "ShipID": "563",
+            "dataJSON": "ships/by-id/563/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/564",
+            "Name": "Z16",
+            "ShipID": "564",
+            "dataJSON": "ships/by-id/564/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/566",
+            "Name": "Br\u00fcnhilde",
+            "ShipID": "566",
+            "battleshipJSON": "ships/by-id/566/battleship.json",
+            "dataJSON": "ships/by-id/566/ship.json"
         }
     ]
 }

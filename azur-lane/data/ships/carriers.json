@@ -148,6 +148,13 @@
             "dataJSON": "ships/by-id/30008/ship.json"
         },
         {
+            "DataDir": "ships/by-id/20026",
+            "Name": "Chkalov",
+            "ShipID": "20026",
+            "carrierJSON": "ships/by-id/20026/carrier.json",
+            "dataJSON": "ships/by-id/20026/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Plan019",
             "Name": "Hakuryuu",
             "ShipID": "Plan019",

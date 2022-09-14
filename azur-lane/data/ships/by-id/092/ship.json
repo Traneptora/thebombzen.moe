@@ -35,7 +35,7 @@
     "ArtistTwitter": null,
     "CNName": "\u547d\u8fd0\u5973\u795e",
     "Class": "F",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "2",
     "ConsumptionMax": "8",
     "Eq1BaseKai": null,

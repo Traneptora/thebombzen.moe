@@ -35,7 +35,7 @@
     "ArtistTwitter": null,
     "CNName": "\u52a0\u62c9\u8482\u4e9a",
     "Class": "Arethusa",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "2",
     "ConsumptionMax": "9",
     "Eq1BaseKai": null,

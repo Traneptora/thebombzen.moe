@@ -35,7 +35,7 @@
     "ArtistTwitter": "[https://twitter.com/saru_1127 Saru]",
     "CNName": "\u5438\u8840\u9b3c",
     "Class": "V",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "2",
     "ConsumptionMax": "9",
     "Eq1BaseKai": null,

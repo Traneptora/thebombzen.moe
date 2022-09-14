@@ -1,0 +1,29 @@
+{
+    "Name": "Chkalov",
+    "Reload": 121,
+    "ReloadUnkai": 121,
+    "Slot1": {
+        "MLB": {
+            "D": 2
+        },
+        "Retrofit": {
+            "D": 2
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 2
+        },
+        "Retrofit": {
+            "D": 2
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 4
+        },
+        "Retrofit": {
+            "T": 4
+        }
+    }
+}

@@ -35,7 +35,7 @@
     "ArtistTwitter": "[https://twitter.com/hao660a \u30cf\u30aa]",
     "CNName": "\u514b\u5229\u592b\u5170",
     "Class": "Cleveland",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "3",
     "ConsumptionMax": "10",
     "Eq1BaseKai": null,

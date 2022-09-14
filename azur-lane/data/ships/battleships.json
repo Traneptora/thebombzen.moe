@@ -99,6 +99,20 @@
             "dataJSON": "ships/by-id/30012/ship.json"
         },
         {
+            "DataDir": "ships/by-id/30014",
+            "Name": "Renown META",
+            "ShipID": "30014",
+            "battleshipJSON": "ships/by-id/30014/battleship.json",
+            "dataJSON": "ships/by-id/30014/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/20024",
+            "Name": "Prinz Rupprecht",
+            "ShipID": "20024",
+            "battleshipJSON": "ships/by-id/20024/battleship.json",
+            "dataJSON": "ships/by-id/20024/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Plan002",
             "Name": "Monarch",
             "ShipID": "Plan002",
@@ -633,6 +647,20 @@
             "ShipID": "554",
             "battleshipJSON": "ships/by-id/554/battleship.json",
             "dataJSON": "ships/by-id/554/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/561",
+            "Name": "Roma",
+            "ShipID": "561",
+            "battleshipJSON": "ships/by-id/561/battleship.json",
+            "dataJSON": "ships/by-id/561/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/566",
+            "Name": "Br\u00fcnhilde",
+            "ShipID": "566",
+            "battleshipJSON": "ships/by-id/566/battleship.json",
+            "dataJSON": "ships/by-id/566/ship.json"
         }
     ]
 }

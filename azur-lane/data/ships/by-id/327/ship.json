@@ -35,7 +35,7 @@
     "ArtistTwitter": "[https://twitter.com/yurang92 \u3086\u3089\u3093]",
     "CNName": "\u6590\u6d4e",
     "Class": "Crown Colony",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "2",
     "ConsumptionMax": "9",
     "Eq1BaseKai": null,

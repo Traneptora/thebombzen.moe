@@ -35,7 +35,7 @@
     "ArtistTwitter": "[https://twitter.com/lino__ Lino]",
     "CNName": "\u6492\u5207\u5c14",
     "Class": "Fletcher",
-    "ConstructTime": "Drop Only",
+    "ConstructTime": "Cannot Be Constructed",
     "ConsumptionInitial": "2",
     "ConsumptionMax": "8",
     "Eq1BaseKai": null,
