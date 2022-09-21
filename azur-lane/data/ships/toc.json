@@ -1469,6 +1469,12 @@
             "dataJSON": "ships/by-id/152/ship.json"
         },
         {
+            "DataDir": "ships/by-id/154",
+            "Name": "Miyuki",
+            "ShipID": "154",
+            "dataJSON": "ships/by-id/154/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/155",
             "Name": "Ayanami",
             "ShipID": "155",
@@ -1679,6 +1685,12 @@
             "dataJSON": "ships/by-id/198/ship.json"
         },
         {
+            "DataDir": "ships/by-id/199",
+            "Name": "Haguro",
+            "ShipID": "199",
+            "dataJSON": "ships/by-id/199/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/200",
             "Name": "Takao",
             "ShipID": "200",
@@ -1789,6 +1801,13 @@
             "ShipID": "215",
             "battleshipJSON": "ships/by-id/215/battleship.json",
             "dataJSON": "ships/by-id/215/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/217",
+            "Name": "Musashi",
+            "ShipID": "217",
+            "battleshipJSON": "ships/by-id/217/battleship.json",
+            "dataJSON": "ships/by-id/217/ship.json"
         },
         {
             "DataDir": "ships/by-id/218",
@@ -2282,6 +2301,12 @@
             "Name": "Noshiro",
             "ShipID": "322",
             "dataJSON": "ships/by-id/322/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/324",
+            "Name": "Sakawa",
+            "ShipID": "324",
+            "dataJSON": "ships/by-id/324/ship.json"
         },
         {
             "DataDir": "ships/by-id/325",
@@ -3689,6 +3714,12 @@
             "ShipID": "566",
             "battleshipJSON": "ships/by-id/566/battleship.json",
             "dataJSON": "ships/by-id/566/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/567",
+            "Name": "Wakatsuki",
+            "ShipID": "567",
+            "dataJSON": "ships/by-id/567/ship.json"
         }
     ]
 }

@@ -439,6 +439,13 @@
             "dataJSON": "ships/by-id/215/ship.json"
         },
         {
+            "DataDir": "ships/by-id/217",
+            "Name": "Musashi",
+            "ShipID": "217",
+            "battleshipJSON": "ships/by-id/217/battleship.json",
+            "dataJSON": "ships/by-id/217/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/248",
             "Name": "Scharnhorst",
             "ShipID": "248",
