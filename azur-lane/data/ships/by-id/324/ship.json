@@ -29,10 +29,10 @@
     "AirMax": "0",
     "Ammo": "0",
     "Armor": "Light",
-    "Artist": null,
-    "ArtistLink": null,
-    "ArtistPixiv": null,
-    "ArtistTwitter": null,
+    "Artist": "ATDAN",
+    "ArtistLink": "[http://www.weibo.com/atdan \u5c0f\u539f\u539f\u539f\u5b50Dan]",
+    "ArtistPixiv": "[https://www.pixiv.net/member.php?id=6662895 ATDAN-]",
+    "ArtistTwitter": "[https://twitter.com/Atdan86 ATDAN]",
     "CNName": "\u9152\u5302",
     "Class": "Agano",
     "ConstructTime": "01:20:00",
@@ -112,5 +112,5 @@
     "TorpKai125": "0",
     "TorpMax": "358",
     "Type": "Light Cruiser",
-    "VA": null
+    "VA": "[[:wikipedia:Aina_Suzuki|Aina Suzuki]]"
 }

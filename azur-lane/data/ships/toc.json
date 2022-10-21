@@ -88,6 +88,12 @@
             "dataJSON": "ships/by-id/552/ship.json"
         },
         {
+            "DataDir": "ships/by-id/568",
+            "Name": "Little Spee",
+            "ShipID": "568",
+            "dataJSON": "ships/by-id/568/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/10061",
             "Name": "Marie Rose",
             "ShipID": "10061",
@@ -487,6 +493,12 @@
             "ShipID": "30014",
             "battleshipJSON": "ships/by-id/30014/battleship.json",
             "dataJSON": "ships/by-id/30014/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/30015",
+            "Name": "Hunter META",
+            "ShipID": "30015",
+            "dataJSON": "ships/by-id/30015/ship.json"
         },
         {
             "DataDir": "ships/by-id/20023",
