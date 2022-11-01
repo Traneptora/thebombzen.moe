@@ -203,6 +203,10 @@ function handle_loadout_data_impl(data){
             element.selected = true;
         }
         update_textfields(field);
+        if (choice === 'other') {
+            document.getElementById('plane' + field + 'counttextfield').value = params.get('count' + field);
+            document.getElementById('plane' + field + 'cdtextfield').value = params.get('cd' + field);
+        }
     }
 }
 
@@ -240,17 +244,24 @@ function copy_permalink() {
     const url = new URL(window.location);
     const params = url.searchParams;
     const ship_choice = document.getElementById("select-ship").value;
+
     if (ship_choice) {
         params.set('ship', ship_choice);
     }
+
     for (const field of [1, 2, 3]) {
         const selector = '#plane' + field + 'cddropdown :not(.hidden) option:checked';
         const element = document.querySelector(selector);
         const name = element?.getAttribute('name');
         if (name) {
             params.set('choice' + field, name);
+            if (name === 'other') {
+                params.set('count' + field, document.getElementById('plane' + field + 'counttextfield').value);
+                params.set('cd' + field, document.getElementById('plane' + field + 'cdtextfield').value);
+            }
         }
     }
+
     for (const param in param_map) {
         const element = document.getElementById(param_map[param]);
         const type = element.getAttribute('type');
@@ -259,7 +270,6 @@ function copy_permalink() {
         } else {
             params.set(param, element.value);
         }
-        
     }
     url.search = params.toString();
     navigator.clipboard.writeText(url.href).then(() => {
