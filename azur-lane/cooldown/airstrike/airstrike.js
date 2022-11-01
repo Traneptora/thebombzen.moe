@@ -82,57 +82,57 @@ function update_textfields(idnumber){
 
 var fighters = [
     { 'value': '10.90', 'text': 'F6F Hellcat', 'name': 'hellcat' },
-    { 'value': '10.81', 'text': 'F7F Tigercat' },
-    { 'value': '10.71', 'text': 'N1K3-A Shiden Kai' },
-    { 'value': '10.61', 'text': 'Sea Hornet' },
-    { 'value': '10.61', 'text': 'Sea Fury' },
-    { 'value': '10.60', 'text': 'Seafang' },
-    { 'value': '10.58', 'text': 'BF-109G Rocket Fighter' },
-    { 'value': '10.44', 'text': 'A7M Reppuu' }, 
-    { 'value': '10.20', 'text': 'VF-17 (“Pirate Squad”)' }, 
-    { 'value':  '9.64', 'text': 'F8F Bearcat' },
-    { 'value':  '9.44', 'text': 'F2A Buffalo (Thatch)' },
-    { 'value':  '9.24', 'text': 'Messerschmitt Me-155A' },
-    { 'value':  '8.98', 'text': 'XF5F Skyrocket' }, 
+    { 'value': '10.81', 'text': 'F7F Tigercat', 'name': 'tigercat' },
+    { 'value': '10.71', 'text': 'N1K3-A Shiden Kai', 'name': 'shiden-kai'},
+    { 'value': '10.61', 'text': 'Sea Hornet', 'name': 'sea-hornet'},
+    { 'value': '10.61', 'text': 'Sea Fury', 'name': 'sea-fury' },
+    { 'value': '10.60', 'text': 'Seafang', 'name': 'seafang' },
+    { 'value': '10.58', 'text': 'BF-109G Rocket Fighter', 'name': 'bf109g' },
+    { 'value': '10.44', 'text': 'A7M Reppuu', 'name': 'reppuu' }, 
+    { 'value': '10.20', 'text': 'VF-17 (“Pirate Squad”)', 'name': 'vf-17' }, 
+    { 'value':  '9.64', 'text': 'F8F Bearcat', 'name': 'bearcat' },
+    { 'value':  '9.44', 'text': 'F2A Buffalo (Thatch)', 'name': 'buffalo-thatch' },
+    { 'value':  '9.24', 'text': 'Messerschmitt Me-155A', 'name': 'messerschitt' },
+    { 'value':  '8.98', 'text': 'XF5F Skyrocket', 'name': 'skyrocket' },
 ];
 
 var dive_bombers = [
-    { 'value': '12.00', 'text': 'J5N Tenrai' },
-    { 'value': '12.00', 'text': 'Prototype Su-2' },
-    { 'value': '11.91', 'text': 'XSB3C-1 (Goldiver)' },
+    { 'value': '12.00', 'text': 'J5N Tenrai', 'name': 'tenrai' },
+    { 'value': '12.00', 'text': 'Prototype Su-2', 'name': 'su2' },
+    { 'value': '11.91', 'text': 'XSB3C-1 (Goldiver)', 'name': 'goldiver' },
     { 'value': '11.88', 'text': 'SB2C Helldiver', 'name': 'helldiver' },
-    { 'value': '11.71', 'text': 'SBD Dauntless (McClusky)' },
-    { 'value': '11.57', 'text': 'Junkers Ju-87c' },
-    { 'value': '11.11', 'text': 'Fairey Firefly' },
-    { 'value': '10.44', 'text': 'D4Y Suisei' },
-    { 'value': '10.38', 'text': 'Fairey Barracuda (831 Squadron)' },
-    { 'value':  '9.98', 'text': 'Suisei Model 12A' },
-    { 'value':  '9.18', 'text': 'Fairey Fulmar' },
+    { 'value': '11.71', 'text': 'SBD Dauntless (McClusky)', 'name': 'dauntless-mcclusky' },
+    { 'value': '11.57', 'text': 'Junkers Ju-87c', 'name': 'just87c' },
+    { 'value': '11.11', 'text': 'Fairey Firefly', 'name': 'firefly' },
+    { 'value': '10.44', 'text': 'D4Y Suisei', 'name': 'comet' },
+    { 'value': '10.38', 'text': 'Fairey Barracuda (831 Squadron)', 'name': 'cuda-831' },
+    { 'value':  '9.98', 'text': 'Suisei Model 12A', 'name': 'comet-kai' },
+    { 'value':  '9.18', 'text': 'Fairey Fulmar', 'name': 'fulmar' },
 ];
 
 var torp_bombers = [
-    { 'value': '12.50', 'text': 'VIT-2 (VK-107)'},
-    { 'value': '12.17', 'text': 'XTB2D-1 Sky Pirate' },
-    { 'value': '12.04', 'text': 'TBM Avenger (VT-18)' },
-    { 'value': '11.64', 'text': 'Westland Wyvern' },
+    { 'value': '12.50', 'text': 'VIT-2 (VK-107)', 'name': 'vit2' },
+    { 'value': '12.17', 'text': 'XTB2D-1 Sky Pirate', 'name': 'skypirate' },
+    { 'value': '12.04', 'text': 'TBM Avenger (VT-18)', 'name': 'vt-18', },
+    { 'value': '11.64', 'text': 'Westland Wyvern', 'name': 'wyvern' },
     { 'value': '11.37', 'text': 'B7A Ryusei', 'name': 'ryusei' },
-    { 'value': '11.17', 'text': 'Junkers Ju-87 D-4' },
-    { 'value': '10.97', 'text': 'Swordfish (818 Squadron)' },
-    { 'value': '10.60', 'text': 'C6N Saiun Kai Prototype' },
-    { 'value': '10.31', 'text': 'Fairey Barracuda' },
-    { 'value': '10.00', 'text': 'Bréguet Br.810'},
-    { 'value':  '9.98', 'text': 'Fairey Albacore' },
+    { 'value': '11.17', 'text': 'Junkers Ju-87 D-4', 'name': 'ju-87d4' },
+    { 'value': '10.97', 'text': 'Swordfish (818 Squadron)', 'name': 'swordfish-818' },
+    { 'value': '10.60', 'text': 'C6N Saiun Kai Prototype', 'name': 'saiun' },
+    { 'value': '10.31', 'text': 'Fairey Barracuda', 'name': 'cuda' },
+    { 'value': '10.00', 'text': 'Bréguet Br.810', 'name': 'baguette-br-810', },
+    { 'value':  '9.98', 'text': 'Fairey Albacore', 'name': 'albacore' },
 ];
 
 var seaplanes = [
-    { 'value': '14.30', 'text': 'M6A Seiran' },
-    { 'value': '13.97', 'text': 'E16A Zuiun' },
-    { 'value': '12.97', 'text': 'Suisei Model 21' },
+    { 'value': '14.30', 'text': 'M6A Seiran', 'name': 'seiran' },
+    { 'value': '13.97', 'text': 'E16A Zuiun', 'name': 'zuiun' },
+    { 'value': '12.97', 'text': 'Suisei Model 21', 'name': 'suisei-21' },
 ];
 
 var other_planes = [
     { 'value': 'Don’t Use Slot', 'text': 'Don’t Use Slot', 'name': 'nouseslot'},
-    { 'value': '', 'text': 'Other' },
+    { 'value': '', 'text': 'Other', 'name': 'other' },
 ];
 
 function populate_node(title, data_obj){
@@ -158,7 +158,7 @@ var other_node = populate_node('Other', other_planes);
 
 function filter_options(slot_obj, slot_number){
     let slotcount = 1;
-    for (let type of ['fighters-', 'dive-bombers-', 'torpedo-bombers-', 'seaplanes-', 'other-']){
+    for (const type of ['fighters-', 'dive-bombers-', 'torpedo-bombers-', 'seaplanes-', 'other-']){
         const node = document.getElementById(type + slot_number);
         const char = type.charAt(0).toUpperCase().replace('O', 'N');
         if (char === 'N'){
@@ -181,14 +181,26 @@ function filter_options(slot_obj, slot_number){
 }
 
 function handle_loadout_data_impl(data){
-    for (let field of [1, 2, 3]){
+    const params = new URL(window.location).searchParams;
+    for (const field of [1, 2, 3]){
         const slot_obj = data["Slot" + field].Retrofit;
         const count = filter_options(slot_obj, field);
         const textfield = document.getElementById('plane' + field + 'counttextfield');
         textfield.value = count;
         textfield.dataset.storedValue = count;
-        if (!document.querySelector('#plane' + field + 'cddropdown :not(.hidden) option:not(.hidden):checked')){
-            document.querySelector('#plane' + field + 'cddropdown :not(.hidden) option:not(.hidden)').selected = true;
+        const choice = params.get('choice' + field);
+        const preamble = '#plane' + field + 'cddropdown :not(.hidden) option';
+        let element = undefined;
+        if (choice) {
+            const selector = preamble + '[name="' + choice + '"]';
+            element = document.querySelector(selector);
+        }
+        if (!element) {
+            const selector = preamble + ':not(.hidden)';
+            element = document.querySelector(selector);
+        }
+        if (element) {
+            element.selected = true;
         }
         update_textfields(field);
     }
@@ -198,8 +210,40 @@ function get_fetch_url_impl(data){
     return '/azur-lane/data/' + data.carrierJSON;
 }
 
+function copy_permalink() {
+    const url = new URL(window.location);
+    const params = url.searchParams;
+    const ship_choice = document.getElementById("select-ship").value;
+    if (ship_choice) {
+        params.set('ship', ship_choice);
+    }
+    for (const field of [1, 2, 3]) {
+        const selector = '#plane' + field + 'cddropdown :not(.hidden) option:checked';
+        const element = document.querySelector(selector);
+        const name = element?.getAttribute('name');
+        if (name) {
+            params.set('choice' + field, name);
+        }
+    }
+    url.search = params.toString();
+    navigator.clipboard.writeText(url.href).then(() => {
+        const atag = document.getElementById('copy-permalink');
+        const original = atag.textContent;
+        atag.textContent = 'Copied!';
+        if (original !== atag.textContent) {
+            setTimeout(() => {
+                atag.textContent = original;
+            }, 3000);
+        }
+    });
+}
+
 function ready() {
-    for (let field of [1, 2, 3]){
+    const params = new URL(window.location).searchParams;
+    const cache = document.getElementById('select-ship-cache');
+    const ship_choice = params.get('ship') || cache.value || 'Enterprise';
+
+    for (const field of [1, 2, 3]){
         const dropdown = document.getElementById('plane' + field + 'cddropdown');
         Array.prototype.forEach.call([f_node, db_node, tb_node, s_node, other_node], (e, i) => {
             const node = e.cloneNode(true);
@@ -211,8 +255,7 @@ function ready() {
     fetch('/azur-lane/data/ships/carriers.json').then((r) => {
         return r.json();
     }).then((j) => {
-        const cache = document.getElementById('select-ship-cache');
-        handle_toc(j, cache.value ? cache.value : 'Enterprise');
+        handle_toc(j, ship_choice);
     });
 }
 
