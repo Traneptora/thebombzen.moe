@@ -203,9 +203,15 @@ function handle_loadout_data_impl(data){
             element.selected = true;
         }
         update_textfields(field);
-        if (choice === 'other') {
-            document.getElementById('plane' + field + 'counttextfield').value = params.get('count' + field);
-            document.getElementById('plane' + field + 'cdtextfield').value = params.get('cd' + field);
+        const count_field = document.getElementById('plane' + field + 'counttextfield');
+        count_field.dataset.defaultValue = count_field.value;
+        const count_requested = params.get('count' + field);
+        if (count_requested) {
+            count_field.value = count_requested;
+        }
+        const cd_requested = params.get('cd' + field);
+        if (choice === 'other' && cd_requested) {
+            document.getElementById('plane' + field + 'cdtextfield').value = cd_requested;
         }
     }
 }
@@ -284,7 +290,7 @@ function get_fetch_url_impl(data){
     return '/azur-lane/data/' + data.carrierJSON;
 }
 
-function copy_permalink() {
+async function copy_permalink() {
     const url = new URL(window.location);
     const params = url.searchParams;
     const ship_choice = document.getElementById("select-ship").value;
@@ -303,11 +309,16 @@ function copy_permalink() {
         if (name && name !== defaultName) {
             params.set('choice' + field, name);
             if (name === 'other') {
-                params.set('count' + field, document.getElementById('plane' + field + 'counttextfield').value);
                 params.set('cd' + field, document.getElementById('plane' + field + 'cdtextfield').value);
             }
         } else {
             params.delete('choice' + field);
+        }
+        const count_field = document.getElementById('plane' + field + 'counttextfield');
+        if (+count_field.value !== +count_field.dataset.defaultValue) {
+            params.set('count' + field, +count_field.value);
+        } else {
+            params.delete('count' + field);
         }
     }
 
@@ -347,14 +358,14 @@ function copy_permalink() {
         }
     }
     url.search = params.toString();
-    navigator.clipboard.writeText(url.href).then(() => {
-        const atag = document.getElementById('copy-permalink');
-        const original = atag.textContent;
-        atag.textContent = 'Copied!';
-        if (original !== atag.textContent) {
-            setTimeout(() => {
-                atag.textContent = original;
-            }, 3000);
+    return navigator.clipboard.writeText(url.href).then(() => {
+        const tag = document.getElementById('copy-permalink');
+        const original = tag.textContent;
+        tag.textContent = 'Copied!';
+        if (original !== tag.textContent) {
+            return delay(3000).then(() => {
+                tag.textContent = original;
+            });
         }
     });
 }

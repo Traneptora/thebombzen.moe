@@ -19,6 +19,10 @@ function roundBase10(value, digits = 2){
     }
 }
 
+async function delay(time, vals) {
+    return new Promise((resolve, reject) => setTimeout(resolve, time, vals));
+}
+
 function get_oath_reload(reload, reload_kai_diff){
     return (reload - reload_kai_diff) * 1.056603774 + reload_kai_diff;
 }
