@@ -206,6 +206,32 @@ function handle_loadout_data_impl(data){
     }
 }
 
+var param_map = {
+    'beacon': 'beaconbox',
+    'oath': 'box-affinity',
+    'rld-base': 'txt-rld-stat-base',
+    'rld-bonus': 'txt-rld-stat-bonus',
+    'rld-buff': 'reloadbufftextfield',
+    'cdr': 'cdreduction1textfield',
+    'icdr': 'cdreduction2textfield',
+};
+
+function update_extrafields() {
+    const params = new URL(window.location).searchParams;
+    for (const param in param_map) {
+        const v = params.get(param);
+        if (v) {
+            const element = document.getElementById(param_map[param]);
+            const type = element.getAttribute('type');
+            if (type === 'checkbox' || type === 'radio') {
+                element.checked = v === 'true';
+            } else {
+                element.value = v;
+            }
+        }
+    }
+}
+
 function get_fetch_url_impl(data){
     return '/azur-lane/data/' + data.carrierJSON;
 }
@@ -224,6 +250,16 @@ function copy_permalink() {
         if (name) {
             params.set('choice' + field, name);
         }
+    }
+    for (const param in param_map) {
+        const element = document.getElementById(param_map[param]);
+        const type = element.getAttribute('type');
+        if (type === 'checkbox' || type === 'radio') {
+            params.set(param, element.checked ? 'true' : 'false');
+        } else {
+            params.set(param, element.value);
+        }
+        
     }
     url.search = params.toString();
     navigator.clipboard.writeText(url.href).then(() => {

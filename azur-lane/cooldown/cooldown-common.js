@@ -88,6 +88,9 @@ function handle_loadout_data(data){
     const reloadDiff = (+data.Reload) - (+data.ReloadUnkai);
     document.getElementById("txt-rld-stat-base").dataset.reloadKaiDiff = reloadDiff;
     update_reload_stat(+data.Reload);
+    if (typeof(update_extrafields) === 'function') {
+        update_extrafields();
+    }
     calculate_reload();
 }
 
