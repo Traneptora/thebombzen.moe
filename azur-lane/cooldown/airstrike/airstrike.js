@@ -211,26 +211,70 @@ function handle_loadout_data_impl(data){
 }
 
 var param_map = {
-    'beacon': 'beaconbox',
-    'oath': 'box-affinity',
-    'rld-base': 'txt-rld-stat-base',
-    'rld-bonus': 'txt-rld-stat-bonus',
-    'rld-buff': 'reloadbufftextfield',
-    'cdr': 'cdreduction1textfield',
-    'icdr': 'cdreduction2textfield',
+    'beacon': {
+        'id': 'beaconbox',
+        'type': 'bool',
+        'default': false,
+    },
+    'oath': {
+        'id': 'box-affinity',
+        'type': 'bool',
+        'default': false,
+    },
+    'rld-base': {
+        'id': 'txt-rld-stat-base',
+        'type': 'number',
+        'default': 'load',
+    },
+    'rld-bonus': {
+        'id': 'txt-rld-stat-bonus',
+        'type': 'number',
+        'default': 0.0,
+    },
+    'rld-buff': {
+        'id': 'reloadbufftextfield',
+        'type': 'number',
+        'default': 0.0,
+    },
+    'cdr': {
+        'id': 'cdreduction1textfield',
+        'type': 'number',
+        'default': 0.0,
+    },
+    'icdr': {
+        'id': 'cdreduction2textfield',
+        'type': 'number',
+        'default': 0.0,
+    },
 };
+
+function update_loaded_defaults() {
+    for (const param in param_map) {
+        const element = document.getElementById(param_map[param].id);
+        if (param_map[param].default === 'load') {
+            if (param === 'rld-base' && document.getElementById('box-affinity').checked) {
+                element.dataset.defaultValue = get_unoath_reload(element.value, element.dataset.reloadKaiDiff);
+            } else {
+                element.dataset.defaultValue = element.value;
+            }
+        }
+    }
+}
 
 function update_extrafields() {
     const params = new URL(window.location).searchParams;
     for (const param in param_map) {
+        const element = document.getElementById(param_map[param].id);
         const v = params.get(param);
         if (v) {
-            const element = document.getElementById(param_map[param]);
-            const type = element.getAttribute('type');
-            if (type === 'checkbox' || type === 'radio') {
+            const element = document.getElementById(param_map[param].id);
+            if (param_map[param].type === 'bool') {
                 element.checked = v === 'true';
             } else {
                 element.value = v;
+            }
+            if (param === 'oath') {
+                toggle_affinity();
             }
         }
     }
@@ -253,22 +297,53 @@ function copy_permalink() {
         const selector = '#plane' + field + 'cddropdown :not(.hidden) option:checked';
         const element = document.querySelector(selector);
         const name = element?.getAttribute('name');
-        if (name) {
+        const defaultElement = document.querySelector('#plane' + field + 'cddropdown '
+            + ' :not(.hidden) option:not(.hidden)');
+        const defaultName = defaultElement?.getAttribute('name');
+        if (name && name !== defaultName) {
             params.set('choice' + field, name);
             if (name === 'other') {
                 params.set('count' + field, document.getElementById('plane' + field + 'counttextfield').value);
                 params.set('cd' + field, document.getElementById('plane' + field + 'cdtextfield').value);
             }
+        } else {
+            params.delete('choice' + field);
         }
     }
 
     for (const param in param_map) {
-        const element = document.getElementById(param_map[param]);
-        const type = element.getAttribute('type');
-        if (type === 'checkbox' || type === 'radio') {
-            params.set(param, element.checked ? 'true' : 'false');
-        } else {
-            params.set(param, element.value);
+        const element = document.getElementById(param_map[param].id);
+        let def = param_map[param].default;
+        if (def === 'load') {
+            def = element.dataset.defaultValue;
+        }
+        if (param === 'rld-base' && document.getElementById('box-affinity').checked) {
+            def = get_oath_reload(+def, +element.dataset.reloadKaiDiff);
+        }
+        switch (param_map[param].type) {
+            case 'bool':
+                // coerce into bool
+                if (!element.checked !== !def) {
+                    params.set(param, element.checked ? 'true' : 'false');
+                } else {
+                    params.delete(param);
+                }
+                break;
+            case 'number':
+                // coerce into number
+                if (Math.abs(+element.value - +def) > 1e-2) {
+                    params.set(param, element.value);
+                } else {
+                    params.delete(param);
+                }
+                break;
+            case 'string':
+                if (element.value !== def) {
+                    params.set(param, element.value);
+                } else {
+                    params.delete(param);
+                }
+                break;
         }
     }
     url.search = params.toString();

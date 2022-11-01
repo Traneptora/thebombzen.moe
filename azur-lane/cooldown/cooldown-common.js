@@ -79,6 +79,8 @@ function handle_toc(data, default_ship){
     acquire_loadout();
 }
 
+var updated_extra_fields = false;
+
 /*
  * Handle Your Own Specific Data!!
  * Implement handle_loadout_data_impl(data)
@@ -88,9 +90,13 @@ function handle_loadout_data(data){
     const reloadDiff = (+data.Reload) - (+data.ReloadUnkai);
     document.getElementById("txt-rld-stat-base").dataset.reloadKaiDiff = reloadDiff;
     update_reload_stat(+data.Reload);
-    if (typeof(update_extrafields) === 'function') {
+    if (typeof(update_loaded_defaults) === 'function') {
+        update_loaded_defaults();
+    }
+    if (!updated_extra_fields && typeof(update_extrafields) === 'function') {
         update_extrafields();
     }
+    updated_extra_fields = true;
     calculate_reload();
 }
 
