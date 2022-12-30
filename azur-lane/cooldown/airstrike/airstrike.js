@@ -81,9 +81,11 @@ function update_textfields(idnumber){
 }
 
 var fighters = [
+    { 'value': '11.00', 'text': 'XF5U Flying Flapjack', 'name': 'xf5u-flapjack' },
     { 'value': '10.90', 'text': 'F6F Hellcat', 'name': 'hellcat' },
     { 'value': '10.81', 'text': 'F7F Tigercat', 'name': 'tigercat' },
     { 'value': '10.71', 'text': 'N1K3-A Shiden Kai', 'name': 'shiden-kai'},
+    { 'value': '10.65', 'text': 'Hellcat (HVAR-mounted)', 'name': 'hvar-hellcat' },
     { 'value': '10.61', 'text': 'Sea Hornet', 'name': 'sea-hornet'},
     { 'value': '10.61', 'text': 'Sea Fury', 'name': 'sea-fury' },
     { 'value': '10.60', 'text': 'Seafang', 'name': 'seafang' },
@@ -97,6 +99,7 @@ var fighters = [
 ];
 
 var dive_bombers = [
+    { 'value': '13.20', 'text': 'AD-1 Skyraider', 'name': 'skyraider' },
     { 'value': '12.00', 'text': 'J5N Tenrai', 'name': 'tenrai' },
     { 'value': '12.00', 'text': 'Prototype Su-2', 'name': 'su2' },
     { 'value': '11.91', 'text': 'XSB3C-1 (Goldiver)', 'name': 'goldiver' },
