@@ -228,6 +228,45 @@
             "dataJSON": "ships/by-id/10087/ship.json"
         },
         {
+            "DataDir": "ships/by-id/10091",
+            "Name": "Reisalin Stout",
+            "ShipID": "10091",
+            "dataJSON": "ships/by-id/10091/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10092",
+            "Name": "Klaudia Valentz",
+            "ShipID": "10092",
+            "carrierJSON": "ships/by-id/10092/carrier.json",
+            "dataJSON": "ships/by-id/10092/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10093",
+            "Name": "Patricia Abelheim",
+            "ShipID": "10093",
+            "battleshipJSON": "ships/by-id/10093/battleship.json",
+            "dataJSON": "ships/by-id/10093/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10094",
+            "Name": "Lila Decyrus",
+            "ShipID": "10094",
+            "dataJSON": "ships/by-id/10094/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10095",
+            "Name": "Serri Glaus",
+            "ShipID": "10095",
+            "carrierJSON": "ships/by-id/10095/carrier.json",
+            "dataJSON": "ships/by-id/10095/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10096",
+            "Name": "Kala Ideas",
+            "ShipID": "10096",
+            "dataJSON": "ships/by-id/10096/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Collab001",
             "Name": "Neptune (Neptunia)",
             "ShipID": "Collab001",
@@ -499,6 +538,19 @@
             "Name": "Hunter META",
             "ShipID": "30015",
             "dataJSON": "ships/by-id/30015/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/30016",
+            "Name": "Fortune META",
+            "ShipID": "30016",
+            "dataJSON": "ships/by-id/30016/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/30017",
+            "Name": "Arizona META",
+            "ShipID": "30017",
+            "battleshipJSON": "ships/by-id/30017/battleship.json",
+            "dataJSON": "ships/by-id/30017/ship.json"
         },
         {
             "DataDir": "ships/by-id/20023",
@@ -1236,6 +1288,12 @@
             "Name": "Sheffield",
             "ShipID": "111",
             "dataJSON": "ships/by-id/111/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/112",
+            "Name": "Manchester",
+            "ShipID": "112",
+            "dataJSON": "ships/by-id/112/ship.json"
         },
         {
             "DataDir": "ships/by-id/113",
@@ -3732,6 +3790,58 @@
             "Name": "Wakatsuki",
             "ShipID": "567",
             "dataJSON": "ships/by-id/567/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/569",
+            "Name": "Janus",
+            "ShipID": "569",
+            "dataJSON": "ships/by-id/569/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/570",
+            "Name": "Albion",
+            "ShipID": "570",
+            "carrierJSON": "ships/by-id/570/carrier.json",
+            "dataJSON": "ships/by-id/570/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/571",
+            "Name": "Royal Fortune",
+            "ShipID": "571",
+            "dataJSON": "ships/by-id/571/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/572",
+            "Name": "Hornet II",
+            "ShipID": "572",
+            "carrierJSON": "ships/by-id/572/carrier.json",
+            "dataJSON": "ships/by-id/572/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/573",
+            "Name": "Langley II",
+            "ShipID": "573",
+            "carrierJSON": "ships/by-id/573/carrier.json",
+            "dataJSON": "ships/by-id/573/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/574",
+            "Name": "Yorktown II",
+            "ShipID": "574",
+            "carrierJSON": "ships/by-id/574/carrier.json",
+            "dataJSON": "ships/by-id/574/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/575",
+            "Name": "Northampton II",
+            "ShipID": "575",
+            "dataJSON": "ships/by-id/575/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/576",
+            "Name": "Hammann II",
+            "ShipID": "576",
+            "dataJSON": "ships/by-id/576/ship.json"
         }
     ]
 }

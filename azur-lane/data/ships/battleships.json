@@ -57,6 +57,13 @@
             "dataJSON": "ships/by-id/10087/ship.json"
         },
         {
+            "DataDir": "ships/by-id/10093",
+            "Name": "Patricia Abelheim",
+            "ShipID": "10093",
+            "battleshipJSON": "ships/by-id/10093/battleship.json",
+            "dataJSON": "ships/by-id/10093/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Collab044",
             "Name": "Super Gamer Kizuna AI",
             "ShipID": "Collab044",
@@ -104,6 +111,13 @@
             "ShipID": "30014",
             "battleshipJSON": "ships/by-id/30014/battleship.json",
             "dataJSON": "ships/by-id/30014/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/30017",
+            "Name": "Arizona META",
+            "ShipID": "30017",
+            "battleshipJSON": "ships/by-id/30017/battleship.json",
+            "dataJSON": "ships/by-id/30017/ship.json"
         },
         {
             "DataDir": "ships/by-id/20024",

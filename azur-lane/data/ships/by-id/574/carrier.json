@@ -1,0 +1,33 @@
+{
+    "Name": "Yorktown II",
+    "Reload": 137,
+    "ReloadUnkai": 137,
+    "Slot1": {
+        "MLB": {
+            "F": 2
+        },
+        "Retrofit": {
+            "F": 2
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 4
+        },
+        "Retrofit": {
+            "D": 4
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "D": 3,
+            "F": 3,
+            "T": 3
+        },
+        "Retrofit": {
+            "D": 3,
+            "F": 3,
+            "T": 3
+        }
+    }
+}

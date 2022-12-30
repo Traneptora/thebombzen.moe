@@ -50,6 +50,20 @@
             "dataJSON": "ships/by-id/10086/ship.json"
         },
         {
+            "DataDir": "ships/by-id/10092",
+            "Name": "Klaudia Valentz",
+            "ShipID": "10092",
+            "carrierJSON": "ships/by-id/10092/carrier.json",
+            "dataJSON": "ships/by-id/10092/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/10095",
+            "Name": "Serri Glaus",
+            "ShipID": "10095",
+            "carrierJSON": "ships/by-id/10095/carrier.json",
+            "dataJSON": "ships/by-id/10095/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/Collab004",
             "Name": "Vert",
             "ShipID": "Collab004",
@@ -633,6 +647,34 @@
             "ShipID": "555",
             "carrierJSON": "ships/by-id/555/carrier.json",
             "dataJSON": "ships/by-id/555/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/570",
+            "Name": "Albion",
+            "ShipID": "570",
+            "carrierJSON": "ships/by-id/570/carrier.json",
+            "dataJSON": "ships/by-id/570/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/572",
+            "Name": "Hornet II",
+            "ShipID": "572",
+            "carrierJSON": "ships/by-id/572/carrier.json",
+            "dataJSON": "ships/by-id/572/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/573",
+            "Name": "Langley II",
+            "ShipID": "573",
+            "carrierJSON": "ships/by-id/573/carrier.json",
+            "dataJSON": "ships/by-id/573/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/574",
+            "Name": "Yorktown II",
+            "ShipID": "574",
+            "carrierJSON": "ships/by-id/574/carrier.json",
+            "dataJSON": "ships/by-id/574/ship.json"
         }
     ]
 }

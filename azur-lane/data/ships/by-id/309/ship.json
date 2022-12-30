@@ -37,7 +37,7 @@
     "Class": "Sendai",
     "ConstructTime": "Drop Only",
     "ConsumptionInitial": "3",
-    "ConsumptionMax": "10",
+    "ConsumptionMax": "0",
     "Eq1BaseKai": null,
     "Eq1BaseMax": "1",
     "Eq1EffInit": "115%",

@@ -29,10 +29,10 @@
     "AirMax": "0",
     "Ammo": "0",
     "Armor": "Light",
-    "Artist": null,
-    "ArtistLink": null,
-    "ArtistPixiv": null,
-    "ArtistTwitter": null,
+    "Artist": "nishikikope",
+    "ArtistLink": "[https://www.ppp25do.com/ nishikikope]",
+    "ArtistPixiv": "[https://www.pixiv.net/en/users/20583724 \u4e8c\u8272\u3053\u307a]",
+    "ArtistTwitter": "[https://twitter.com/nishikikope \u4e8c\u8272\u3053\u307a]",
     "CNName": "\u82e5\u6708",
     "Class": "Akizuki",
     "ConstructTime": "00:29:00",
@@ -112,5 +112,5 @@
     "TorpKai125": "0",
     "TorpMax": "370",
     "Type": "Destroyer",
-    "VA": null
+    "VA": "Iida Hikaru"
 }

@@ -29,10 +29,10 @@
     "AirMax": "0",
     "Ammo": "0",
     "Armor": "Medium",
-    "Artist": null,
-    "ArtistLink": null,
-    "ArtistPixiv": null,
-    "ArtistTwitter": null,
+    "Artist": "\u5927\u6708\u7d05\u8449",
+    "ArtistLink": "[http://weibo.com/ootsukimomiji \u5927\u6708\u7d05\u8449]",
+    "ArtistPixiv": "[https://www.pixiv.net/member.php?id=591937 \u5927\u6708\u7d05\u8449]",
+    "ArtistTwitter": "[https://twitter.com/ootsukimomiji \u5927\u6708\u7d05\u8449]",
     "CNName": "\u7fbd\u9ed1",
     "Class": "Myoukou",
     "ConstructTime": "01:55:00",
@@ -112,5 +112,5 @@
     "TorpKai125": "0",
     "TorpMax": "198",
     "Type": "Heavy Cruiser",
-    "VA": "Hana Hishikawa"
+    "VA": "[https://www.raccoon-dog.co.jp/talent/r20-hishikawa.html Hana Hishikawa]"
 }
