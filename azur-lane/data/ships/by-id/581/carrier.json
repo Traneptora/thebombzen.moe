@@ -1,0 +1,33 @@
+{
+    "Name": "Implacable",
+    "Reload": 128,
+    "ReloadUnkai": 128,
+    "Slot1": {
+        "MLB": {
+            "F": 3
+        },
+        "Retrofit": {
+            "F": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "D": 3,
+            "F": 3,
+            "T": 3
+        },
+        "Retrofit": {
+            "D": 3,
+            "F": 3,
+            "T": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "T": 3
+        },
+        "Retrofit": {
+            "T": 3
+        }
+    }
+}

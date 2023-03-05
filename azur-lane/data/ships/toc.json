@@ -553,6 +553,19 @@
             "dataJSON": "ships/by-id/30017/ship.json"
         },
         {
+            "DataDir": "ships/by-id/30018",
+            "Name": "Sheffield META",
+            "ShipID": "30018",
+            "dataJSON": "ships/by-id/30018/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/20011",
+            "Name": "Friedrich der Gro\u00dfe",
+            "ShipID": "20011",
+            "battleshipJSON": "ships/by-id/20011/battleship.json",
+            "dataJSON": "ships/by-id/20011/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/20023",
             "Name": "Plymouth",
             "ShipID": "20023",
@@ -646,13 +659,6 @@
             "Name": "Azuma",
             "ShipID": "Plan010",
             "dataJSON": "ships/by-id/Plan010/ship.json"
-        },
-        {
-            "DataDir": "ships/by-id/Plan011",
-            "Name": "Friedrich der Gro\u00dfe",
-            "ShipID": "Plan011",
-            "battleshipJSON": "ships/by-id/Plan011/battleship.json",
-            "dataJSON": "ships/by-id/Plan011/ship.json"
         },
         {
             "DataDir": "ships/by-id/Plan012",
@@ -3842,6 +3848,65 @@
             "Name": "Hammann II",
             "ShipID": "576",
             "dataJSON": "ships/by-id/576/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/577",
+            "Name": "Kuybyshev",
+            "ShipID": "577",
+            "dataJSON": "ships/by-id/577/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/578",
+            "Name": "Theseus",
+            "ShipID": "578",
+            "carrierJSON": "ships/by-id/578/carrier.json",
+            "dataJSON": "ships/by-id/578/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/579",
+            "Name": "Hwah Jah",
+            "ShipID": "579",
+            "carrierJSON": "ships/by-id/579/carrier.json",
+            "dataJSON": "ships/by-id/579/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/580",
+            "Name": "Ting An",
+            "ShipID": "580",
+            "dataJSON": "ships/by-id/580/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/581",
+            "Name": "Implacable",
+            "ShipID": "581",
+            "carrierJSON": "ships/by-id/581/carrier.json",
+            "dataJSON": "ships/by-id/581/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/582",
+            "Name": "Royal Oak",
+            "ShipID": "582",
+            "battleshipJSON": "ships/by-id/582/battleship.json",
+            "dataJSON": "ships/by-id/582/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/583",
+            "Name": "Argus",
+            "ShipID": "583",
+            "carrierJSON": "ships/by-id/583/carrier.json",
+            "dataJSON": "ships/by-id/583/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/584",
+            "Name": "Scylla",
+            "ShipID": "584",
+            "dataJSON": "ships/by-id/584/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/585",
+            "Name": "Hero",
+            "ShipID": "585",
+            "dataJSON": "ships/by-id/585/ship.json"
         }
     ]
 }

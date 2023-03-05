@@ -120,6 +120,13 @@
             "dataJSON": "ships/by-id/30017/ship.json"
         },
         {
+            "DataDir": "ships/by-id/20011",
+            "Name": "Friedrich der Gro\u00dfe",
+            "ShipID": "20011",
+            "battleshipJSON": "ships/by-id/20011/battleship.json",
+            "dataJSON": "ships/by-id/20011/ship.json"
+        },
+        {
             "DataDir": "ships/by-id/20024",
             "Name": "Prinz Rupprecht",
             "ShipID": "20024",
@@ -146,13 +153,6 @@
             "ShipID": "Plan008",
             "battleshipJSON": "ships/by-id/Plan008/battleship.json",
             "dataJSON": "ships/by-id/Plan008/ship.json"
-        },
-        {
-            "DataDir": "ships/by-id/Plan011",
-            "Name": "Friedrich der Gro\u00dfe",
-            "ShipID": "Plan011",
-            "battleshipJSON": "ships/by-id/Plan011/battleship.json",
-            "dataJSON": "ships/by-id/Plan011/ship.json"
         },
         {
             "DataDir": "ships/by-id/Plan012",
@@ -682,6 +682,13 @@
             "ShipID": "566",
             "battleshipJSON": "ships/by-id/566/battleship.json",
             "dataJSON": "ships/by-id/566/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/582",
+            "Name": "Royal Oak",
+            "ShipID": "582",
+            "battleshipJSON": "ships/by-id/582/battleship.json",
+            "dataJSON": "ships/by-id/582/ship.json"
         }
     ]
 }

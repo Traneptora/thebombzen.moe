@@ -1,0 +1,29 @@
+{
+    "Name": "Hwah Jah",
+    "Reload": 177,
+    "ReloadUnkai": 177,
+    "Slot1": {
+        "MLB": {
+            "S": 3
+        },
+        "Retrofit": {
+            "S": 3
+        }
+    },
+    "Slot2": {
+        "MLB": {
+            "S": 3
+        },
+        "Retrofit": {
+            "S": 3
+        }
+    },
+    "Slot3": {
+        "MLB": {
+            "N": 1
+        },
+        "Retrofit": {
+            "N": 1
+        }
+    }
+}

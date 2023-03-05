@@ -675,6 +675,34 @@
             "ShipID": "574",
             "carrierJSON": "ships/by-id/574/carrier.json",
             "dataJSON": "ships/by-id/574/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/578",
+            "Name": "Theseus",
+            "ShipID": "578",
+            "carrierJSON": "ships/by-id/578/carrier.json",
+            "dataJSON": "ships/by-id/578/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/579",
+            "Name": "Hwah Jah",
+            "ShipID": "579",
+            "carrierJSON": "ships/by-id/579/carrier.json",
+            "dataJSON": "ships/by-id/579/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/581",
+            "Name": "Implacable",
+            "ShipID": "581",
+            "carrierJSON": "ships/by-id/581/carrier.json",
+            "dataJSON": "ships/by-id/581/ship.json"
+        },
+        {
+            "DataDir": "ships/by-id/583",
+            "Name": "Argus",
+            "ShipID": "583",
+            "carrierJSON": "ships/by-id/583/carrier.json",
+            "dataJSON": "ships/by-id/583/ship.json"
         }
     ]
 }
